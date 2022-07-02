@@ -27,14 +27,14 @@ Ejemplo:
 Contenido de "productos.txt" con 3 productos almacenados 
 
  {                                                                                                                                                    
-      title: 'Escuadra',                                                                                                                                 
+      title:'Escuadra',                                                                                                                                 
       price: 123.45,                                                                                                                                     
       thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png',                                     
       id: 1                                                                                                                                              
     },                                                                                                                                                   
     {                                                                                                                                                    
       title: 'Calculadora',                                                                                                                              
-      price: 234.56,                                                                                                                                     
+      price: 234,56,                                                                                                                                     
       thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png',                                          
       id: 2                                                                                                                                              
     },                                                                                                                                                   
