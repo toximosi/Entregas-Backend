@@ -78,6 +78,7 @@ class Contenedor{
                     }else{
                        /*  this.m('No existe producto con ese id'); */
                         return null;
+                        
                     }
                 });
             }catch(err){ 

@@ -57,6 +57,7 @@ const process = async() =>{
     let prodNo = await getById(file, 20);
     note('producto buscado y NO encontrado');
 
+    
     await deleteById(file, 4);
     note('producto buscado y borrado');
     
