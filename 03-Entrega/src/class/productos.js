@@ -71,10 +71,12 @@ class Contenedor{
             try{
                 let obj = await this.read(file);
                 let selectElement = "";
+
                 obj.forEach((e)=>{
                     if(e.id === ind ){
                         /* this.m("el producto buscado es:")*/
                         this.m(e) 
+
                         selectElement = e;
                     }else{
                        /*  this.m('No existe producto con ese id'); */
@@ -83,6 +85,7 @@ class Contenedor{
                     }
                 });
                 return selectElement
+
             }catch(err){ 
                 console.log(`🚩 Can not find objet in file: ${file},\n  💣 error: ${err}`);
             }
