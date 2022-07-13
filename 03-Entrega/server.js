@@ -37,14 +37,15 @@ app.get('/productosRandom', async(req, res)=>{
 
 const mostrarProductoRandom = async(obj) =>{
     if(fs.existsSync(obj)){
-        let d = await fs.promises.readFile(obj,'utf8');
-        let p = await JSON.parse(d);
+        /* let d = await fs.promises.readFile(obj,'utf8');
+        let p = await JSON.parse(d); */
+        let p = await read(lista);
         
         let limit = await p.length;
         let random = Math.floor((Math.random()*limit)+1);
         let product = await getById(obj, random); 
         console.log(product)
-        return product
+        return (product)
     }else{
         return [];
     }

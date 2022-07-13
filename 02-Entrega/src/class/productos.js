@@ -1,6 +1,7 @@
 /* Importaciones -----------------------------*/
 const fs = require('fs');
 
+
 /* Code --------------------------------------------------------------*/
 //Clase
 class Contenedor{ 
