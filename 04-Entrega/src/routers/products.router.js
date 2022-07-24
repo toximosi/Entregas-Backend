@@ -74,33 +74,40 @@ router.get('/:id', (req, res)=>{
 
 //UPDATE
 router.put('/:id', (req, res)=>{
-	let id = req.params.id;
+	let id = parseInt(req.params.id);
+	let prodChange = req.body;
+	console.log(req.body);
 	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	id = parseInt(id);
 	if(id < 1 || id >products.length) return res.status(400).send('🙇‍♂️ no hay nada con ese valor');
 
+	let prod = "";
+
 	products.forEach(e=>{
-		if(e==id){
+		if(e.id == id){
 			e.title = req.body.title;
 			e.price = req.body.price;
 			e.thumbnail = req.body.thumbnail;
+		}else{
+			return res.send('🙇‍♂️ no hay producto con el id: ' + id); 
 		}
 	})
+	console.log(req.body)
+	res.send({products});
 });
 
 //DELETE
 router.delete('/:id', (req, res)=>{
-	let id = req.params.id;
+	let id = parseInt(req.params.id);
 	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	id = parseInt(id);
 	if(id < 1 || id >products.length) return res.status(400).send('🙇‍♂️ no hay nada con ese valor'); 
-	
-	let newProducts = products.filter(e=>{
-			e.id != id
-			console.log(e.id)
-		}
-	);
-	res.send("hola");
+	products.forEach(e => {
+			if (e.id == id){
+				products.splice(id - 1, 1);
+			}else{
+				return res.send('🙇‍♂️ no hay producto con el id: ' + id); 
+			}
+		})
+	res.send({products});
 });
 
 
