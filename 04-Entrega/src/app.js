@@ -15,6 +15,7 @@ server.on("error", error => console.log(`Error en el servidor ${error}`));
 
 
 app.use(express.json())//informamos al servidor como se leen los datos
+app.use(express.urlencoded({ extended: true }))
 //CODE ------------------------------
 //Static files
 app.use(express.static('public'))//principal folder -> express buscara los archivos estáticos en esta carpeta.
