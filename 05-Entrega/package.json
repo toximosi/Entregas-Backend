@@ -1,0 +1,16 @@
+{
+  "name": "05-entrega",
+  "version": "1.0.0",
+  "description": "entrega 5 backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Villarrubia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
