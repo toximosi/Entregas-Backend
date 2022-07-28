@@ -1,7 +1,11 @@
 // importaciones ----------------------------
-//express
-import express from 'express';
+import express from 'express';//express server
+import __dirname from './utils.js';//static files
+//wiews
+import handlebars from 'express-handlebars';
+import viewsRouter from './routers/views.router.js';
 //routers
+import productsRouter from './routers/products.router.js';
 
 
 //Server ------------------------------------
@@ -12,12 +16,20 @@ const server = app.listen(PORT, ()=>{
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
-
+//formato de archivos
 app.use(express.json())//informamos al servidor como se leen los datos
 app.use(express.urlencoded({ extended: true }))
-//CODE ------------------------------
+
+//motor de views
+app.engine('handlebars', handlebars.engine());
+app.set('views', __dirname + '/views');
+app.set('view engine', 'handlebars')
+
 //Static files
-app.use(express.static('public'))//principal folder -> express buscara los archivos estáticos en esta carpeta.
+app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
 
-//Routes
-
+//Routes ----------------------------
+//Views
+app.use('/', viewsRouter );
+//CRUD
+app.use('/api/products', productsRouter );

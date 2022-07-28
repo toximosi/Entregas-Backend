@@ -2,8 +2,8 @@
 import express from "express";
 import __dirname from "./utils.js";
 import handlebars from 'express-handlebars';
-import viewsRouter from './routes/views.router.js';
-import usersRouter from './routes/users.router.js';
+import viewsRouter from './routes/views.router.js.js';
+import usersRouter from './routes/users.router.js.js';
 
 //server
 const app = express();
