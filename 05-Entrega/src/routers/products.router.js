@@ -32,18 +32,31 @@ router.get('/:id', async(req, res)=>{
 
 });
 //CREATE 
-router.post('/', (req, res)=>{
-	const{title, price, thumbnail, id} = req.body;
+router.post('/', async(req, res)=>{
+	const{title, price} = req.body;
+	
+	if(!title || !price) return res.status(400).send({status:'error', error:'incomplete values'});
 
-	/* let prod = req.body; */
+	let prod = {
+		title,
+		price
+	}
+	
+	await man.create(bd, prod);
 
+	res.send({status:'👀 success', message: '👌 product added'	});
+});
+
+/* router.post('/', (req, res)=>{
 	prod.id = products.length + 1;
 	
 	(id < 10) ? prod.thumbnail = "0"+id+"image.jpg" : prod.thumbnail = id+"image.jpg"
 	products.push(prod);
 
 	res.send({status:'👀 success', message: '👌 product added', producto: prod , id: prod.id})
-});
+}); */
+
+
 //GET
 /* router.get('/:id', (req, res)=>{
 	let id = req.params.id;

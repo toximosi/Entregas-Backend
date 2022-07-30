@@ -84,8 +84,9 @@ class Managers{
         
     }
 
-    post = async(file, obj) =>{
-
+    create = async(file, obj) =>{
+        /* prod.id = products.length + 1;
+        (id < 10) ? prod.thumbnail = "0"+id+"image.jpg" : prod.thumbnail = id+"image.jpg" */
     } 
 
 

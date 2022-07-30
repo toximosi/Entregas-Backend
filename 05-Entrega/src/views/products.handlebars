@@ -1,0 +1,21 @@
+<!-- html products -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            {{#if hasProducts}}
+                {{#each}}
+                    <ul>
+                        <li>{{this.title}}</li>
+                        <li>{{this.price}}</li>
+                        <li>{{this.thumblai}}</li>
+                    </ul>
+                {{/each}}
+            {{else}}
+                <h1>no hay productos</h1>    
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<!-- scripts products -->
+<script src="productos.js"></script>   
