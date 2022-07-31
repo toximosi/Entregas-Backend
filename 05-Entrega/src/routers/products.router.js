@@ -1,7 +1,8 @@
 //import ------------------------------------
-import { Router } from 'express'; 
+import e, { Router } from 'express'; 
 const router = Router();//ejecutamos router para poder usarlo.
 import __dirname from '../utils.js';//static
+import { uploader } from '../utils.js';
 //class
 import managersServices from '../services/Managers.service.js';
 const man = new managersServices();
@@ -32,18 +33,43 @@ router.get('/:id', async(req, res)=>{
 
 });
 //CREATE 
-router.post('/', (req, res)=>{
-	const{title, price, thumbnail, id} = req.body;
+router.post('/', uploader.single('image'), async(req, res)=>{
 
-	/* let prod = req.body; */
-
-	prod.id = products.length + 1;
+	const{title, price} = req.body;
 	
-	(id < 10) ? prod.thumbnail = "0"+id+"image.jpg" : prod.thumbnail = id+"image.jpg"
-	products.push(prod);
+	if(!title || !price) return res.status(400).send({status:'error', error:'incomplete values'});
+	if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'});
+	
+	let prod = {
+		title,
+		price,
+		image:req.file.filename
+	}
+	prod.id = await man.addId(bd,prod);
+	
+	await man.create(bd, prod);
+
+	res.send({status:'👀 success', message: '👌 product added'	});
+});
+
+/* POST datos recogidos solo desde body ----------------------------------------------------------
+	router.post('/', async(req, res)=>{
+	let prod = req.body;
+	if(!prod.title) return (res.status(400).send({status:'👀 success', message: '🙅 Invalid input', value: 'title'}));
+	if(!prod.price) return (res.status(400).send({status:'👀 success', message: '🙅 Invalid input', value: 'price'}));
+	
+	let id = await man.addId(bd);
+	id = parseInt(id);
+	prod.id = id;
+
+	(id < 10) ? prod.image = "0"+id+"image.jpg" : prod.image = id+"image.jpg"
+	
+	await man.create(bd,prod);
 
 	res.send({status:'👀 success', message: '👌 product added', producto: prod , id: prod.id})
-});
+}); */
+
+
 //GET
 /* router.get('/:id', (req, res)=>{
 	let id = req.params.id;
@@ -73,7 +99,7 @@ router.post('/', (req, res)=>{
 		if(e.id == id){
 			e.title = req.body.title;
 			e.price = req.body.price;
-			e.thumbnail = req.body.thumbnail;
+			e.image = req.body.image;
 		}else{
 			return res.send('🙇‍♂️ no hay producto con el id: ' + id); 
 		}
