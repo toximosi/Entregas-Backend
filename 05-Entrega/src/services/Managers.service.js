@@ -58,16 +58,31 @@ class Managers{
     addId = async(file, obj) => {
         try{
             let Arr = await this.readFile(file);
-            let idArr = [];
-        
-            Arr.forEach((e)=>{
-                idArr.push(e.id);    
-            })
-
-            idArr = idArr.sort((a,b) => (a - b));
-            let idAdd = idArr.lenght+1;
-            let idLast =  Arr[Arr.lenght]
+            let idArr = [];//array con todos los id de los productos
+            let cont = 0;
             
+            Arr.forEach((e)=>{
+                if(!e.id){
+                    console.log(`the element num ${cont}`);
+                }else{
+                    idArr.push(e.id);//el array se forma con todos los id    
+                }
+                cont ++;
+            })
+            
+            idArr = idArr.sort((a,b) => (a - b));
+            /* console.log(idArr.length+1) */
+            let idAdd = parseInt(idArr.length+1);
+            /* idAdd = idAdd++; */
+            
+            let idLast = parseInt(Arr.length);
+            
+            /* console.log(idArr.lenght+1);
+            console.log("idAdd");
+            console.log(idAdd);
+            console.log("idLast");
+            console.log(idLast); */
+
             if(idLast == idAdd){//coinciden
                 idAdd++;
             }if (idLast > idAdd) {//entonces el elemento ha sido borrado
@@ -75,18 +90,23 @@ class Managers{
             }if (idLast < idAdd) {
                 idAdd = idAdd;
             }
-
             return idAdd;
 
         }catch(err){
-
+            console.log(`🚩 Can not add id,\n  💣 error: ${err}`);
         } 
         
     }
 
     create = async(file, obj) =>{
-        /* prod.id = products.length + 1;
-        (id < 10) ? prod.thumbnail = "0"+id+"image.jpg" : prod.thumbnail = id+"image.jpg" */
+        try{
+            let Arr = await this.readFile(file);
+            Arr.push(obj);
+            await fs.promises.writeFile(file, JSON.stringify(Arr, null, '\t'));
+
+        }catch(err){
+            console.log(`🚩 Can not save objet in file: ${file},\n  💣 error: ${err}`);
+        }
     } 
 
 

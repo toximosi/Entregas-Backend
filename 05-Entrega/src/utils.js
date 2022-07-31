@@ -17,10 +17,10 @@ const storage = multer.diskStorage({
         cb(null,__dirname+'/public/img');
     },
     filename:function(req,file,cb){
-        CDATASection(null,Date.now()+"-"+file.originalname);
+        cb(null,Date.now()+"-"+file.originalname);
     }
 })
 
+//Export
 export const uploader = multer({storage});
-
 export default __dirname;

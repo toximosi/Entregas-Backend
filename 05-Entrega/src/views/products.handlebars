@@ -2,12 +2,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            {{#if hasProducts}}
-                {{#each}}
+            {{#if Arr}}
+                {{#each Arr}}
                     <ul>
                         <li>{{this.title}}</li>
                         <li>{{this.price}}</li>
-                        <li>{{this.thumblai}}</li>
+                        <li><img src="http://localhost:8080/img/{{this.image}}"></li>
+                        <li>{{this.id}}</li>
                     </ul>
                 {{/each}}
             {{else}}
@@ -18,4 +19,4 @@
 </div>
 
 <!-- scripts products -->
-<script src="productos.js"></script>   
+{{!-- <script src="productos.js"></script>   --}} 
