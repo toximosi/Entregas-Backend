@@ -1,0 +1,50 @@
+[
+	{
+		"title": "01 producto",
+		"price": 0.01,
+		"image": "01image.jpg",
+		"id": 1
+	},
+	{
+		"title": "02 producto",
+		"price": 0.02,
+		"image": "02image.jpg",
+		"id": 2
+	},
+	{
+		"title": "03 producto",
+		"price": 0.03,
+		"image": "03image.jpg",
+		"id": 3
+	},
+	{
+		"title": "04 producto",
+		"price": 0.04,
+		"image": "04image.jpg",
+		"id": 4
+	},
+	{
+		"title": "05 producto",
+		"price": 0.05,
+		"id": {},
+		"image": "05image.jpg"
+	},
+	{
+		"title": "05 producto",
+		"price": 0.05,
+		"id": {},
+		"image": "06image.jpg"
+	},
+	{
+		"title": "05 producto",
+		"price": 0.05,
+		"id": 7,
+		"image": "07image.jpg"
+	},
+	{
+		"title": "w",
+		"price": "1",
+		"image": "1659285538722-AdobeStock_130347499_Preview.jpeg",
+		"id": 8
+	}
+]
