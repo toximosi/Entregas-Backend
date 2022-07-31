@@ -1,0 +1,20 @@
+{
+  "name": "05-entrega",
+  "version": "1.0.0",
+  "description": "entrega 5 backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Villarrubia",
+  "license": "ISC",
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.2.0",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "multer": "^1.4.5-lts.1"
+  }
+}
