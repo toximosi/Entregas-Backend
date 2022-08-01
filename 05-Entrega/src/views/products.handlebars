@@ -1,15 +1,20 @@
 <!-- html products -->
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
+    <div class="row justify-content-md-center">
+        <div class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
             {{#if Arr}}
                 {{#each Arr}}
-                    <ul>
-                        <li>{{this.title}}</li>
-                        <li>{{this.price}}</li>
-                        <li><img src="http://localhost:8080/img/{{this.image}}"></li>
-                        <li>{{this.id}}</li>
-                    </ul>
+                    <div class="card" style="width: 18rem; margin: 50px;">
+                        <img src="http://localhost:8080/img/{{this.image}}" class="card-img-top" alt="{{this.title}}">
+                        <div class="card-body">
+                            <spam>Nombre:</spam>
+                            <h5 class="card-title"> {{this.title}}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: {{this.price}}</li>
+                            <li class="list-group-item">Id: {{this.id}}</li>
+                        </ul>
+                    </div>
                 {{/each}}
             {{else}}
                 <h1>no hay productos</h1>    
