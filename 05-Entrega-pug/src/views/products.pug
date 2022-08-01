@@ -8,20 +8,33 @@ html
 
     body
         div(class="container")
-            div(class="row")
-                div(class="col-xs-12")
+            div(class="row justify-content-md-center")
+                div(class="col-6")
+                    nav(class="navbar navbar-expand-lg bg-light")
+                        div(class="container-fluid")
+                        
+                        div(class="collapse navbar-collapse" id="navbarSupportedContent")
+                            ul(class="navbar-nav me-auto mb-2 mb-lg-0")
+                            li(class="nav-item")
+                                a(class="nav-link active" aria-current="page", href="/productos")="Listado de productos"
+                            li(class="nav-item")
+                                a(class="nav-link", href="/productoNew")="Añadir nuevo producto"
+        div(class="container")
+            div(class="row justify-content-md-center")
+                div(class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;")
                     if Arr
                         each pro in Arr
-                            li
-                                spam=pro.title
-                            li
-                                spam=pro.price
-                            li 
-                                img(src="http://localhost:8080/img/{{this.image}}")
-                            li 
-                                spam=pro.price
+                            div(class="card" style="width: 18rem; margin: 50px;")
+                                - url = "http://localhost:8080/img/"+pro.image
+                                img(src=url class="card-img-top" alt=pro.title)
+                                div(class="card-body")
+                                    spam="Nombre:"
+                                    h5(class="card-title") #{pro.title}
+                                ul(class="list-group list-group-flush")
+                                    li(class="list-group-item") Price: #{pro.price}
+                                    li(class="list-group-item") Id: #{pro.id}
                     else
-                        h1="no hay productos"
+                        h1="no hay productos"    
 
 
         script(src='./js/bootstrap/bootstrap.min.js')

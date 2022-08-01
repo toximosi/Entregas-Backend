@@ -1,27 +1,43 @@
 html
     head
-        link(rel="stylesheet", href="./css/bootstrap/bootstrap.min.css")
-        link(rel="stylesheet", href="./css/fontawesome/all.min.css")
+        link(rel="stylesheet" href="./css/bootstrap/bootstrap.min.css")
+        link(rel="stylesheet" href="./css/fontawesome/all.min.css")
         
-        link(rel="stylesheet", href="./css/fontawesome/all.min.css")
+        link(rel="stylesheet" href="./css/fontawesome/all.min.css")
         title="Plantilla"
 
     body
         div(class="container")
             div(class="row justify-content-md-center")
-                div(class="col-xs-6")
-                    form(id="productForm")
-                        div(class="mb-3")
-                            label(for="title", class="form-label") Nombre:
-                            input(id="title", name="title", type="text", class="form-control",  placeholder="Nombe del producto")
+                div(class="col-6")
+                    nav(class="navbar navbar-expand-lg bg-light")
+                        div(class="container-fluid")
+                        
+                        div(class="collapse navbar-collapse" id="navbarSupportedContent" style="")
+                            ul(class="navbar-nav me-auto mb-2 mb-lg-0")
+                            li(class="nav-item")
+                                a(class="nav-link active" aria-current="page", href="/productos")="Listado de productos"
+                                
+                            li(class="nav-item")
+                                a(class="nav-link", href="/productoNew")="Añadir nuevo producto"
 
-                        div(class="mb-3")
-                            label(for="price", class="form-label") Precio:
-                            input(id="price", name="price", type="number" step=.01, class="form-control",  placeholder="0,00 €")
+        div(class="plantillas", style="margin-top:50px")
+            div(class="container")
+                div(class="row justify-content-md-center")
+                    div(class="col-xs-6")
+                        form(id="productForm")
+                            div(class="mb-3")
+                                label(for="title" class="form-label")="Nombre:"
+                                input(id="title" name="title" type="text" class="form-control"  placeholder="Nombe del producto")
 
-                        div(class="mb-3")
-                            label(for="image" class="form-label") Subir imagen
-                            input(id="image", name="image", class="form-control", type="file")
-                            
-                        div(class="mb-3")
-                            button(type="submit", class="btn btn-primary") Crear producto
+                            div(class="mb-3")
+                                label(for="price" class="form-label")="Precio:"
+                                input(id="price" name="price" type="number" step=.01 class="form-control",  placeholder="0,00 €")
+
+                            div(class="mb-3")
+                                label(for="image" class="form-label")="Subir imagen"
+                                input(id="image" name="image" class="form-control" type="file")
+                                
+                            div(class="mb-3")
+                                button(type="submit" class="btn btn-primary")="Crear producto"
+        script(src='./js/bootstrap/bootstrap.min.js')
