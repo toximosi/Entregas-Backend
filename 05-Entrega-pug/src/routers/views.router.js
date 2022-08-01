@@ -27,7 +27,6 @@ const bd = __dirname + '/public/bd/bd.json';
 
 router.get('/productos', async(req, res)=>{
     let Arr = await man.getAll(bd);
-    console.log(Arr)
     res.render('products', {Arr});//indica la plantilla a usar y la data a pasar
 })
 

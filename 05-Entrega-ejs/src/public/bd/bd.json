@@ -22,29 +22,5 @@
 		"price": 0.04,
 		"image": "04image.jpg",
 		"id": 4
-	},
-	{
-		"title": "05 producto",
-		"price": 0.05,
-		"id": {},
-		"image": "05image.jpg"
-	},
-	{
-		"title": "05 producto",
-		"price": 0.05,
-		"id": {},
-		"image": "06image.jpg"
-	},
-	{
-		"title": "05 producto",
-		"price": 0.05,
-		"id": 7,
-		"image": "07image.jpg"
-	},
-	{
-		"title": "w",
-		"price": "1",
-		"image": "1659285538722-AdobeStock_130347499_Preview.jpeg",
-		"id": 8
 	}
 ]

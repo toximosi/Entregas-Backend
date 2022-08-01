@@ -1,27 +1,29 @@
 <!-- html products -->
+<%- include('./partials/head')%>
+
+<!-- html products -->
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
-            {{#if Arr}}
-                {{#each Arr}}
+            <% if(Arr){ %>
+                <% Arr.forEach(e => {%>
                     <div class="card" style="width: 18rem; margin: 50px;">
-                        <img src="http://localhost:8080/img/{{this.image}}" class="card-img-top" alt="{{this.title}}">
+                        <img src="http://localhost:8080/img/<%= e.image%>" class="card-img-top" alt="<%= e.title%>">
                         <div class="card-body">
                             <spam>Nombre:</spam>
-                            <h5 class="card-title"> {{this.title}}</h5>
+                            <h5 class="card-title"> <%= e.title%></h5>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Price: {{this.price}}</li>
-                            <li class="list-group-item">Id: {{this.id}}</li>
+                            <li class="list-group-item">Price: <%= e.price%></li>
+                            <li class="list-group-item">Id: <%= e.id %></li>
                         </ul>
                     </div>
-                {{/each}}
-            {{else}}
+            <% }) %>
+            <% }else{ %>
                 <h1>no hay productos</h1>    
-            {{/if}}
+             <% } %>
         </div>
     </div>
 </div>
 
-<!-- scripts products -->
-{{!-- <script src="productos.js"></script>   --}} 
+<%- include('./partials/footer')%>
