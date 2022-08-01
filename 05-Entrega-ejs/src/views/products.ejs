@@ -1,21 +1,27 @@
 <!-- html products -->
 <%- include('./partials/head')%>
 
+<!-- html products -->
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
+    <div class="row justify-content-md-center">
+        <div class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
             <% if(Arr){ %>
-            <% Arr.forEach(e => {%>
-                    <ul>
-                        <li><%= e.title%></li>
-                        <li><%= e.price%></li>
-                        <li><img src="http://localhost:8080/img/<%= e.image%>"></li>
-                        <li><%= e.id %></li>
-                    </ul>
-                <% }) %>
+                <% Arr.forEach(e => {%>
+                    <div class="card" style="width: 18rem; margin: 50px;">
+                        <img src="http://localhost:8080/img/<%= e.image%>" class="card-img-top" alt="<%= e.title%>">
+                        <div class="card-body">
+                            <spam>Nombre:</spam>
+                            <h5 class="card-title"> <%= e.title%></h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: <%= e.price%></li>
+                            <li class="list-group-item">Id: <%= e.id %></li>
+                        </ul>
+                    </div>
+            <% }) %>
             <% }else{ %>
                 <h1>no hay productos</h1>    
-            <% } %>
+             <% } %>
         </div>
     </div>
 </div>
