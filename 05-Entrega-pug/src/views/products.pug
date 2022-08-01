@@ -1,0 +1,30 @@
+html
+    head
+        link(rel="stylesheet", href="./css/bootstrap/bootstrap.min.css")
+        link(rel="stylesheet", href="./css/fontawesome/all.min.css")
+        
+        link(rel="stylesheet", href="./css/fontawesome/all.min.css")
+        title="Plantilla"
+
+    body
+        div(class="container")
+            div(class="row")
+                div(class="col-xs-12")
+                    if Arr
+                        each pro in Arr
+                            li
+                                spam=pro.title
+                            li
+                                spam=pro.price
+                            li 
+                                img(src="http://localhost:8080/img/{{this.image}}")
+                            li 
+                                spam=pro.price
+                    else
+                        h1="no hay productos"
+
+
+        script(src='./js/bootstrap/bootstrap.min.js')
+        script(src='./js/product.js')
+
+

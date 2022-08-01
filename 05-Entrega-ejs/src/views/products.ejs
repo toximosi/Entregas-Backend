@@ -1,0 +1,23 @@
+<!-- html products -->
+<%- include('./partials/head')%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <% if(Arr){ %>
+            <% Arr.forEach(e => {%>
+                    <ul>
+                        <li><%= e.title%></li>
+                        <li><%= e.price%></li>
+                        <li><img src="http://localhost:8080/img/<%= e.image%>"></li>
+                        <li><%= e.id %></li>
+                    </ul>
+                <% }) %>
+            <% }else{ %>
+                <h1>no hay productos</h1>    
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer')%>

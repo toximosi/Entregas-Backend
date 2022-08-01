@@ -2,7 +2,6 @@
 import express from 'express';//express server
 import __dirname from './utils.js';//static files
 //wiews
-import handlebars from 'express-handlebars';//motor de plantillas
 import viewsRouter from './routers/views.router.js';
 //routers
 import productsRouter from './routers/products.router.js';
@@ -21,9 +20,8 @@ app.use(express.json())//informamos al servidor como se leen los datos
 app.use(express.urlencoded({ extended: true }))
 
 //motor de views -> plantillas 
-app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
-app.set('view engine', 'handlebars')
+app.set('view engine', 'pug')
 
 //Static files
 app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
