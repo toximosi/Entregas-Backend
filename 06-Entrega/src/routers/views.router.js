@@ -30,8 +30,14 @@ router.get('/productos', async(req, res)=>{
     res.render('products', {Arr});//indica la plantilla a usar y la data a pasar
 })
 
-router.get('/productoNew', (req,res)=>{
-    res.render('productNew');//nombre de la vista -> procdutcsNew
+router.get('/productoNew', async(req, res)=>{
+    try { 
+        let Arr = await man.getAll(bd);
+        let ArrIdInv = await man.orderIdInv(Arr);
+        res.render('productNew', { ArrIdInv });//nombre de la vista -> procdutcsNew
+    }catch(err){
+            console.log(`🚩 Can show Array,\n  💣 error: ${err}`);
+    }
 })
 
 router.get('/chat', (req,res)=>{

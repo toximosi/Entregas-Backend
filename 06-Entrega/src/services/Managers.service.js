@@ -71,17 +71,8 @@ class Managers{
             })
             
             idArr = idArr.sort((a,b) => (a - b));
-            /* console.log(idArr.length+1) */
             let idAdd = parseInt(idArr.length+1);
-            /* idAdd = idAdd++; */
-            
             let idLast = parseInt(Arr.length);
-            
-            /* console.log(idArr.lenght+1);
-            console.log("idAdd");
-            console.log(idAdd);
-            console.log("idLast");
-            console.log(idLast); */
 
             if(idLast == idAdd){//coinciden
                 idAdd++;
@@ -96,6 +87,27 @@ class Managers{
             console.log(`🚩 Can not add id,\n  💣 error: ${err}`);
         } 
         
+    }
+    //Ordenar array de mayor a menor por value;
+    orderIdInv = async(Arr) => {
+        try {
+            //let ArrInv = Arr.sort(((a, b) => b- a));
+            let ArrId = [];
+            let ArrInv = [];
+            Arr.forEach(e => ArrId.push(e.id));
+            let ArrIdInv = ArrId.sort(((a, b) => b - a));
+
+            ArrIdInv.forEach(e => { 
+                Arr.forEach(p => { 
+                    if (e == p.id) { 
+                        ArrInv.push(p);
+                    }
+                })
+            })
+            return ArrInv;
+        }catch(err){
+            console.log(`🚩 Can not inv Array,\n  💣 error: ${err}`);
+        }
     }
 
     create = async(file, obj) =>{

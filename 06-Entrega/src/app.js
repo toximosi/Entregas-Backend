@@ -38,7 +38,15 @@ app.use('/', viewsRouter );
 //CRUD
 app.use('/api/productos', productsRouter );
 
-
+let chatlog = [];
 io.on('connection', (socket) => {
     console.log("socket connection");
+    socket.broadcast.emit('newUser');
+    socket.on('message', data => {
+        chatlog.push(data);
+        io.emit('chatlog', chatlog)
+    })
+    socket.on('productoNewAdd', data => { 
+        
+    })
 })

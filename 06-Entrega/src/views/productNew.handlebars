@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col-6">
+        <div class="col-10 col-md-6 m-3">
             <form id="productForm">
                 <div class="mb-3">
                     <label for="title" class="form-label">Nombre:</label>
@@ -20,9 +20,48 @@
             </form>
         </div>
     </div>
+
+
 </div>
-
-
+ {{#if ArrIdInv }}
+    <div class="product-table">
+        <div class="container">
+            <div class="row  justify-content-md-center">
+                <div class="col-10 col-md-6 m-3">
+                    <h1>tabla de productos</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">title</th>
+                                <th scope="col">image</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {{#each ArrIdInv}}
+                                <tr>
+                                    <th scope="row">{{this.id}}</th>
+                                    <td>{{this.title}}</td>
+                                    <td>{{this.price}}€</td>
+                                    <td><div class="box-img"><img src="http://localhost:8080/img/{{this.image}}"  alt="{{this.title}}"></div></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {{else}}
+       <h1>no hay productos</h1>    
+    {{/if}}
+</div>
+ 
+                      
+                
+                   
+                
+            
 
 <!-- scripts products -->
 <script src="js/productNew.js"></script>   
