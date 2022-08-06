@@ -14,8 +14,8 @@ const app = express();
 const PORT = 8080;
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
-});
-const io = new Server(server);//websocket
+});//servidor de http
+const io = new Server(server);//servidor de socket,... de esta forma vive dentro de mi "servidor"
 
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 

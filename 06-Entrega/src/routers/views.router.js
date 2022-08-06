@@ -5,6 +5,7 @@ const router = Router();
 import managersServices from '../services/Managers.service.js';
 const man = new managersServices();
 
+const socker = io();
 import __dirname from '../utils.js';//static
 
 
@@ -30,11 +31,15 @@ router.get('/productos', async(req, res)=>{
     res.render('products', {Arr});//indica la plantilla a usar y la data a pasar
 })
 
+socket.io('productShow', data => { 
+    
+})
+
 router.get('/productoNew', async(req, res)=>{
     try { 
         let Arr = await man.getAll(bd);
         let ArrIdInv = await man.orderIdInv(Arr);
-        res.render('productNew', { ArrIdInv });//nombre de la vista -> procdutcsNew
+        res.render('productNew', { Arr });//nombre de la vista -> procdutcsNew
     }catch(err){
             console.log(`🚩 Can show Array,\n  💣 error: ${err}`);
     }
