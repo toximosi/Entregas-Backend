@@ -14,6 +14,8 @@ productForm.addEventListener('submit', (e) => {
   
     socket.connect();
 });
+
+
 socket.on('newProd', data => { 
   
   let log = document.getElementById('new-prod');
