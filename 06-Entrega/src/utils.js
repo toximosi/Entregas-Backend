@@ -1,5 +1,5 @@
 //gestor de rutas estáticas
-//tiene que estar al mimso nivel que app.
+//tiene que estar al mimso nivel que server.
 // es una implemantación estandar
 //---------------------------------------------------
 
