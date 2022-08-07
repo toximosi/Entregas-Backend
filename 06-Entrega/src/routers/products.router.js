@@ -8,7 +8,6 @@ import managersServices from '../services/Managers.service.js';
 const man = new managersServices();
 //function -----------
 
-
 //bd -> file
 const bd = __dirname + '/public/bd/bd.json';
 

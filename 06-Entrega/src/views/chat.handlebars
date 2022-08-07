@@ -1,10 +1,29 @@
-<div class="chatbox">
-    <h1>ChatBox</h1>
-    <input id="chatbox" type="text">
-    <div id="chatlog">  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="chat-container">
+                <h1>🙊 Chat</h1>
+                <h3>👋 Hi! <span id="user-name"> </span></h3>
+                    <div class="mb-3">
+                        <label class="form-label">mensage</label>
+                        <input id="chatbox" type="text" name="chatbox" class="form-control" >
+                    </div>
+                    {{!-- <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div> --}}
+                {{!--  {{#if ArrIdInv }} --}}
+                    <div id="chatlog">
 
+                    </div>
+
+                </div>
+                {{!-- {{/if}} --}}
+            </div>
+        </div>
+    </div>
 </div>
 <!-- script -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/chat.js"></script>
+
