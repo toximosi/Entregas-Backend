@@ -16,16 +16,16 @@ const bdChat = __dirname + '/public/bd/chats.json';
 //Routers -------------------------------
 
 router.get('/', async (req, res) => {
-   let data = await man.getAll(bdChat);
+    let data = await man.getAll(bdChat);
 	res.send(data);
 });
 
 router.post('/', async(req, res) =>{
-    const { user, date, message } = req.body;
+    const { id, user, date, message } = req.body;
     
-    if (!user || !date || !message) return res.status(400).send({ status: '👀 error', error: '🙇‍♂️ incomplete values' });
+    if (!id ||!user || !date || !message) return res.status(400).send({ status: '👀 error', error: '🙇‍♂️ incomplete values' });
     
-    let chat = { user, date, message };
+    let chat = { id, user, date, message };
 
     await man.create(bdChat, chat);
 })

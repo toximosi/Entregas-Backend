@@ -1,12 +1,20 @@
 [
 	{
+		"id": "0",
 		"user": "Juan",
 		"date": "2022-08-07T13:51:13.591Z",
 		"text": "Iniciando chat"
 	},
 	{
-		"user": "sfdfsd",
-		"date": "2022-08-07T14:29:07.011Z",
-		"message": "sdfsfd"
+		"id": "165YClQm7HRvBgAfAAAB",
+		"user": "qwqw",
+		"date": "2022-08-07T16:27:22.988Z",
+		"message": "qwq"
+	},
+	{
+		"id": "6HVFbvyrVNiGIlWRAAAB",
+		"user": "qwqw",
+		"date": "2022-08-07T16:27:24.013Z",
+		"message": "qw"
 	}
 ]

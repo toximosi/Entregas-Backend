@@ -1,6 +1,5 @@
 //import
 const productForm = document.getElementById('productForm');
-const socket = io();
 
 //code
 productForm.addEventListener('submit', (e) => {
@@ -12,11 +11,11 @@ productForm.addEventListener('submit', (e) => {
         body: formData //no se manda en header como json, ya que el formulario ya lo manda como tal 
     }).then(res => res.json()).then(json => console.log(json));
   
-    socket.connect();
 });
 
 
-socket.on('newProd', data => { 
+socket.on('ShowProd', data => { 
+  console.log(data)
   
   let log = document.getElementById('new-prod');
   let prodOld = log.innerHTML

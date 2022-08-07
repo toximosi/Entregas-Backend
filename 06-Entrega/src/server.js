@@ -43,6 +43,7 @@ app.use('/api/chats', chastsRouter );
 
 let chatlog = [];
 let NewProd = [];
+
 io.on('connection', (socket) => {
     socket.broadcast.emit('newUser');
     
@@ -55,5 +56,7 @@ io.on('connection', (socket) => {
         NewProd.push(data);
         io.emit('NewProd', NewProd);
     })
+
+
 
 })

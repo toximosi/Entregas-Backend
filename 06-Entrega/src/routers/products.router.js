@@ -48,7 +48,9 @@ router.post('/', uploader.single('image'), async(req, res)=>{
 	
 	await man.create(bd, prod);
 
-	res.send({status:'👀 success', message: '👌 product added'	});
+	res.send({ status: '👀 success', message: '👌 product added', product: prod });
+	
+
 });
 
 /* POST datos recogidos solo desde body ----------------------------------------------------------
