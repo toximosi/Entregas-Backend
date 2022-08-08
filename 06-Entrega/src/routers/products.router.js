@@ -49,7 +49,10 @@ router.post('/', uploader.single('image'), async(req, res)=>{
 	await man.create(bd, prod);
 
 	res.send({ status: '👀 success', message: '👌 product added', product: prod });
-	
+
+	socket.emit('NuevoProd', data => { 
+		console.log(data);
+	} )
 
 });
 
