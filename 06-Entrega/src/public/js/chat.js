@@ -31,6 +31,7 @@ chatbox.addEventListener('keyup', e => {
     if (chatbox.value.trim().length > 0) {
       const date = new Date();
       let message = {
+        id: socket.id,
         user: username,
         date: date,
         message: chatbox.value,
