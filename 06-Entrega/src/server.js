@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
 
     socket.on('newProd', data => {
         NewProd.push(data);
-        io.emit('NewProd', NewProd);
+        io.emit('ShowProd', NewProd);
     })
 
 
