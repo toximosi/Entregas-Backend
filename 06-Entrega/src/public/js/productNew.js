@@ -13,6 +13,10 @@ productForm.addEventListener('submit', (e) => {
   
 });
 
+socket.on('NuevoProd', (data) => { 
+  console.log( data);
+})
+
 
 socket.on('ShowProd', data => { 
   console.log(data)
