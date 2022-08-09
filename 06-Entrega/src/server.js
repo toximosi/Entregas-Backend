@@ -57,6 +57,13 @@ io.on('connection', (socket) => {
         io.emit('ShowProd', NewProd);
     })
 
+    socket.on('NuevoProd', data => { 
+        NewProd.push(data);
+        console.log("data");
+        console.log(data);
+        io.emit('ShowProd', NewProd);
+    });
+
 
 
 })
