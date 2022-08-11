@@ -9,7 +9,7 @@
 
 2. El router base '/api/carrito' implementará tres rutas disponibles para usuarios y administradores:
     a. POST: '/' - Crea un carrito y devuelve su id.
-    b. ELETE: '/:id' - Vacía un carrito y lo elimina.
+    b. DELETE: '/:id' - Vacía un carrito y lo elimina.
     c. GET: '/:id/productos' - Me permite listar todos los productos guardados en el carrito
     d. POST: '/:id/productos' - Para incorporar productos al carrito por su id de producto
     e. DELETE: '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
@@ -21,6 +21,7 @@
     id, timestamp(carrito), productos: { id, timestamp(producto), nombre, descripcion, código, foto (url), precio, stock }
 6. El timestamp puede implementarse con Date.now()
 7. Realizar la persistencia de productos y del carrito de compras en el filesystem.
+
 >>A tener en cuenta:
 1. Para realizar la prueba de funcionalidad hay dos opciones:
     a. Probar con postman cada uno de los endpoints (productos y carrito) y su operación en conjunto.
