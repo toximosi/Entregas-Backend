@@ -40,7 +40,7 @@ router.post('/', uploader.single('image'), async(req, res)=>{
 	if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'});
 	
 	let obj = {
-		id: await man.addId(bd,prod), 
+		id: await man.addId(bd), 
         timestamp: Date.now(),
         name, 
         description, 
@@ -72,8 +72,11 @@ router.put('/:id', async (req, res) => {
 
 //DELETE
 router.delete('/:id', async (req, res) => {
-
+	let id = parseInt(req.params.id);
+	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
+	
+	const bdNew = await man.deleteId(bd,id);
+	await man.updateBd(bd, bdNew);
 });
-
 
 export default router;

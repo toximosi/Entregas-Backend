@@ -1,0 +1,92 @@
+<div class="contailer mb-3"> 
+    <div class="row justify-content-evenly">
+        <div class="col-6">
+            {{#if Arr }}
+                <div id="product-table" class="">
+                    <h1>🧳 Carrito {{this.id}}</h1>
+                    <h2>🧳 Productos añadidos</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">producto</th>
+                                <th scope="col">id</th>
+                                <th scope="col">cantidad</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table">
+                        <tbody id="new-prod" class="table-group-divider">
+                            
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <tbody class="table-group-divider">
+                            {{#each Arr}}
+                                <tr>
+                                    <th scope="row"><div class="box-img"><img src="http://localhost:8080/img/{{this.porducts.image}}"  alt="{{this.products.name}}"></div>
+                                    </th>
+                                    <td>{{this.products.name}}</td>
+                                    <td>{{this.products.id}}</td>
+                                    <td>{{this.products.price}}€</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                    <h2>no hay productos en el carrito</h1>
+                </div>  
+            {{/if}}
+        </div>
+            <!--chat-->
+            <div class="col-4">
+                <div class="chat-container">
+                    <h1>🙊 Agregar productos</h1>
+                    {{#if Arr }}
+                <div id="product-table" class="">
+                    <h1>🧳 Carrito {{this.id}}</h1>
+                    <h2>🧳 Productos añadidos</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">producto</th>
+                                <th scope="col">nombre</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table">
+                        <tbody id="new-prod" class="table-group-divider">
+                            
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <tbody class="table-group-divider">
+                            {{#each Arr}}
+                                <tr>
+                                    <th scope="row"><div class="box-img"><img src="http://localhost:8080/img/{{this.porducts.image}}"  alt="{{this.products.name}}"></div>
+                                    </th>
+                                    <td>{{this.products.name}}</td>
+                                    <td><button class="btn btn-primary">Añadir a carrito</button></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                    <h2>no hay productos en el carrito</h1>
+                </div>  
+            {{/if}}
+                    </div>
+                </div>
+            </div>
+    </div>  
+</div>
+
+<!-- scripts products -->
+<!-- script -->
+{{!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+{{!-- <script src="/socket.io/socket.io.js"></script> --}}
+<script src="js/carts.js"></script>
+<!-- si se pone chat.js por debajo de los demás script no funciona -->

@@ -1,0 +1,33 @@
+<!-- html products -->
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
+            {{#if Arr}}
+                {{#each Arr}}
+                    <div class="card" style="width: 18rem; margin: 50px;">
+                        <img src="http://localhost:8080/img/{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                        <div class="card-body">
+                            <spam>Nombre:</spam>
+                            <h5 class="card-title"> {{this.name}}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Precio: {{this.price}}</li>
+                            <li class="list-group-item">Stock: {{this.stock}}</li>
+                            <li class="list-group-item">Id: {{this.code}}</li>
+                        </ul>
+                        <div class="card-body">
+                            <button class="btn btn-primary">Añadir a carrito</button><br><br>
+                            <button class="btn btn-primary">Modificar</button><br><br>
+                            <button class="btn btn-primary">Borrar</button>
+                        </div>
+                    </div>
+                {{/each}} 
+            {{else}}
+                <h1>no hay productos</h1>    
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<!-- scripts products -->
+<script src="productos.js"></script> 
