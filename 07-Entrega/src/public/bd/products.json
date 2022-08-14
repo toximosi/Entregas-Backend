@@ -1,23 +1,62 @@
 [
 	{
 		"id": 1,
-		"timestamp": "producto",
-		"name": "nombre00",
-		"description": "descripcion",
-		"code": "código",
-		"image": "foto (url)",
-		"price": "00,00",
-		"stock": "stock",
-		"newTimestamp": 1660255943061
+		"timestamp": "producto1",
+		"name": "nombre1",
+		"description": "descripcion1",
+		"code": "código1",
+		"image": "01image.jpg",
+		"price": "01,00",
+		"stock": "stock1"
 	},
 	{
 		"id": 2,
-		"timestamp": "producto",
-		"name": "nombre",
-		"description": "descripcion",
-		"code": "código",
-		"image": "foto (url)",
-		"price": "00,00",
-		"stock": "stock"
+		"timestamp": "producto2",
+		"name": "nombre2",
+		"description": "descripcion2",
+		"code": "código2",
+		"image": "02image.jpg",
+		"price": "02,00",
+		"stock": "stock2"
+	},
+	{
+		"id": 3,
+		"timestamp": "producto1",
+		"name": "nombre1",
+		"description": "descripcion1",
+		"code": "código1",
+		"image": "01image.jpg",
+		"price": "01,00",
+		"stock": "stock1"
+	},
+	{
+		"id": 4,
+		"timestamp": "producto2",
+		"name": "nombre2",
+		"description": "descripcion2",
+		"code": "código2",
+		"image": "02image.jpg",
+		"price": "02,00",
+		"stock": "stock2"
+	},
+	{
+		"id": 5,
+		"timestamp": "producto1",
+		"name": "nombre1",
+		"description": "descripcion1",
+		"code": "código1",
+		"image": "01image.jpg",
+		"price": "01,00",
+		"stock": "stock1"
+	},
+	{
+		"id": 6,
+		"timestamp": "producto2",
+		"name": "nombre2",
+		"description": "descripcion2",
+		"code": "código2",
+		"image": "02image.jpg",
+		"price": "02,00",
+		"stock": "stock2"
 	}
 ]

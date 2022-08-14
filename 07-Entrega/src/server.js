@@ -3,10 +3,13 @@ import express from 'express';//express server
 import __dirname from './utils.js';//static files
 //wiews
 import handlebars from 'express-handlebars';//motor de plantillas
-/* import viewsRouter from './routers/views.router.js'; */
+import viewsRouter from './routers/views.router.js';
 //routers
 import productsRouter from './routers/products.router.js';
 import cartsRouter from './routers/carts.router.js';
+import loginRouter from './routers/login.router.js';
+//middlewares
+import isAdmin from './middlewares/admin.js';
 
 
 //Server ------------------------------------
@@ -31,9 +34,10 @@ app.use(express.static(__dirname + '/public'));//principal folder -> express bus
 
 //Routes ----------------------------
 //Views
-/* app.use('/', viewsRouter);
-app.use('/chats', viewsRouter); */
+app.use('/', viewsRouter);
+/* app.use('/chats', viewsRouter); */
 
 //CRUD
+app.use('/api/login', loginRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter );

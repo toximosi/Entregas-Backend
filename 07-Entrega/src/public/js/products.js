@@ -1,8 +1,14 @@
-[
-	{
-		"title": "01 producto",
-		"price": 0.01,
-		"image": "01image.jpg",
-		"id": 1
-    }
-]
+
+
+
+//function
+
+//Deleted
+/* const deletedProd = document.getElementById('detele-product'); */
+
+/* const deletedProd = (id) => {
+	fetch('api/products', {
+		method: 'DELTED';
+	})
+
+}; */
