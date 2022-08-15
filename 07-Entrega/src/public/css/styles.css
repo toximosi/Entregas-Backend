@@ -1,0 +1,50 @@
+.productos-page{
+    position: relative;
+}
+#form-product-New{
+    margin-bottom: 50px;
+    position: fixed;
+    width: inherit;
+}
+
+
+#product-table .box-img{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    height: 50px;
+}
+#product-table .box-img img{
+    position:absolute;
+    width: 100%;
+    height: auto;
+}
+
+/* chat ---------------------------------- */
+
+.card-content{
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: space-around;
+}
+.card-content .card{
+    width: calc(50% - 30px)!important; 
+    margin: 15px;
+}
+.card-content .card .card-img{
+    aspect-ratio: 1/1;
+    position: relative!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.card-content .card .card-img img{
+    position: absolute;
+    width: 100%;
+    height: auto;
+}

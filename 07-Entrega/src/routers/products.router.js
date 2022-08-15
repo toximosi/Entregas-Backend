@@ -6,6 +6,9 @@ import { uploader } from '../utils.js';
 //class
 import managersServices from '../services/Managers.service.js';
 const man = new managersServices();
+//middlewares	
+import isAdmin from '../middlewares/admin.js'
+
 //function -----------
 
 //bd -> file
@@ -32,12 +35,12 @@ router.get('/:id', async(req, res)=>{
 
 });
 //CREATE 
-router.post('/', uploader.single('image'), async(req, res)=>{
+router.post('/', isAdmin, uploader.single('image'), async(req, res)=>{
 
 	const{name, description, code, price, stock} = req.body;
 	
 	if (!name || !description || !code || !price || !stock) return res.status(400).send({ status: 'error', error: 'incomplete values' });
-	if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'});
+	/* if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'}); */
 	
 	let obj = {
 		id: await man.addId(bd), 
@@ -45,19 +48,20 @@ router.post('/', uploader.single('image'), async(req, res)=>{
         name, 
         description, 
         code, 
-        image: req.file.filename, 
+        /* image: req.file.filename, */ 
+        image: "image url", 
         price, 
         stock,
 	}
 	
-	/* await man.create(bd, prod); */
-	newObj = obj;
+	await man.create(bd, obj);
+	/* newObj = obj; */
 	res.send({ status: '👀 success', message: '👌 product added', product: obj });
 	
 });
 
 //UPLOAD
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAdmin, async (req, res) => {
 	let id = parseInt(req.params.id);
 	let obj = req.body;
 	/* let image = req.file.filename; 
@@ -71,7 +75,7 @@ router.put('/:id', async (req, res) => {
 });
 
 //DELETE
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAdmin, async (req, res) => {
 	let id = parseInt(req.params.id);
 	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
 	

@@ -6,8 +6,8 @@
 		"description": "descripcion1",
 		"code": "código1",
 		"image": "01image.jpg",
-		"price": "01,00",
-		"stock": "stock1"
+		"price": "1,00",
+		"stock": "2"
 	},
 	{
 		"id": 2,
@@ -15,48 +15,17 @@
 		"name": "nombre2",
 		"description": "descripcion2",
 		"code": "código2",
-		"image": "02image.jpg",
-		"price": "02,00",
-		"stock": "stock2"
+		"image": "foto (url)2",
+		"price": "2,00",
+		"stock": "2"
 	},
 	{
 		"id": 3,
-		"timestamp": "producto1",
-		"name": "nombre1",
-		"description": "descripcion1",
+		"timestamp": 1660524176521,
+		"description": "descripcion3",
 		"code": "código1",
-		"image": "01image.jpg",
-		"price": "01,00",
-		"stock": "stock1"
-	},
-	{
-		"id": 4,
-		"timestamp": "producto2",
-		"name": "nombre2",
-		"description": "descripcion2",
-		"code": "código2",
-		"image": "02image.jpg",
-		"price": "02,00",
-		"stock": "stock2"
-	},
-	{
-		"id": 5,
-		"timestamp": "producto1",
-		"name": "nombre1",
-		"description": "descripcion1",
-		"code": "código1",
-		"image": "01image.jpg",
-		"price": "01,00",
-		"stock": "stock1"
-	},
-	{
-		"id": 6,
-		"timestamp": "producto2",
-		"name": "nombre2",
-		"description": "descripcion2",
-		"code": "código2",
-		"image": "02image.jpg",
-		"price": "02,00",
-		"stock": "stock2"
+		"image": "image url",
+		"price": "3,00",
+		"newTimestamp": 1660527086759
 	}
 ]

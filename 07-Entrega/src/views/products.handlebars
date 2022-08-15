@@ -1,33 +1,75 @@
 <!-- html products -->
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-11" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around;">
-            {{#if Arr}}
-                {{#each Arr}}
-                    <div class="card" style="width: 18rem; margin: 50px;">
-                        <img src="http://localhost:8080/img/{{this.image}}" class="card-img-top" alt="{{this.name}}">
-                        <div class="card-body">
-                            <spam>Nombre:</spam>
-                            <h5 class="card-title"> {{this.name}}</h5>
+<div class="productos-page">
+    <div class="container">
+        <div class="row ">
+            <div class="col-9" >
+                <div class="card-content">
+                    {{#if Arr}}
+                        {{#each Arr}}
+                            <div class="card">
+                                <dic class="card-img">
+                                    <img src="http://localhost:8080/img/{{this.image}}" alt="{{this.name}}">
+                                </dic>
+                                <div class="card-body">
+                                    <spam>Nombre:</spam>
+                                    <h5 class="card-title"> {{this.name}}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Precio: {{this.price}}</li>
+                                    <li class="list-group-item">Stock: {{this.stock}}</li>
+                                    <li class="list-group-item">Id: {{this.code}}</li>
+                                </ul>
+                                <div class="card-body">
+                                    <button class="btn btn-primary">Añadir a carrito</button><br><br>
+                                    <button class="btn btn-primary">Modificar</button><br><br>
+                                    <button class="btn btn-primary">Borrar</button>
+                                </div>
+                            </div>
+                        {{/each}} 
+                    {{else}}
+                        <h1>no hay productos</h1>    
+                    {{/if}}
+                </div>
+            </div>
+            <div class="col-3">
+                <div id="form-product-New">
+                    <h1>➕ Añadir producto</h1>
+                    <form id="productForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre:</label>
+                            <input id="name" name="name" type="text" class="form-control"  placeholder="Nombre del producto" >
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Precio: {{this.price}}</li>
-                            <li class="list-group-item">Stock: {{this.stock}}</li>
-                            <li class="list-group-item">Id: {{this.code}}</li>
-                        </ul>
-                        <div class="card-body">
-                            <button class="btn btn-primary">Añadir a carrito</button><br><br>
-                            <button class="btn btn-primary">Modificar</button><br><br>
-                            <button class="btn btn-primary">Borrar</button>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Precio:</label>
+                            <input id="price" name="price" type="number" step=.01 class="form-control"  placeholder="0,00 €" >
                         </div>
-                    </div>
-                {{/each}} 
-            {{else}}
-                <h1>no hay productos</h1>    
-            {{/if}}
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Stock:</label>
+                            <input id="stock" name="stock" type="number"  class="form-control"  placeholder="0" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Subir imagen</label>
+                            <input id="image" name="image" class="form-control" type="file" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Código:</label>
+                            <input id="code" name="code" type="text"  class="form-control"  placeholder="0" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Descripción:</label>
+                            <textarea id="description" name="description"  class="form-control">Descripción del producto</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Crear producto</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 
 <!-- scripts products -->
-<script src="productos.js"></script> 
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/products.js"></script> 

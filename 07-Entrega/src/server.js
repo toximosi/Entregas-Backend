@@ -1,6 +1,7 @@
 // importaciones ----------------------------
 import express from 'express';//express server
 import __dirname from './utils.js';//static files
+import { Server } from 'socket.io';//
 //wiews
 import handlebars from 'express-handlebars';//motor de plantillas
 import viewsRouter from './routers/views.router.js';
@@ -19,6 +20,7 @@ const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });//servidor de http
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
+const io = new Server(server);//servidor de socket,... de esta forma vive dentro de mi "servidor"
 
 //formato de archivos
 app.use(express.json())//informamos al servidor como se leen los datos
@@ -40,4 +42,11 @@ app.use('/', viewsRouter);
 //CRUD
 app.use('/api/login', loginRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter );
+app.use('/api/carts', cartsRouter);
+
+//Socket
+/* io.on('connection', (socket) => { 
+    socket.on('productNew', data => {
+        
+    })
+}) */

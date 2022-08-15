@@ -14,9 +14,13 @@ const bdCarts = __dirname + '/public/bd/carts.json';
 
 //Routers -------------------------------
 
+router.get('/', async(req, res)=>{
+    res.render('index');//indica la plantilla a usar y la data a pasar
+})
+
 router.get('/products', async(req, res)=>{
     let Arr = await man.getAll(bdProds);
-    res.render('products', {Arr});//indica la plantilla a usar y la data a pasar
+    res.render('products', { Arr });//indica la plantilla a usar y la data a pasar
 })
 
 /* router.get('/productoNew', async (req, res) => {
