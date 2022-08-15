@@ -20,7 +20,6 @@ class Managers {
             console.log(`🚩 Can not read file: ${file},\n 💣 error: ${err}`);
         }
     }
-    
 
     //obtiene todos los elementos del archivo
     getAll = async (file) => {
@@ -122,33 +121,51 @@ class Managers {
     changeProdById = async (file, obj, id) => {
         try {
             let Arr = await this.readFile(file);
+            console.log("Arr");
+            console.log(Arr);
             let change = 0;
-            
+            let eOld;
+
             Arr.forEach(e => {
+                console.log("entro put")
                 if (e.id == id) {
-                    if (obj.name || obj.name != "" || e.name != obj.name) {
+                    eOld = e;
+                    if ( obj.hasOwnProperty("name") || !obj.name || obj.name != undefined || obj.name != "undefined" || obj.name != "" || e.name != obj.name) {
                         e.name = obj.name;
                         change++;
+                    } else {
+                        e.name = eOld.name;
                     }
-                    if (obj.description || obj.description != "" || e.description != obj.description) {
+                    if (obj.hasOwnProperty("description") ||  obj.description != undefined ) {
                         e.description = obj.description;
                         change++;
+                    } else { 
+                        e.description = eOld.description;
                     }
-                    if (obj.code || obj.code != "" || e.code != obj.code) {
+                    if (obj.hasOwnProperty("code") || obj.code != undefined) {
                         e.code = obj.code;
                         change++;
+                    } else { 
+                        console.log("paso")
+                        e.code = eOld.code;
                     }
-                    if (obj.image || obj.image != "" || e.image != obj.image) {
+                    if (obj.hasOwnProperty("image") || obj.image != undefined ) {
                         e.image = obj.image;
                         change++;
+                    } else {
+                        e.image = eOld.image;
                     }
-                    if (obj.price || obj.price != "" || e.price != obj.price) {
+                    if (obj.hasOwnProperty("price") || obj.price != undefined) {
                         e.price = obj.price;
                         change++;
+                    } else {
+                        e.price = eOld.price;
                     }
-                    if (obj.stock || obj.stock != "" || e.stock != obj.stock) {
+                    if (obj.hasOwnProperty("stock")  || obj.stock != undefined) {
                         e.stock = obj.stock;
                         change++;
+                    } else { 
+                        e.stock = eOld.stock;
                     }
                     if (change > 0) {
                         e.newTimestamp = Date.now()

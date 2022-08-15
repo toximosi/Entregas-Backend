@@ -45,6 +45,20 @@ router.get('/:id/products', async(req, res)=>{
 //CREATE 
 router.post('/', async(req, res)=>{
 
+	
+	let obj = {
+		id: await man.addId(bd), 
+        timestamp: Date.now(),
+	}
+	
+	await man.create(bd, obj);
+
+	res.send({ status: '👀 success', message: '👌 product added', product: obj });
+	
+});
+
+/* router.post('/:products', async(req, res)=>{
+
 	const{products} = req.body;
 	
 	if (!products) return res.status(400).send({ status: 'error', error: 'incomplete values' });
@@ -54,26 +68,25 @@ router.post('/', async(req, res)=>{
         timestamp: Date.now(),
         products,
 	}
-	
-	/* await man.create(bd, prod); */
+	await man.create(bd, obj);
 	newObj = obj;
 	res.send({ status: '👀 success', message: '👌 product added', product: obj });
 	
-});
+}); */
 
 //UPDATE
-router.put('/:id', async (req, res) => {
+/* router.put('/:id', async (req, res) => {
 	let id = parseInt(req.params.id);
 	let obj = req.body;
-	/* let image = req.file.filename; 
-	obj.push(image); */
+	let image = req.file.filename; 
+	obj.push(image);
 
 	if(isNaN(id)) return res.status(400).send('🧟‍♂️ the id is not a number');
 
 	const bdNew = await man.changeProdById(bd, obj, id);
 	await man.updateBd(bd, bdNew);
 	
-});
+}); */
 
 //DELETE
 router.delete('/:id', async (req, res) => {

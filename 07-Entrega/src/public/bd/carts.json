@@ -10,8 +10,8 @@
 				"description": "descripcion1",
 				"code": "código1",
 				"image": "foto (url)1",
-				"price": "01,00",
-				"stock": "stock1"
+				"price": "1,00",
+				"stock": "1"
 			},
 			{
 				"id": 2,
@@ -20,8 +20,8 @@
 				"description": "descripcion2",
 				"code": "código2",
 				"image": "foto (url)2",
-				"price": "02,00",
-				"stock": "stock2"
+				"price": "2,00",
+				"stock": "2"
 			}
 		]
 	},
@@ -36,8 +36,8 @@
 				"description": "descripcion1",
 				"code": "código1",
 				"image": "foto (url)1",
-				"price": "01,00",
-				"stock": "stock1"
+				"price": "1,00",
+				"stock": "1"
 			},
 			{
 				"id": 2,
@@ -46,8 +46,8 @@
 				"description": "descripcion2",
 				"code": "código2",
 				"image": "foto (url)2",
-				"price": "02,00",
-				"stock": "stock2"
+				"price": "2,00",
+				"stock": "2"
 			}
 		]
 	}
