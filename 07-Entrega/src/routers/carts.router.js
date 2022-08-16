@@ -29,6 +29,11 @@ router.get('/', async(req, res)=>{
 router.get('/:id', async(req, res)=>{
 	
 	let id = parseInt(req.params.id);
+
+	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existID = await man.existId(bd, id);
+	if (existID == false) return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
+
 	let data = await man.getById(bd, id);
 
 	res.send(data);
@@ -37,6 +42,10 @@ router.get('/:id', async(req, res)=>{
 router.get('/:id/products', async(req, res)=>{
 
 	let id = parseInt(req.params.id);
+	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existID = await man.existId(bd, id);
+	if (existID == false) return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
+
 	let data = await car.getAllProductsCart(bd, id);
 	res.send(data);
 
@@ -44,7 +53,6 @@ router.get('/:id/products', async(req, res)=>{
 
 //CREATE 
 router.post('/', async(req, res)=>{
-
 	
 	let obj = {
 		id: await man.addId(bd), 
@@ -56,42 +64,33 @@ router.post('/', async(req, res)=>{
 	res.send({ status: '👀 success', message: '👌 product added', product: obj });
 	
 });
-
-/* router.post('/:products', async(req, res)=>{
-
-	const{products} = req.body;
-	
-	if (!products) return res.status(400).send({ status: 'error', error: 'incomplete values' });
-	
-	let obj = {
-		id: await man.addId(bd), 
-        timestamp: Date.now(),
-        products,
-	}
-	await man.create(bd, obj);
-	newObj = obj;
-	res.send({ status: '👀 success', message: '👌 product added', product: obj });
-	
-}); */
-
-//UPDATE
-/* router.put('/:id', async (req, res) => {
+//Add product
+router.put('/:id/products/:idpro', async(req, res)=>{
 	let id = parseInt(req.params.id);
-	let obj = req.body;
-	let image = req.file.filename; 
-	obj.push(image);
-
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ the id is not a number');
-
-	const bdNew = await man.changeProdById(bd, obj, id);
-	await man.updateBd(bd, bdNew);
+	let idpro = parseInt(req.params.idpro);
 	
-}); */
+	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existID = await man.existId(bd, id);
+	if (existID == false) return res.status(400).send(`🧟‍♂️ the id or cart ${id} not exist`);
+	if (isNaN(idpro)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existIDProd = await man.existId(bdPro, idpro);
+	if (existIDProd == false) return res.status(400).send(`🧟‍♂️ the id of product ${idpro} not exist`);
+
+	let prod = await man.getById(bdPro, idpro);
+	let Arr = await car.addProductCart(bd, id, prod);
+	
+	await man.updateBd(bd, Arr);
+
+	res.send({ status: '👀 success', message: '👌 product added', product: prod });
+	
+});
 
 //DELETE
 router.delete('/:id', async (req, res) => {
 	let id = parseInt(req.params.id);
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
+	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existID = await man.existId(bd, id);
+	if (existID == false) return res.status(400).send(`🧟‍♂️ the id or cart ${id} not exist`);
 	
 	const bdNew = await man.deleteId(bd,id);
 	await man.updateBd(bd, bdNew);
@@ -101,8 +100,13 @@ router.delete('/:id', async (req, res) => {
 router.delete('/:id/products/:idpro', async (req, res) => {
 	let id = parseInt(req.params.id);
 	let idpro = parseInt(req.params.idpro);
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	if(isNaN(idpro)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
+	
+	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existID = await man.existId(bd, id);
+	if (existID == false) return res.status(400).send(`🧟‍♂️ the id or cart ${id} not exist`);
+	if (isNaN(idpro)) return res.status(400).send('🧟‍♂️ the params is not a number');
+	let existIDProd = await man.existId(bdPro, idpro);
+	if (existIDProd == false) return res.status(400).send(`🧟‍♂️ the id of product ${idpro} not exist`);
 	
 	const bdNew = await car.deteteIdProdCart(bd, id, idpro);
 	await man.updateBd(bd, bdNew);

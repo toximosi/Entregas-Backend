@@ -7,7 +7,7 @@
 		"code": "código1",
 		"image": "01image.jpg",
 		"price": "1,00",
-		"stock": "2"
+		"stock": 2
 	},
 	{
 		"id": 2,
@@ -17,7 +17,7 @@
 		"code": "código2",
 		"image": "foto (url)2",
 		"price": "2,00",
-		"stock": "2"
+		"stock": 2
 	},
 	{
 		"id": 3,
@@ -26,6 +26,7 @@
 		"code": "código1",
 		"image": "image url",
 		"price": "3,00",
+		"stock": 3,
 		"newTimestamp": 1660527086759
 	}
 ]

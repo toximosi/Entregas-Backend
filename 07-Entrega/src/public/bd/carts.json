@@ -11,7 +11,8 @@
 				"code": "código1",
 				"image": "foto (url)1",
 				"price": "1,00",
-				"stock": "1"
+				"stock": 1,
+				"cantidad": 1
 			},
 			{
 				"id": 2,
@@ -21,7 +22,8 @@
 				"code": "código2",
 				"image": "foto (url)2",
 				"price": "2,00",
-				"stock": "2"
+				"stock": 2,
+				"cantidad": 1
 			}
 		]
 	},
@@ -37,7 +39,8 @@
 				"code": "código1",
 				"image": "foto (url)1",
 				"price": "1,00",
-				"stock": "1"
+				"stock": 1,
+				"cantidad": 1
 			},
 			{
 				"id": 2,
@@ -47,7 +50,8 @@
 				"code": "código2",
 				"image": "foto (url)2",
 				"price": "2,00",
-				"stock": "2"
+				"stock": 2,
+				"cantidad": 2
 			}
 		]
 	}
