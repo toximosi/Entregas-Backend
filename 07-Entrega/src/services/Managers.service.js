@@ -6,7 +6,25 @@ import * as fs from 'fs';
 class Managers {
     constructor() { };
 
+
     //Metodos--------------------
+    existId = async (file, id) => { 
+        try {
+            let data = await this.readFile(file);
+            let exist = false;
+            data.forEach(e => {
+                if (e.id == id) { 
+                    exist = true;
+                }
+            })
+            return exist;
+
+        } catch (err) { 
+            console.log(`🚩 Can not find id: ${id},\n 💣 error: ${err}`);
+        }
+    }
+    
+    
     readFile = async (file) => {
         try {
             if (fs.existsSync(file)) {
@@ -47,6 +65,7 @@ class Managers {
                 }
             });
             return obj;
+
         } catch (err) {
             console.log(`🚩 Can not find element by id: ${id},\n 💣 error: ${err}`);
         }
