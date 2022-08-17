@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap -->
+    <link href="./css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/bootstrap/bootstrap.min.js"></script>
+    <!-- fontawesome -->
+    <link href="./css/fontawesome/all.min.css" rel="stylesheet">
+
+    <!-- -->
+    <link href="./css/styles.css" rel="stylesheet">
+    <title>{{title}}</title>
+</head>
+    <body>
+        <!-- menú navegación -->
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/productos">Listado de productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/productoNew">Añadir nuevo producto</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+
+        <!-- plantilla -->
+        <div class="plantillas" style="margin-top:50px">
+        {{{body}}}
+        </div>
+       <!-- SCRIPT -->
+        <script src="js/main.js"></script>
+        {{!-- Alertas: https://sweetalert2.github.io/ --}}
+
+    </body>
+</html>
