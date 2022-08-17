@@ -1,0 +1,84 @@
+<div class="contailer mb-3"> 
+    <div class="row justify-content-evenly">
+        <div class="col-6">
+            <div id="form-product-New">
+                <h1>➕ Añadir producto</h1>
+                <form id="productForm">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Nombre:</label>
+                        <input id="title" name="title" type="text" class="form-control"  placeholder="Nombre del producto" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Precio:</label>
+                        <input id="price" name="price" type="number" step=.01 class="form-control"  placeholder="0,00 €" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Subir imagen</label>
+                        <input id="image" name="image" class="form-control" type="file" >
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Crear producto</button>
+                    </div>
+                </form>
+            </div>
+
+            {{#if ArrIdInv }}
+                <div id="product-table" class="">
+                    <h1>🧳 Productos</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">title</th>
+                                <th scope="col">image</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table class="table">
+                        <tbody id="new-prod" class="table-group-divider">
+                            
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <tbody class="table-group-divider">
+                            {{#each ArrIdInv}}
+                                <tr>
+                                    <th scope="row">{{this.id}}</th>
+                                    <td>{{this.title}}</td>
+                                    <td>{{this.price}}€</td>
+                                    <td><div class="box-img"><img src="http://localhost:8080/img/{{this.image}}"  alt="{{this.title}}"></div></td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                    <h2>no hay productos</h1>
+                </div>  
+            {{/if}}
+        </div>
+            <!--chat-->
+            <div class="col-4">
+                <div class="chat-container">
+                    <h1>🙊 Chat</h1>
+                    <h3>👋 Hi! <span id="user-name"> </span></h3>
+                        <div class="mb-3">
+                            <label class="form-label">mensage</label>
+                            <input id="chatbox" type="text" name="chatbox" class="form-control" >
+                        </div>
+                    <div id="chatlog">
+
+                    </div>
+                </div>
+            </div>
+    </div>  
+</div>
+
+<!-- scripts products -->
+<!-- script -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/chat.js"></script>
+<!-- si se pone chat.js por debajo de los demás script no funciona -->
+<script src="js/productNew.js"></script>
