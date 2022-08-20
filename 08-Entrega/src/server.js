@@ -1,7 +1,10 @@
 // importaciones ----------------------------
+import 'dotenv/config';//variables de entorno
 import express from 'express';//express server
 import __dirname from './utils.js';//static files
 import { Server } from 'socket.io';//
+
+
 //wiews
 import handlebars from 'express-handlebars';//motor de plantillas
 import viewsRouter from './routers/views.router.js';
@@ -38,7 +41,7 @@ app.use('/', viewsRouter);
 app.use('/chats', viewsRouter);
 
 //CRUD
-app.use('/api/productos', productsRouter);
+app.use('/api/products', productsRouter);
 app.use('/api/chats', chastsRouter );
 
 let chatlog = [];
