@@ -3,132 +3,190 @@ import e, { Router } from 'express';
 const router = Router();//ejecutamos router para poder usarlo.
 import __dirname from '../utils.js';//static
 import { uploader } from '../utils.js';
+//BD
+/* import bd from '../options/mariaDB.js'; */
+import BDdata from '../options/mariaDB.js';
+const options = BDdata.options;
+const bd = BDdata.bd;
+
+import knex from "knex"; 
 //class
 import managersServices from '../services/Managers.service.js';
 const man = new managersServices();
-//function -----------
+
+import productsService from '../services/Products.service.js';
+const pro = new productsService();
+
+import readfilesServices from '../services/ReadFile.service.js';
+const refi = new readfilesServices();
 
 //bd -> file
-const bd = __dirname + '/public/bd/bd.json';
+/* const json = __dirname + '/json/products.json'; */
+const jsonIni = [
+	{
+		"title": "01 producto",
+		"price": 0.01,
+		"image": "01image.jpg",
+		"id": 1
+	},
+	{
+		"title": "02 producto",
+		"price": 0.02,
+		"image": "02image.jpg",
+		"id": 2
+	},
+];
+const bdName = 'products';
 
-//CODE --------------------------------------
+//CODE ------------------------------------------------------------------------------
 //Ruta base -> /products
-
-//CRUD------------------
-//READ
-router.get('/', async(req, res)=>{
-	
-	let data = await man.getAll(bd);
-	res.send(data);
-
-});
-
-router.get('/:id', async(req, res)=>{
-	
-	let id = parseInt(req.params.id);
-	let data = await man.getById(bd, id);
-
-	res.send(data);
-
-});
-//CREATE 
-router.post('/', uploader.single('image'), async(req, res)=>{
-
-	const{title, price} = req.body;
-	
-	if(!title || !price) return res.status(400).send({status:'error', error:'incomplete values'});
-	if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'});
-	
-	let prod = {
-		title,
-		price,
-		image:req.file.filename
-	}
-	prod.id = await man.addId(bd,prod);
-	
-	await man.create(bd, prod);
-
-	res.send({ status: '👀 success', message: '👌 product added', product: prod });
-	
-	socket.emit('NuevoProd', prod);
-	console.log("enviado")
-
-	/* 	socket.emit('NuevoProd', data => {
-		console.log(data);
-	} ) */
-});
-
-/* POST datos recogidos solo desde body ----------------------------------------------------------
-	router.post('/', async(req, res)=>{
-	let prod = req.body;
-	if(!prod.title) return (res.status(400).send({status:'👀 success', message: '🙅 Invalid input', value: 'title'}));
-	if(!prod.price) return (res.status(400).send({status:'👀 success', message: '🙅 Invalid input', value: 'price'}));
-	
-	let id = await man.addId(bd);
-	id = parseInt(id);
-	prod.id = id;
-
-	(id < 10) ? prod.image = "0"+id+"image.jpg" : prod.image = id+"image.jpg"
-	
-	await man.create(bd,prod);
-
-	res.send({status:'👀 success', message: '👌 product added', producto: prod , id: prod.id})
-}); */
-
-
-//GET
-/* router.get('/:id', (req, res)=>{
-	let id = req.params.id;
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	id = parseInt(id);
-	if(id < 1 || id >products.length) return res.status(400).send('🙇‍♂️ no hay nada con ese valor'); 
-	
-	let sel = "";
-	products.forEach(e=>{
-			if(e.id == id) sel = e
+//Crear tabla
+router.post('/createTable', (req, res) => {
+//https://knexjs.org/guide/schema-builder.html#hastable
+	bd.schema.hasTable(bdName).then(function (exists) {
+		if (!exists) {
+			return bd.schema.createTable(bdName, table => {
+				//table.primary('id');
+				table.increments('id');
+				table.string('title', 40).nullable(false);
+				table.integer('price').nullable(false);
+				table.string('image', 100).nullable(false);
+			})
+				.then(() => {
+					res.status(200).send(`👍 table has been created -> ${bdName}`);
+					console.log(`👍 table has been created -> ${bdName}`);
+				})
+				.catch(err => {
+					res.status(500).send(`🚩 we could not create the table -> ${bdName},\n 💀 error: ${err}`);
+					console.log(`🚩 we could not create the table -> ${bdName},\n 💀 error: ${err}`);
+					throw err;
+				})
+				.finally(() => bd.destroy());
+		} else { 
+			console.log(`😮 the table already exists -> ${bdName}`);
 		}
-	);
-	res.send(sel);
-}); */
+	});
+});
+//añadir datos a la tabla
+router.post('/createTable/addData', async (req, res) => { 
+	try {
+		let prod = jsonIni;
+		console.log(prod)
+		await man.addObj(options, bdName, prod);
+		
+		res.send({ status: '200 👀 success', message: '👌 element added', product: prod });
+
+	} catch (err) { 
+		res.status(500).send(`🚩 Can not add elements in table db ${bdName},\n error: 💣  ${err}`);
+	}
+});
+
+//CRUD------------------------------------------------------------------------------
+//READ
+router.get('/', async (req, res) => {
+	try {
+		let obj = await man.getAll(options, bdName);
+		/* dataJSON = JSON.parse(JSON.stringify(data)); */
+		if (obj.length <= 0) {
+
+			res.status(200).send(`👍  the table is empty,\n table -> ${bdName}`);
+			obj = [];
+			res.send(obj);
+
+		} else { 
+
+			res.status(200).send(`👍  get data of table,\n table -> ${bdName},\n data -> ${JSON.stringify(obj)}`);
+			res.send(obj);
+		}
+		
+	} catch (err) { 
+		console.log(`🚩 Can not get data in table db ${bdName},\n error: 💣  ${err}`);
+		/* res.status(500).send(`🚩 Can not get data in table db ${bdName},\n error: 💣  ${err}`); */
+	}
+});
+
+//READ ELEMENT BY ID
+router.get('/:id', async(req, res)=>{
+	try {
+		let id = parseInt(req.params.id);
+		if (isNaN(id)) return res.status(400).send(`🧟‍♂️ the id params is not a number,\n params -> ${id}`);
+
+		let obj = await man.getById(options, bdName, id);
+
+		if (obj.length <= 0) {
+
+			res.status(200).send(`👍  the element not exist,\n table -> ${bdName},\n id element -> ${id}`);
+			obj = [];
+			res.send(obj);
+
+		} else { 
+
+			res.status(200).send(`👍  get element of table,\n table -> ${bdName},\n element -> ${JSON.stringify(obj)}`);
+			res.send(obj[0]);
+		}
+	} catch (err) { 
+		console.log(`🚩 Can not get element in table db ${bdName},\n error: 💣  ${err}`);
+		/* res.status(500).send(`🚩 Can not get element in table db ${bdName},\n error: 💣  ${err}`); */
+	}
+});
+
+//CREATE 
+router.post('/', /* uploader.single('image'), */ async(req, res)=>{
+	try {
+		const { id, title, price, image } = req.body;
+	
+		if (!id || !title || !price || !image) return res.status(400).send({ status: 'error', error: 'incomplete values' });
+		if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+		/* if(!req.file) res.status(500).send({status:'error', error:'Could not upload file'}); */
+		let prod = {
+			title,
+			price,
+			image,
+			id
+			/* image:req.file.filename */
+		}
+		/* prod.id = await man.addId(bd,prod); */
+
+		await man.addObj(options, bdName, prod);
+		
+		res.send({ status: '200 👀 success', message: '👌 element added', product: prod });
+
+	} catch (err) { 
+		res.status(500).send(`🚩 Can not add element in table db ${bdName},\n error: 💣  ${err}`);
+	}
+});
 
 //UPDATE
-/* router.put('/:id', (req, res)=>{
-	let id = parseInt(req.params.id);
-	let prodChange = req.body;
-	console.log(req.body);
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	if(id < 1 || id >products.length) return res.status(400).send('🙇‍♂️ no hay nada con ese valor');
+router.put('/:id', async(req, res) => {
+	try { 
+		let id = parseInt(req.params.id);
+		let prodChange = req.body;
+		console.log(prodChange)
+		if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
+	
+		let objChange = await man.updateByID(options, bdName, id, prodChange);
+		res.send({ status: '200 👀 success', message: '👌 element change', product: objChange });
 
-	let prod = "";
-
-	products.forEach(e=>{
-		if(e.id == id){
-			e.title = req.body.title;
-			e.price = req.body.price;
-			e.image = req.body.image;
-		}else{
-			return res.send('🙇‍♂️ no hay producto con el id: ' + id); 
-		}
-	})
-	console.log(req.body)
-	res.send({products});
-}); */
+	} catch (err) { 
+		res.status(500).send(`🚩 Can not add element in table db ${bdName},\n error: 💣  ${err}`);
+	}
+});
 
 //DELETE
-/* router.delete('/:id', (req, res)=>{
-	let id = parseInt(req.params.id);
-	if(isNaN(id)) return res.status(400).send('🧟‍♂️ El parametro no es un número');
-	if(id < 1 || id >products.length) return res.status(400).send('🙇‍♂️ no hay nada con ese valor'); 
-	products.forEach(e => {
-			if (e.id == id){
-				products.splice(id - 1, 1);
-			}else{
-				return res.send('🙇‍♂️ no hay producto con el id: ' + id); 
-			}
-		})
-	res.send({products});
-}); */
+router.delete('/:id', async(req, res)=>{
+	try {
+		let id = parseInt(req.params.id);
+	
+		if (isNaN(id)) return res.status(400).send(`🧟‍♂️ the id params is not a number,\n params -> ${id}`);
 
+		await man.deleteByID(options, bdName, id);
 
+		res.status(200).send(`👍  delete element of table,\n table -> ${bdName},\n element id -> ${id}`);
+
+	} catch (err) { 
+		console.log(`🚩 Can not deleted the element in table db ${bdName},\n element id -> ${id},\n error: 💣  ${err}`);
+		/* res.status(500).send(`🚩 Can not get element in table db ${bdName},\n error: 💣  ${err}`); */
+	}
+});
 
 export default router;

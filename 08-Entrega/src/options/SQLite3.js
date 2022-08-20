@@ -1,19 +1,29 @@
 //import 
 import knex from "knex";
-import db from "./mariaDB";
+
+const optionsMy = {
+    client: 'mysql',
+    connection: {
+        host: '127.0.0.1',//equivalente a localhost
+        user: 'root',
+        pasword: '',
+        database: 'base_mysql'
+    },
+    pool: { min: 0, max: 7 }
+};
 
 //SQLite
 const options = {
     client: 'sqlite3',
     connection: {
-        filename: "./DB/sqlitedb.sqlite"        
+        filename: "./mydb.sqlite"        
     },
     useNullAsDefault: true
 };
 
-let dbSqlite = knex(options);
+let bd = knex(options);
 
-createTable = async() => { 
+/* createTable = async() => { 
     try {
         await db.schema.createTable('chats', (table => { 
         table.increments('id');
@@ -25,6 +35,6 @@ createTable = async() => {
         console.log(err);
     }
 }
-createTable();
+createTable(); */
 
-export default dbSqlite;
+export default {options, bd}; 
