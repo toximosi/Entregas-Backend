@@ -1,0 +1,47 @@
+#form-product-New{
+    margin-bottom: 50px;
+}
+
+
+#product-table .box-img{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    height: 50px;
+}
+#product-table .box-img img{
+    position:absolute;
+    width: 100%;
+    height: auto;
+}
+
+/* chat ---------------------------------- */
+.chat-container{
+
+}
+#chatlog{
+margin-top: 20px;
+}
+#chatlog .conv{
+    margin: 20px 0;
+}
+#chatlog .avatar{
+    text-transform: uppercase;
+    font-size: 12px;
+}
+#chatlog .text{
+    font-size: 14px;
+    margin: 10px 0;
+    border: 1px solid #adf;
+    background-color: #f9ffff;
+    padding: 15px;
+    border-radius: 10px;
+}
+#chatlog .date{
+    text-align: right;
+    font-size: 10px;
+    font-style: italic;
+}
