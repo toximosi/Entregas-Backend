@@ -1,43 +1,48 @@
-// importaciones ----------------------------
-import 'dotenv/config';//variables de entorno
+//& importaciones ----------------------------
+//import 'dotenv/config';//variables de entorno
 import express from 'express';//express server
 import __dirname from './utils.js';//static files
-import { Server } from 'socket.io';//
 
-
-//wiews
-import handlebars from 'express-handlebars';//motor de plantillas
-import viewsRouter from './routers/views.router.js';
-//routers
-import productsRouter from './routers/products.router.js';
-import chastsRouter from './routers/chatsBd.router.js';
-
-
-//Server ------------------------------------
+//& Server ------------------------------------
 const app = express();
 const PORT = 8080;
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });//servidor de http
-const io = new Server(server);//servidor de socket,... de esta forma vive dentro de mi "servidor"
-
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
-//formato de archivos
+//& formato de archivos -----------------------------------
 app.use(express.json())//informamos al servidor como se leen los datos
 app.use(express.urlencoded({ extended: true }))
 
-//motor de views -> plantillas 
-app.engine('handlebars', handlebars.engine());
-app.set('views', __dirname + '/views');
-app.set('view engine', 'handlebars')
-
-//Static files
+//& Static files ------------------------------------
 app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
 
-//Routes ----------------------------
+//& ROUTES -------------------------------------------
+//import 
+/* // MEMORIA
+import productsRouter from './onlyMemory/routers/products.router.js';
+import cartsRouter from './onlyMemory/routers/carts.router'; */
+/* // FILE
+import productsRouter from './onlyFile/routers/products.router.js';
+import cartsRouter from './onlyFile/routers/carts.router'; */
+/* // SQL
+import productsRouter from './onlyMongoDB/routers/products.router.js';
+import cartsRouter from './onlyMongoDB/routers/carts.router'; */
+/* // SQULITE
+import productsRouter from './onlyFirebase/routers/products.router.js';
+import cartsRouter from './onlyFirebase/routers/carts.router'; */
+/* // MONGODB
+import productsRouter from './onlyMongoDB/routers/products.router.js';
+import cartsRouter from './onlyMongoDB/routers/carts.router'; */
+// FIREBASE
+import productsRouter from './onlyFirebase/routers/products.router.js';
+import cartsRouter from './onlyFirebase/routers/carts.router';
 
-//CRUD
+
+
+
+
 app.use('/api/products', productsRouter);
-app.use('/api/chats', chastsRouter );
-app.use('/api/carrito', chastsRouter );
+app.use('/api/carts', cartsRouter);
+//app.use('/api/chats', chastsRouter );

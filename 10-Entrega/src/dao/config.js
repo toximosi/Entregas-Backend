@@ -1,6 +1,4 @@
-// MEMORY, FILE, SQL, SQULITE, MONGO, FIREBASE
-
-const persistence = 'MEMORY';
+ 
 
 let productsService;
 switch (persistence) { 
@@ -9,7 +7,8 @@ switch (persistence) {
         const { default: MemProducts } = await import('./MemoryDAO/Products.js');
         productsService = new MemProducts();
         //Carts
-
+        const { default: MemCarts } = await import('./MemoryDAO/Carts.js');
+        productsService = new MemCarts();
         //menssages
         //user
         break;

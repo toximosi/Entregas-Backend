@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const collecttion = 'messages';
+const collection = 'messages';
 
 const messagesSchema = mongoose.schema({
     id: Number,
