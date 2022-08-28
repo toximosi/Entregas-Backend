@@ -36,37 +36,8 @@ app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
 
 //Routes ----------------------------
-//Views
-app.use('/', viewsRouter);
-app.use('/chats', viewsRouter);
 
 //CRUD
 app.use('/api/products', productsRouter);
 app.use('/api/chats', chastsRouter );
-
-let chatlog = [];
-let NewProd = [];
-
-io.on('connection', (socket) => {
-    socket.broadcast.emit('newUser');
-    
-    socket.on('message', data => {
-        chatlog.push(data);
-        io.emit('chatlog', chatlog);
-    })
-
-    socket.on('newProd', data => {
-        NewProd.push(data);
-        io.emit('ShowProd', NewProd);
-    })
-
-    socket.on('NuevoProd', data => { 
-        NewProd.push(data);
-        console.log("data");
-        console.log(data);
-        io.emit('ShowProd', NewProd);
-    });
-
-
-
-})
+app.use('/api/carrito', chastsRouter );
