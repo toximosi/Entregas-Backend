@@ -12,5 +12,21 @@ admin.initializeApp({
 const environment = async () => { 
     let database = admin.firestore();
     const query = database.collection('products');
+
+    //CRUD
+    let doc = query.doc();
+
+    //CREATE
+    await doc.create(collection, obj);
+    
+    //READ
+    await 
+
+    //UPDATE
+
+
+    //DELETE
+
+
 }
 environment();

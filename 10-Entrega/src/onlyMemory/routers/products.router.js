@@ -1,19 +1,17 @@
 //& import ---------------------------------------------
 import e, { Router } from 'express'; 
 const router = Router();//ejecutamos router para poder usarlo.
-//dirname url∫
+//dirname url
 import __dirname from '../../utils.js';//static files
 //import { uploader } from '../../utils.js';
 // conexion bd
-import database from "../conexion.js";
 
 //& DB ----------------------------------------------
-const collection = 'carts';//!CHANGE
-const query = database.collection(collection);
+import bdMemory from '../conexion.js';
+let bd = bdMemory[0].products;
 
 //data 
-import dataIni from '../../json/carts.json';//!CHANGE!!
-const dataStart = JSON.parse(dataIni); 
+import dataIni from '../../json/products.json' assert {type: "json"};
 
 //function
 import ManagersServices from "../services/manager.service.js";
@@ -28,11 +26,12 @@ const man = new ManagersServices();
 //add initial data
 router.post('/start', async (req, res) => {
     const obj = dataIni;
-    console.log(obj);
     try { 
-        const data = await man.startData(model, obj);
+        const data = await man.startData(bd, obj);
+        
         res.send(`👍 Add data is ok.\n
-                  data -> ${data}`)
+                  data -> ${JSON.stringify(data)}`)
+        console.log(JSON.stringify(bdMemory));
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
     }
@@ -55,7 +54,7 @@ router.post('/create', async(req, res) => {
             price,
             stock,
         }
-        const data = await man.addObj(model, obj);
+        const data = await man.addObj(bd, obj);
         res.send(`👍 Add data is ok.\n
                   data -> ${data}`);
 
@@ -64,12 +63,11 @@ router.post('/create', async(req, res) => {
     }
 });
 
-
 //* READ
 // ALL
 router.get('/', async(req, res) => { 
     try { 
-        const data = await man.getAll(model);
+        const data = await man.getAll(bd);
         res.send(data);
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
@@ -80,8 +78,8 @@ router.get('/:id', async(req, res) => {
     try { 
         let id = parseInt(req.params.id);
       	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
-        let data = await man.getById(model, id);
-        if (data != '') {
+        let obj = await man.getById(bd, id);
+        if (obj != '') {
             res.send({ status: '👀 success', message: '👌 product exist', product: obj });
         } else { 
             return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
@@ -91,41 +89,53 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-
 //* UPLOAD
 // Element by ID
-router.put('/put/:id', async(req, res) => { 
+/* router.put('/put/:id', (req, res) => { 
     try { 
-
+        let id = parseInt(req.params.id);
+        const{name, description, code , image, price, stock} = req.body
+        if (!id || !name || !description || !code || !image || !price || !stock) { 
+             return res.status(400).send({ status: 'error', error: 'incomplete values' });
+        }
+        let obj = {
+            id,
+            name,
+            description,
+            code,
+            image,
+            price,
+            stock,
+        }
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
-});
-
-
+}); */
 
 //* DELETE
+//-> Element by ID
 router.delete('/deleted/:id', async(req, res) => { 
     try { 
         let id = parseInt(req.params.id);
 	    if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
-        let exist = await man.existId(model, id);
+        let exist = await man.existId(bd, id);
         if (exist != "") {
-            let obj = man.getById(model, id);
-            await man.deleteById(model, id);
-            res.send({ status: '👀 success', message: '👌 product deleted', product: obj });
+            let obj = await man.getById(bd, id);
+            bd = await man.deleteById(bd, id);
+            res.send({ status: '👀 success', message: '👌 product deleted', product: obj, bd: bd });
         } else { 
             return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
         }
     } catch (err) { 
         console.log(err);
     }
-});
+}); 
 //!-> ALL
 router.get('/deleted/all', async(req, res) => { 
     try { 
-        await man.deleteAll(model);
-        res.send({ status: '👀 success', message: '👌 All deleted'});
+        bd = await man.deleteAll(bd);
+        console.log(bd)
+        res.send({ status: '👀 success', message: '👌 All deleted', bd: bdMemory});
     } catch (err) { 
         console.log(err);
     }

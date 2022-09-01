@@ -2,10 +2,10 @@
 import e, { Router } from 'express'; 
 const router = Router();//ejecutamos router para poder usarlo.
 //dirname url
-import __dirname from '../../utils';//static files
+import __dirname from '../../utils.js';//static files
 //import { uploader } from '../../utils.js';
 // conexion bd
-import database from "../conexion";
+import database from "../conexion.js";
 
 //& DB ----------------------------------------------
 const collection = 'products';//!CHANGE!!
@@ -25,69 +25,120 @@ const man = new ManagersServices();
 //CRUD
 //* CREATE
 /// INICIALICE
-router.post('/ini', (req, res) => {
+//add initial data
+router.post('/start', async (req, res) => {
+    const obj = dataIni;
+    console.log(obj);
     try { 
-        
+        const data = await man.startData(model, obj);
+        res.send(`👍 Add data is ok.\n
+                  data -> ${data}`)
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
 });
 
 /// Create element
-router.post('/create', (req, res) => {
+router.post('/create', async(req, res) => {
     try { 
-        
+        const{id, name, description, code , image, price, stock} = req.body
+        if (!id || !name || !description || !code || !image || !price || !stock) { 
+             return res.status(400).send({ status: 'error', error: 'incomplete values' });
+        }
+        let obj = {
+            id,
+            timestamp: Date.now(),
+            name,
+            description,
+            code,
+            image,
+            price,
+            stock,
+        }
+        const data = await man.addObj(model, obj);
+        res.send(`👍 Add data is ok.\n
+                  data -> ${data}`);
+
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
 });
-
 
 //* READ
 // ALL
-router.get('/', (req, res) => { 
+router.get('/', async(req, res) => { 
     try { 
-
+        const data = await man.getAll(model);
+        res.send(data);
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
 })
 // Element by id
-router.get('/:id', (req, res) => { 
+router.get('/:id', async(req, res) => { 
     try { 
-
+        let id = parseInt(req.params.id);
+      	if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+        let data = await man.getById(model, id);
+        if (data != '') {
+            res.send({ status: '👀 success', message: '👌 product exist', product: obj });
+        } else { 
+            return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
+        }
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
 });
-
 
 //* UPLOAD
 // Element by ID
-router.put('/put/:id', (req, res) => { 
+/* router.put('/put/:id', (req, res) => { 
     try { 
-
+        let id = parseInt(req.params.id);
+        const{name, description, code , image, price, stock} = req.body
+        if (!id || !name || !description || !code || !image || !price || !stock) { 
+             return res.status(400).send({ status: 'error', error: 'incomplete values' });
+        }
+        let obj = {
+            id,
+            name,
+            description,
+            code,
+            image,
+            price,
+            stock,
+        }
     } catch (err) { 
-        console.log(err);
+        res.send(`💣  Error: ${err}`);
     }
-});
-
-
+}); */
 
 //* DELETE
 //-> Element by ID
-router.delete('/deleted/:id', (req, res) => { 
+router.delete('/deleted/:id', async(req, res) => { 
     try { 
-
+        let id = parseInt(req.params.id);
+	    if (isNaN(id)) return res.status(400).send('🧟‍♂️ the params is not a number');
+        let exist = await man.existId(model, id);
+        if (exist != "") {
+            let obj = man.getById(model, id);
+            await man.deleteById(model, id);
+            res.send({ status: '👀 success', message: '👌 product deleted', product: obj });
+        } else { 
+            return res.status(400).send(`🧟‍♂️ the id ${id} not exist`);
+        }
     } catch (err) { 
         console.log(err);
     }
 });
 //!-> ALL
-router.delete('/deleted/:id', (req, res) => { 
+router.get('/deleted/all', async(req, res) => { 
     try { 
-
+        await man.deleteAll(model);
+        res.send({ status: '👀 success', message: '👌 All deleted'});
     } catch (err) { 
         console.log(err);
     }
 });
+
+export default router;

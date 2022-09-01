@@ -22,22 +22,55 @@ app.use(express.static(__dirname + '/public'));//principal folder -> express bus
 const persistence = 'FILE';
 // MEMORY, FILE, MONGODB
 
-    // MEMORY:
+switch (persistence) { 
+    case 'MEMORY':
+        //products
         import productsRouter from './onlyMemory/routers/products.router.js';
+        //Carts
         import cartsRouter from './onlyMemory/routers/carts.router.js';
+        //menssages
+        //user
+        break;
     
-    // 'FILE':
-        /* import productsRouter from './onlyFile/routers/products.router.js';
-        import cartsRouter from './onlyFile/routers/carts.router.js'; */
+    case 'FILE':
+        //products
+        import productsRouter from './onlyFile/routers/products.router.js';
+        //Carts
+        import cartsRouter from './onlyFile/routers/carts.router.js';
+        //menssages
+        //user
+        break;
     
-    // 'SQL':
-    // SQULITE':
+    case 'SQL':
+        //products
+        //Carts
+        //menssages
+        //user
+        break;
     
-    // 'MONGO':
-        /* import productsRouter from './onlyMongoDB/routers/products.router.js';
-        import cartsRouter from './onlyMongoDB/routers/carts.router.js'; */
+    case 'SQULITE':
+        //products
+        //Carts
+        //menssages
+        //user
+        break;
     
-    // 'FIREBASE':
+    case 'MONGO':
+        //products
+        import productsRouter from './onlyMongoDB/routers/products.router.js';
+        //Carts
+        import cartsRouter from './onlyMongoDB/routers/carts.router.js';
+        //menssages
+        //user
+        break;
+    
+    case 'FIREBASE':
+        //products
+        //Carts
+        //menssages
+        //user
+        break;
+};
 
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
