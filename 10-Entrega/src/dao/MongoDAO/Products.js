@@ -1,14 +1,20 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import MongoDBContainer from "./MongoDBContainer.js";
 
 const collection = 'products';
-const productsSchema = mongoose.Schema({
-    name: String,
-    //...
+const ProductsSchema = new mongoose.Schema({
+        id: Number,
+		timestamp: Date,
+		name: String,
+		description: String,
+		code: String,
+		image: String,
+		price: Number,
+		stock: Number,
 });
 
 export default class Products extends MongoDBContainer { 
     constructor() { 
-        super(collection, productsSchema);
+        super(collection, ProductsSchema);
     }
 }

@@ -1,8 +1,7 @@
 //MEMORY, FILE, MONGO
- 
-let persistence = 'MEMORY';
-//let productsService = 'FILE';
-//let productsService = 'MONGO';
+import persistenceBD from '../../_PERSISTENCE.js';
+
+let persistence = persistenceBD;
 
 let productsServices;
 let cartsServices;
@@ -16,15 +15,28 @@ switch (persistence) {
         break;
     
     case 'FILE':
+        const { default: FileProducts } = await import('./FileDAO/Products.js');
+        productsServices = new FileProducts();
+        const { default: FileCarts } = await import('./FileDAO/Carts.js');
+        cartsServices = new FileCarts();
         break;
     
     case 'SQL':
+        const { default: SqlProducts } = await import('./SqlDAO/Products.js');
+        productsServices = new SqlProducts();
+        const { default: SqlCarts } = await import('./SqlDAO/Carts.js');
+        cartsServices = new SqlCarts();
+        break;
         break;
     
     case 'SQULITE':
         break;
     
     case 'MONGO':
+        const { default: MongoProducts } = await import('./MongoDAO/Products.js');
+        productsServices = new MongoProducts();
+        const { default: MongoCarts } = await import('./MongoDAO/Carts.js');
+        cartsServices = new MongoCarts();
         break;
     
     case 'FIREBASE':
