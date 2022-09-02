@@ -19,36 +19,52 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
 
 //& ROUTES -------------------------------------------
-const persistence = 'onlyMemory';
-
-
-/* import('./onlyMemory/routers/products.router.cjs')
-    .then((module) => { 
-        console.log('hola');
-    }) */
-/* const productsRouter = module.router; */
-        
+const persistence = 'MEMORY';
 // MEMORY, FILE, MONGODB
 
-        // const productsRouter = await import('./onlyMemory/routers/products.router.js');
+/* switch (persistence) { 
+    case 'MEMORY':
         import productsRouter from './onlyMemory/routers/products.router.js';
+        import cartsRouter from './onlyMemory/routers/carts.router.js';
+        break;
+    
+    case 'FILE':
+        import productsRouter from './onlyFile/routers/products.router.js';
+        import cartsRouter from './onlyFile/routers/carts.router.js'
+        break;
+    
+    case 'MONGODB':
+        import productsRouter from './onlyMongoDB/routers/products.router.js';
+        import cartsRouter from './onlyMongoDB/routers/carts.router.js';
+        break;
+} */
+        /* import('./onlyMemory/routers/products.router.cjs')
+            .then((module) => { 
+                console.log('hola');
+            }) */
+        /* const p∫roductsRouter = module.router; */
+        
+
+        // const productsRouter = await import('./onlyMemory/routers/products.router.js');
+    import productsRouter from './onlyMemory/routers/products.router.js';
         //import cartsRouter from './onlyMemory/routers/carts.router.js';
     //'MEMORY':
         /* import(`./onlyMemory/routers/products.router.js`).then(module => productsRouter = module.fun()); */
         /* import cartsRouter from './onlyMemory/routers/carts.router.js'; */
     // 'FILE':
         /* import productsRouter from './onlyFile/routers/products.router.js';
-        import cartsRouter from './onlyFile/routers/carts.router.js'; */
+        import cartsRouter from ∫'./onlyFile/routers/carts.router.js'; */
+        // 'MONGO':
+            /* import productsRouter from './onlyMongoDB/routers/products.router.js';
+            import cartsRouter from './onlyMongoDB/routers/carts.router.js'; */
     
     // 'SQL':
-    // SQULITE':
-    
-    // 'MONGO':
-        /* import productsRouter from './onlyMongoDB/routers/products.router.js';
-        import cartsRouter from './onlyMongoDB/routers/carts.router.js'; */
+    //--> por terminar
+    // SQULITE':∫
+    //--> por terminar
     
     // 'FIREBASE':
-
+//--> por terminar
 
 app.use('/api/products', productsRouter);
 //app.use('/api/carts', cartsRouter);
