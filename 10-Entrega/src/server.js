@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'));//principal folder -> express bus
 const persistence = 'MEMORY';
 // MEMORY, FILE, MONGODB
 
-switch (persistence) { 
+/* switch (persistence) { 
     case 'MEMORY':
         import productsRouter from './onlyMemory/routers/products.router.js';
         import cartsRouter from './onlyMemory/routers/carts.router.js';
@@ -37,7 +37,7 @@ switch (persistence) {
         import productsRouter from './onlyMongoDB/routers/products.router.js';
         import cartsRouter from './onlyMongoDB/routers/carts.router.js';
         break;
-}
+} */
         /* import('./onlyMemory/routers/products.router.cjs')
             .then((module) => { 
                 console.log('hola');
@@ -46,7 +46,7 @@ switch (persistence) {
         
 
         // const productsRouter = await import('./onlyMemory/routers/products.router.js');
-        //  import productsRouter from './onlyMemory/routers/products.router.js';
+    import productsRouter from './onlyMemory/routers/products.router.js';
         //import cartsRouter from './onlyMemory/routers/carts.router.js';
     //'MEMORY':
         /* import(`./onlyMemory/routers/products.router.js`).then(module => productsRouter = module.fun()); */
