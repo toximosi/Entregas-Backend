@@ -19,23 +19,6 @@ router.post('/start', async (req, res) => {
         res.send(data);
 });
 
-//Code ----------------------------------------------
-//CRUD
-//* CREATE
-/// INICIALICE
-//add initial data
-router.post('/start', async (req, res) => {
-    const obj = dataIni;
-    try { 
-        const data = await man.startData(bd, obj);
-        
-        res.send(`👍 Add data is ok.\n
-                  data -> ${JSON.stringify(data)}`)
-        console.log(JSON.stringify(bdMemory));
-    } catch (err) { 
-        res.send(`💣  Error: ${err}`);
-    }
-});
 /// Create element
 router.post('/create', async(req, res) => {
     const{ id, products } = req.body;

@@ -1,23 +1,28 @@
 # SEGUNDA ENTREGA DE PROYECTO BACKEND
+## Conexión con DAO
+Para la modificación de la conexión con la diferentes persitencias, cambiar la variable persistencia (comentar y descomentar), la variable "persistencia", en el archivo _PERSISTENCE.js, que se encuentra en la raiz.
 
+```javascript
+let persistence = 'MEMORY';
+//let persistence = 'FILE';
+//let persistence = 'MONGO';
+//let persistence = 'SQL';
+```
 
+## Carpeta:
+    Dos tipos de formatos para probar las persistencias: el formato común y mediante dao:
+    
+    ## DAO:  
 
-# Conexión con DAO
-### Carpeta:
-    src > dao
+    * src > dao > MemoryDAO
+    * src > dao > FileDAO
+    * src > dao > MongoDAO
+    * src > dao > SqlDAO
 
-## Conexiones:
-    Cambiar las conexiones en el archivo: 
-    src > config.js en la const persistence (entre comillas)
-    ```javascript
-    // MEMORY, FILE, SQL, SQULITE, MONGO, FIREBASE
-    const persistence = 'MEMORY';
-    ```
+    ## Indepoendientes
 
----
-
-# Conexiones independientes:
-
-## Conexión con FIRABASE
-### Carpeta:
-    src > onlyFirebase
+    * src > OnlyMemory
+    * src > OnlyFile
+    * src > OnlyMongo
+    para poder cambiar la persistencia en este formato es necesario descomentar las importaciones correspondientes en el aerchivo serve.js 
+    src > server.js
