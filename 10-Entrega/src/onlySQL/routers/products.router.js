@@ -5,17 +5,14 @@ import __dirname from '../utils.js';//static
 import { uploader } from '../utils.js';
 //BD
 /* import bd from '../options/mariaDB.js'; */
-import BDdata from '../options/mariaDB.js';
+import BDdata from '../conexion.js';
 const options = BDdata.options;
 const bd = BDdata.bd;
 
 import knex from "knex"; 
 //class
-import managersServices from '../services/Managers.service.js';
+import managersServices from '../services/managers.service.js';
 const man = new managersServices();
-
-import productsService from '../services/Products.service.js';
-const pro = new productsService();
 
 import readfilesServices from '../services/ReadFile.service.js';
 const refi = new readfilesServices();
