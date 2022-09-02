@@ -19,13 +19,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));//principal folder -> express buscara los archivos estáticos en esta carpeta.
 
 //& ROUTES -------------------------------------------
-const persistence = 'FILE';
+const persistence = 'onlyMemory';
+
+
+/* import('./onlyMemory/routers/products.router.cjs')
+    .then((module) => { 
+        console.log('hola');
+    }) */
+/* const productsRouter = module.router; */
+        
 // MEMORY, FILE, MONGODB
 
-    // MEMORY:
+        // const productsRouter = await import('./onlyMemory/routers/products.router.js');
         import productsRouter from './onlyMemory/routers/products.router.js';
-        import cartsRouter from './onlyMemory/routers/carts.router.js';
-    
+        //import cartsRouter from './onlyMemory/routers/carts.router.js';
+    //'MEMORY':
+        /* import(`./onlyMemory/routers/products.router.js`).then(module => productsRouter = module.fun()); */
+        /* import cartsRouter from './onlyMemory/routers/carts.router.js'; */
     // 'FILE':
         /* import productsRouter from './onlyFile/routers/products.router.js';
         import cartsRouter from './onlyFile/routers/carts.router.js'; */
@@ -39,6 +49,7 @@ const persistence = 'FILE';
     
     // 'FIREBASE':
 
+
 app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);
+//app.use('/api/carts', cartsRouter);
 //app.use('/api/chats', chastsRouter );

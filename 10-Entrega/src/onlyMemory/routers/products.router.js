@@ -1,5 +1,5 @@
 //& import ---------------------------------------------
-import e, { Router } from 'express'; 
+import { Router } from 'express';
 const router = Router();//ejecutamos router para poder usarlo.
 //dirname url
 import __dirname from '../../utils.js';//static files
@@ -10,11 +10,13 @@ import __dirname from '../../utils.js';//static files
 import bdMemory from '../conexion.js';
 let bd = bdMemory[0].products;
 
+
 //data 
 import dataIni from '../../json/products.json' assert {type: "json"};
 
 //function
 import ManagersServices from "../services/manager.service.js";
+
 const man = new ManagersServices();
 
 
@@ -141,4 +143,4 @@ router.get('/deleted/all', async(req, res) => {
     }
 });
 
-export default router;
+module.exports = router;
