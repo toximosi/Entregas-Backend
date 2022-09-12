@@ -1,0 +1,52 @@
+[
+	{
+		"id": 0,
+		"timestamp": 1663014678710,
+		"name": "Guapa Granito Pescado",
+		"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+		"code": 66710,
+		"image": "http://placeimg.com/640/480/abstract",
+		"price": "654.00",
+		"stock": 0
+	},
+	{
+		"id": 1,
+		"timestamp": 1663014678714,
+		"name": "Hecho a mano Metal Pantalones",
+		"description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+		"code": 11580,
+		"image": "http://placeimg.com/640/480/city",
+		"price": "809.00",
+		"stock": 1
+	},
+	{
+		"id": 2,
+		"timestamp": 1663014678715,
+		"name": "Guapa Acero Guantes",
+		"description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+		"code": 38979,
+		"image": "http://placeimg.com/640/480/nature",
+		"price": "659.00",
+		"stock": 2
+	},
+	{
+		"id": 3,
+		"timestamp": 1663014678715,
+		"name": "Sorprendente Algodón Ensalada",
+		"description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+		"code": 78541,
+		"image": "http://placeimg.com/640/480/sports",
+		"price": "810.00",
+		"stock": 3
+	},
+	{
+		"id": 4,
+		"timestamp": 1663014678715,
+		"name": "Inteligente Madera Salchichas",
+		"description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+		"code": 11183,
+		"image": "http://placeimg.com/640/480/nightlife",
+		"price": "209.00",
+		"stock": 4
+	}
+]

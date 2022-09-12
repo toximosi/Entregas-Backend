@@ -98,7 +98,15 @@
 		"image": "image-10.jpg",
 		"price": 4990,
 		"stock": 10
+	},
+	{
+		"id": 11,
+		"timestamp": 1660524176521,
+		"name": "nombre 11",
+		"description": "descripcion 11",
+		"code": "código 11",
+		"image": "image-11.jpg",
+		"price": 4990,
+		"stock": 11
 	}
-	,
-	{"id": 11, "timestamp": 1660524176521, "name": "nombre 11", "description": "descripcion 11", "code": "código 11", "image": "image-11.jpg", "price": 4990, "stock": 11}
 ]
