@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-xs-center">
+        {{#if Arr}}
+            <div class="col-xs-16">
+                <h1>table of mensajes JSON</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Edad</th>
+                                <th scope="col">Alias</th>
+                                <th scope="col">Avatar</th>
+                                <th scope="col">Mensaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each Arr}}
+                            <tr>
+                                <td scope="col">
+                                    {{this.author.id}}
+                                </td>
+                                <td scope="col">{{this.author.nombre}}</td>
+                                <td scope="col">{{this.author.apellido}}</td>
+                                <td scope="col">{{this.author.edad}}</td>
+                                <td scope="col">{{this.author.alias}}</td>
+                                <td scope="col">{{this.author.alias}}
+                                    <div style="width:50px ; height:50px; overflow:hidden">
+                                        <img src="{{this.author.avatar}}" style="width:fit-content; height:auto">
+                                    </div>
+                                </td>
+                                <td scope="col">{{this.text}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+        {{else}}
+            </div>
+                <h1>no hay mensajes</h1>    
+        {{/if}}
+        <div class="col-xs-16">
+            <h1>NORMALIZE</h1>
+
+        </div>
+    </div>
+</div>
