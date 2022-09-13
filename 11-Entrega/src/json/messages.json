@@ -1,1 +1,52 @@
-[]
+[
+	{
+		"author": {
+			"id": "Sergio.Vanegas@gmail.com",
+			"nombre": "Raquel",
+			"apellido": "Villagómez",
+			"edad": 10,
+			"avatar": "https://cdn.fakercloud.com/avatars/holdenweb_128.jpg"
+		},
+		"text": "Minima molestiae distinctio eligendi error sit aut. Dignissimos quibusdam velit velit dignissimos doloremque corrupti aut tempore. Distinctio fuga eum eos."
+	},
+	{
+		"author": {
+			"id": "Guillermina72@yahoo.com",
+			"nombre": "Reina",
+			"apellido": "Mayorga",
+			"edad": 11,
+			"avatar": "https://cdn.fakercloud.com/avatars/exentrich_128.jpg"
+		},
+		"text": "Occaecati quisquam perspiciatis culpa. Unde provident voluptatem consequuntur. Eligendi molestiae possimus quia unde qui deserunt."
+	},
+	{
+		"author": {
+			"id": "Teresa21@hotmail.com",
+			"nombre": "Rodrigo",
+			"apellido": "Rael",
+			"edad": 12,
+			"avatar": "https://cdn.fakercloud.com/avatars/ivanfilipovbg_128.jpg"
+		},
+		"text": "Rerum molestiae quibusdam voluptas laboriosam ex vel sapiente. Veritatis rerum eaque cum voluptas. A libero sint excepturi nam cum corporis molestias porro. Est delectus rerum illo numquam ipsum suscipit modi et saepe. Consequatur architecto alias deleniti cupiditate ipsum ut dolores."
+	},
+	{
+		"author": {
+			"id": "Teodoro.Gonzlez21@yahoo.com",
+			"nombre": "Eduardo",
+			"apellido": "Venegas",
+			"edad": 13,
+			"avatar": "https://cdn.fakercloud.com/avatars/laasli_128.jpg"
+		},
+		"text": "Culpa nobis sunt quibusdam quisquam esse. Dignissimos et quis. Voluptatem consectetur corrupti qui et inventore. Provident eos ea aliquam qui ex cum laborum. Ut a porro voluptas quia et."
+	},
+	{
+		"author": {
+			"id": "Germn24@yahoo.com",
+			"nombre": "Antonia",
+			"apellido": "Morales",
+			"edad": 14,
+			"avatar": "https://cdn.fakercloud.com/avatars/jonsgotwood_128.jpg"
+		},
+		"text": "Voluptatem sint ea. Natus quo eos. Similique tempora similique enim molestias et ipsam tempora neque. Enim rem enim recusandae. Voluptatum veritatis qui non ipsam in ad maiores neque eos. Et a totam voluptas ut molestiae voluptates voluptatem aliquid dolores."
+	}
+]
