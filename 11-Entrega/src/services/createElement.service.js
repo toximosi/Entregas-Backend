@@ -46,7 +46,7 @@ export default class CreateElement {
                     nombre: name.firstName(), 
                     apellido: name.lastName(), 
                     edad: i+10, 
-                    alias: random.word,
+                    alias: random.word(),
                     avatar: image.avatar()
                 },
                 text: lorem.paragraph(),

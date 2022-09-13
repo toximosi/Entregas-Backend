@@ -3,20 +3,6 @@
 Se puede ver la creación de información random aplicada a los productos de la api en el end point:
 ../api/productos-test
 
-La lógica se puede encontrar en los archivos:
-````
-⌙ src:
-  ⌙ routers:
-    ⌙ products.router.js
-    ⌙ views.router.js
-  ⌙ services: 
-    ⌙ createElement.service.js
-    ⌙ products.services.js
-    ⌙ readFile.service.js
-  ⌙ views:
-    ⌙ products.handlebars.js
-````
-
 # Aplicación de Normalizer:
 Se puede ver la normallización de la bd en endpoit:
 ../api/normalize

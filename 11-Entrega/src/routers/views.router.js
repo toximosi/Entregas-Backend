@@ -10,7 +10,9 @@ import readFile from '../services/readFiles.service.js';
 const file = new readFile;
 import __dirname from '../utils.js';
 const productJson = __dirname + '/json/products.json';
+const usersJson = __dirname + '/json/users.json';
 const messagesJson = __dirname + '/json/messages.json';
+const messagesNormJson = __dirname + '/json/messagesAnidados.json';
 
 //CODE ------------------------------------------------------
 router.get('/api/productos-test', async (req, res) => {
@@ -30,23 +32,16 @@ router.get('/api/productos-test', async (req, res) => {
 
 router.get('/api/normalize', async (req, res) => {
     try {
-        let dataIni = await file.read(messagesJson);
-        let Arr = [];
-        if (dataIni.length == 0) {
-            Arr = create.messages(5);
-            await file.write(messagesJson, Arr);
-        } else { 
-            Arr = dataIni;
-        }
-        const normArr = await norm.menssage(Arr);
-        res.render('normalize', {Arr})
+        let Arr = await file.read(messagesNormJson);
+        let Norm = await norm.menssage(Arr);
+        res.render('normalize', { Arr, Norm})
     } catch (err) { console.log(err);}
 });
 
 
-router.get('/chat', async (req, res) => {
+/* router.get('/chat', async (req, res) => {
 
         res.render('chats');
-});
+}); */
 
 export default router;
