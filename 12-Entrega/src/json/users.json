@@ -1,0 +1,53 @@
+[
+    {
+        "author": {
+            "id": "Diana.Corona81@yahoo.com",
+            "nombre": "Horacio",
+            "apellido": "Trujillo",
+            "edad": 10,
+            "alias": "Ordenador",
+            "avatar": "https://cdn.fakercloud.com/avatars/overra_128.jpg"
+        }
+    },
+    {
+        "author": {
+            "id": "MaraEugenia_Alva@gmail.com",
+            "nombre": "Antonio",
+            "apellido": "Ulibarri",
+            "edad": 11,
+            "alias": "Universal",
+            "avatar": "https://cdn.fakercloud.com/avatars/ooomz_128.jpg"
+        }
+    },
+    {
+        "author": {
+            "id": "Luca21@hotmail.com",
+            "nombre": "María Luisa",
+            "apellido": "Ontiveros",
+            "edad": 12,
+            "alias": "Hormigon",
+            "avatar": "https://cdn.fakercloud.com/avatars/herkulano_128.jpg"
+        }
+    },
+    {
+        "author": {
+            "id": "JosMara.Velasco@hotmail.com",
+            "nombre": "Eloisa",
+            "apellido": "Alonso",
+            "edad": 13,
+            "alias": "productize",
+            "avatar": "https://cdn.fakercloud.com/avatars/kimcool_128.jpg"
+        },
+        "text": "Sed nihil rerum. Laborum qui dolores modi autem sed voluptatum totam. Omnis totam ullam eum explicabo. Commodi minima molestias hic ut. Nostrum quas amet exercitationem nobis ut consequatur dolorum et ut. Aut est soluta reiciendis."
+    },
+    {
+        "author": {
+            "id": "Lorenzo65@yahoo.com",
+            "nombre": "María Elena",
+            "apellido": "Carrera",
+            "edad": 14,
+            "alias": "Auto",
+            "avatar": "https://cdn.fakercloud.com/avatars/bennyjien_128.jpg"
+        }
+    }
+]
