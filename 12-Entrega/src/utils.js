@@ -2,7 +2,7 @@
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
-
+import bcrypt from 'bcrypt';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,5 +18,7 @@ const storage = multer.diskStorage({
 })
 
 //Export
-export const uploader = multer({storage});
+export const uploader = multer({ storage });
+export const createHash = password => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
 export default __dirname;

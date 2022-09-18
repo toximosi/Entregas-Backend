@@ -77,21 +77,24 @@ export default class CreateElement {
         }
         return data;
     }
-    users = (obj)=>{ 
+/*     users = (obj)=>{ 
         let users = [];
         for (let i = 0; i < obj.lenght; i++) { 
             users.push({
-                id: obj.id, 
+                id: internet.email(), 
+                timestamp: Date.now(),
                 nombre: obj.nombre, 
-                apellido: obj.apellido, 
+                apellido: obj.apellido,
+                email: id,
                 edad: obj.edad, 
+                password: "patata",
                 alias: obj.alias,
                 avatar: obj.avatar
             })
         }
         file.write(usersJson, users)
         return users;
-    }
+    } */
     
     
 }

@@ -1,12 +1,20 @@
 // importaciones ----------------------------
 import express from 'express';//express server
 import session from 'express-session';//sessions user
+/*import storage from 'session-file-store';
+const FileStorage = storage(session); */
+import MongoStore from 'connect-mongo';
+
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
+
 import viewsRouter from './routers/views.router.js';
+import registerRouter from './routers/register.router.js';
 import cookiesRouter from './routers/cookies.router.js';
 import productsRouter from './routers/products.router.js';
 import messagesRouter from './routers/messages.router.js';
+import usersRouter from './routers/users.router.js';
+
 
 //Server ------------------------------------
 const app = express();
@@ -21,9 +29,18 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 //session user
 app.use(session({
-    secret: "C0derSessi0n3000",
-    resave: true,
-    saveUninitialized:true
+    /* store: new FileStorage({
+        path: './sessions',
+        ttl: 60, //un minuto -> 60 segundos
+        retries:0
+    }), */
+    store: MongoStore.create({
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.npwrool.mongodb.net/Base31025?retryWrites=true&w=majority`,
+        ttl:25
+    }),
+    secret: "Sessi0n",
+    resave: false,
+    saveUninitialized: false,
 }));
 //motor de views -> plantillas 
 app.engine('handlebars', handlebars.engine());
@@ -35,6 +52,8 @@ app.use(express.static(__dirname + '/public'));//principal folder -> express bus
 
 //Routes ----------------------------
 app.use('/', viewsRouter );
+app.use('/api/register', registerRouter );
+app.use('/api/users', usersRouter );
 app.use('/api/cookies', cookiesRouter );
 app.use('/api/products', productsRouter);
 app.use('/api/messages', messagesRouter );
