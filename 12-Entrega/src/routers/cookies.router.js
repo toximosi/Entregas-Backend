@@ -2,15 +2,18 @@ import { Router } from 'express';
 const router = Router();
 import session from 'express-session';
 
+
 import CookiesServices from "../services/cookies.service.js";
 const cook = new CookiesServices();
+
+//var -----------------------------------------------------
 let style =`<style>body{display: flex;flex-direction: column;align-content: center;justify-content: center;align-items: center;width: 100%;height: 100%;text-align: center;}.content{display: inline-block;border: 1px solid gray;padding: 50px;border-radius: 10px;}</style>`
 
-
+//code -----------------------------------------------------
 router.post('/', async (req, res) => { 
     
 });
-router.get('/counter', async (req, res) => { 
+router.get('/visita', async (req, res) => { 
     
     if (req.session.counter) {
         req.session.counter ++;

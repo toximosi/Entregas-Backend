@@ -1,0 +1,20 @@
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ebebeb;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+//product-page
+#productForm{
+    position: fixed;
+}
+.product-table{
+    font-size: 12px;
+}

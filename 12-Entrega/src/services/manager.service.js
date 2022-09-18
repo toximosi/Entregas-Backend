@@ -1,24 +1,26 @@
 //* Standar fuction to consult BD
-//import
-
-//Code------------------------
 class Managers {
 
     constructor() {};
    
     //* IMPORTANT FUNCTION
     //Exist
-    existId = async (model, id) => { 
-        let exist = await model.find({ "id": id }); 
-        if (exist != "" || exist == 1 || exist == true || exist == 'true') { 
+    existId = async (model, id) => {
+        let exist = await model.find({ "id": id });
+        if (exist != "" || exist == 1 || exist == true || exist == 'true') {
             console.log(`👍 find the element ${id} is ok`);
             return exist;
-        }else { 
+        } else {
             exist = [];
             console.log(`🫣 don't find the element ${id}`);
             return exist;
-        }
-    }
+        };
+    };
+
+    /* idNew = async((model) => {
+        let newId = 0;
+        
+    }; */
 
     //* CRUD
     //CREATE

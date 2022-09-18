@@ -1,18 +1,59 @@
+<header>
+    <div>Bienvenido</div><div>{{user}}</div><div id="logout"><button class="btn btn-primary" type="submit">log out</button></div>
+</header>
 <div class="container">
-    <div class="row justify-content-xs-center">
-        <div class="col-xs-auto">
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="row">
+                        <div class="mb-3 col-12">
+                <form id="productForm">
+                            <label for="name" class="form-label">Nombre:</label>
+                            <input id="name" name="name" type="text" class="form-control"  placeholder="Escribe tu nombre" >
+                        </div>
+                       
+                        <div class="mb-3 col-6">
+                            <label for="id" class="form-label">Id:</label>
+                            <input id="id" name="id" type="number" class="form-control"  placeholder="000000" >
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="code" class="form-label">Code:</label>
+                            <input id="code" name="text" type="text" class="form-control"  placeholder="CO-000000" >
+                        </div>
+                        <div class="mb-3 col-6"  style="opacity: 0.3;">
+                            <label for="price" class="form-label">Precio <i>(€)</i>:</label>
+                    <input id="price" name="price" type="number" step=.01 class="form-control"  placeholder="0,00" >
+                        </div>
+                        <div class="mb-3 col-6" style="opacity: 0.3;">
+                            <label for="stock" class="form-label">Stock <sup style="color:red">(disabled)</sup>:</label>
+                            <input id="stock" name="stock" type="number" class="form-control"  placeholder="00" aria-label="Disabled input" disabled="">
+                        </div>
+                         <div class="mb-3 col-12" style="opacity: 0.3;">
+                            <label for="description" class="form-label">Descipción:<sup style="color:red">(disabled)</sup>:</label>
+                            <textarea id="description" name="description" type="text" class="form-control"  placeholder="Escribe tus apellidos" rows="3"  aria-label="Disabled input"  disabled=""></textarea>
+                        </div>
+                        <div class="mb-3 col-12" style="opacity: 0.3;">
+                            <label for="formFile" class="form-label">Imagen <sup style="color:red">(disabled)</sup>:</label>
+                            <input class="form-control" type="file" id="formFile" aria-label="Disabled input" disabled="">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Acceder</button>
+                        </div>
+            </div>
+            </form>
+        </div>        
+        <div class="col-12 col-md-8">
             {{#if Arr}}
-                <h1>table of products</h1>
-                    <table class="table">
+                <h1>Listado de productos</h1>
+                    <table class="table product-table">
                         <thead>
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">id</th>
-                                <th scope="col">Creation</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Creación</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Stock</th>
                             </tr>
                         </thead>
@@ -41,3 +82,5 @@
         </div>
     </div>
 </div>
+<!-- scripts -->
+<script src="js/products.js"></script> 

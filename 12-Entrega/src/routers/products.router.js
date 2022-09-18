@@ -4,6 +4,8 @@ const router = Router();
 import conexion from '../conexion.js';
 
 //& DB ----------------------------------------------
+import faker from 'faker';
+
 import productsModel from '../models/products.models.js';
 const model = productsModel;
 
@@ -34,18 +36,22 @@ router.post('/start', async (req, res) => {
 /// Create element
 router.post('/create', async(req, res) => {
     try { 
-        const{id, name, description, code , image, price, stock} = req.body
+        /* const{id, name, description, code , image, price, stock} = req.body */
+        faker.locale = 'es';
+        const { nombre, id } = await req.body;
+        const { commerce , random , image } = faker;
+        /* if (!id || !name || !description || !code || !image || !price || !stock) {  */
         if (!id || !name || !description || !code || !image || !price || !stock) { 
              return res.status(400).send({ status: 'error', error: 'incomplete values' });
         }
         let obj = {
-            id,
+            id:id,
             timestamp: Date.now(),
-            name,
-            description,
-            code,
-            image,
-            price,
+            name: nombre,
+            description: commerce.productDescription(),
+            code: random.number(),
+            image:image.image(),
+            price: commerce.price(),
             stock,
         }
         const data = await fun.addObj(model, obj);

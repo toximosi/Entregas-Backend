@@ -10,7 +10,7 @@ import productsRouter from './routers/products.router.js';
 
 //Server ------------------------------------
 const app = express();
-const PORT = 8080;
+const PORT = 8081;
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
