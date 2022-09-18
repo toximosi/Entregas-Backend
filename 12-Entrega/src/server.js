@@ -4,6 +4,7 @@ import session from 'express-session';//sessions user
 /*import storage from 'session-file-store';
 const FileStorage = storage(session); */
 import MongoStore from 'connect-mongo';
+import conexion from './conexion.js';
 
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
@@ -35,8 +36,8 @@ app.use(session({
         retries:0
     }), */
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.npwrool.mongodb.net/Base31025?retryWrites=true&w=majority`,
-        ttl:25
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.wxdsjub.mongodb.net/Cookies?retryWrites=true&w=majority`,
+        ttl:60
     }),
     secret: "Sessi0n",
     resave: false,
@@ -52,7 +53,7 @@ app.use(express.static(__dirname + '/public'));//principal folder -> express bus
 
 //Routes ----------------------------
 app.use('/', viewsRouter );
-app.use('/api/register', registerRouter );
+/* app.use('/api/register', registerRouter ); */
 app.use('/api/users', usersRouter );
 app.use('/api/cookies', cookiesRouter );
 app.use('/api/products', productsRouter);
