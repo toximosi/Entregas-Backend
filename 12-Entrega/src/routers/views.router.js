@@ -31,6 +31,10 @@ router.get('/products', async (req, res) => {
         res.send(`💣  Error: ${err}`);
     }
 });
+//prueba de redirección
+router.get('/redirecion', async (req, res) => {
+    res.redirect('http://google.es');
+});
 /* router.get('/api/productos-test', async (req, res) => {
     try {
         let dataIni = await file.read(productJson);

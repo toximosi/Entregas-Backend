@@ -27,7 +27,7 @@ router.get('/visita', async (req, res) => {
     }
 
 });
-router.post('/login', async (req, res) => { 
+/* router.post('/login', async (req, res) => { 
     try {
         const { email, password } = await req.body;
         if (email === "mail@mail.com" && password === "123") { 
@@ -38,10 +38,10 @@ router.post('/login', async (req, res) => {
         }
     } catch (err) { console.log(err) };
     
-});
+}); */
 router.get('/current', async (req, res) => { 
     try {
-        if (req.sessions.user) { 
+        if (req.session.user) { 
             res.send(req.session.user);
         }else{
             res.send(`${style} <div class="content"><h1>por favor logeate<h1></div>`);

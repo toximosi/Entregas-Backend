@@ -34,7 +34,7 @@ router.post('/start', async (req, res) => {
 });
 
 /// Create element
-router.post('/create', async(req, res) => {
+router.post('/register', async(req, res, next) => {
     try { 
         faker.locale = 'es';
         const { nombre, email } = await req.body;
@@ -43,24 +43,41 @@ router.post('/create', async(req, res) => {
         if (!nombre || !email) { 
              return res.status(400).send({ status: 'error', error: 'incomplete values' });
         }
-        let obj = {
-            id : email,
-            timestamp: Date.now(),
-            nombre:nombre,
-            apellido: name.lastName(),
+        const exist = await usersModel.findOne({ email: email });
+        if (exist) { 
+            return res.status(400).send({ status: "error", error: "User alredy exists" })
+        } else { 
+            let obj = {
+                id : email,
+                timestamp: Date.now(),
+                nombre:nombre,
+                apellido: name.lastName(),
+                email,
+                edad: 0,
+                password: "patata",
+                alias: lorem.text(),
+                avatar: image.avatar()
+            }
+            const data = await fun.addObj(model, obj);
+            res.send(`👍 Add data is ok.\n
+                      data -> ${data}`);
+        };
+        
+        res.session.user = {
+            nombre,
             email,
-            edad: 0,
-            password: "patata",
-            alias: lorem.text(),
-            avatar: image.avatar()
-        }
-        const data = await fun.addObj(model, obj);
-        res.send(`👍 Add data is ok.\n
-                  data -> ${data}`);
+            rol: user
+        };
+        
+        
+        /* res.redirect('http://google.es');
+        
+        next(); */
 
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
     }
 });
+
 
 export default router;
