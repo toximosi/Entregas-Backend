@@ -1,5 +1,7 @@
 import { Router } from "express";
 const router = Router();
+import faker from 'faker';
+
 import Managers from "../services/manager.service.js";
 const fun = new Managers;
 import CreateElement from '../services/createElement.service.js';
@@ -10,7 +12,8 @@ import readFile from '../services/readFiles.service.js';
 const file = new readFile;
 import __dirname from '../utils.js';
 const productJson = __dirname + '/json/products.json';
-const usersJson = __dirname + '/json/users.json';
+import usersModel from '../models/users.model.js';
+const model = usersModel;
 const messagesJson = __dirname + '/json/messages.json';
 const messagesNormJson = __dirname + '/json/messagesAnidados.json';
 
@@ -22,11 +25,16 @@ router.get('/', async (req, res) => {
 });
 router.get('/products', async (req, res) => {
     try { 
-        let Arr = await fun.getAll(productsModel);
-        Arr = JSON.parse(JSON.stringify(Arr));
-        console.log(Arr);
-        let user = "pepe";
-        res.render('products', {Arr, user});
+        if (!req.session.user) { 
+            res.redirect('/');
+        }
+            let Arr = await fun.getAll(productsModel);
+            Arr = JSON.parse(JSON.stringify(Arr));
+            console.log(Arr);
+            let user = req.session.user.nombre;
+            console.log(user);
+            res.render('products', {Arr, user});
+
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
     }

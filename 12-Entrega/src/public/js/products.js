@@ -13,4 +13,9 @@ form.addEventListener('submit', (e) => {
             "Content-type": "application/json"
         }
     }).then(res => res.json()).then(json => console.log(json)).catch(err => console.log(err));
-})
+});
+
+/* const logout = document.getElementById('logout');
+logout.addEventListener('submit', (e) => { 
+    
+}) */
