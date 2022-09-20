@@ -1,10 +1,9 @@
 import { Router } from "express";
 const router = Router();
 
-import conexion from '../conexion.js';
-
 //& DB ----------------------------------------------
 import faker from 'faker';
+import conexion from '../conexion.js';
 
 import usersModel from '../models/users.model.js';
 const model = usersModel;
@@ -45,6 +44,8 @@ router.post('/register', async(req, res, next) => {
         }
         const exist = await usersModel.findOne({ email: email });
         if (exist) { 
+            let error = "el usuario ya existe";
+            res.render('register', { error });
             return res.status(400).send({ status: "error", error: "User alredy exists" })
         } else { 
             let obj = {
@@ -58,20 +59,18 @@ router.post('/register', async(req, res, next) => {
                 alias: lorem.text(),
                 avatar: image.avatar()
             }
+            req.session.user = {
+                nombre,
+                email,
+                rol: "user"
+            };
             const data = await fun.addObj(model, obj);
             res.send(`👍 Add data is ok.\n
                       data -> ${data}`);
         };
         
-        res.session.user = {
-            nombre,
-            email,
-            rol: user
-        };
-        
         
         /* res.redirect('http://google.es');
-        
         next(); */
 
     } catch (err) { 

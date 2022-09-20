@@ -1,6 +1,5 @@
 import { Router } from 'express';
 const router = Router();
-import session from 'express-session';
 
 
 import CookiesServices from "../services/cookies.service.js";
