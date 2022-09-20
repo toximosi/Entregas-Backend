@@ -10,11 +10,21 @@ header{
     padding: 20px;
     margin-bottom: 20px;
 }
-
-//product-page
-#productForm{
-    position: fixed;
+.content-fixed{
+position: relative;
 }
+.formulario-fixed{
+    position: sticky;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #f2f7ff;
+}
+/* #productForm{
+    position: fixed;
+} */
 .product-table{
     font-size: 12px;
+}
+.disable{
+    opacity: 0.3;
 }

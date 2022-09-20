@@ -37,7 +37,7 @@ app.use(session({
     }), */
     store: MongoStore.create({
         mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.wxdsjub.mongodb.net/Cookies?retryWrites=true&w=majority`,
-        ttl:60
+        ttl:30
     }),
     secret: "Sessi0n",
     resave: false,
