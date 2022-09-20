@@ -66,7 +66,9 @@ router.post('/register', async(req, res, next) => {
             };
             const data = await fun.addObj(model, obj);
             res.send(`👍 Add data is ok.\n
-                      data -> ${data}`);
+                      data -> ${data}\n
+                      ${req.session}`);
+            /* res.redirect('/products'); */
         };
         
         

@@ -1,10 +1,11 @@
 import { Router } from 'express';
 const router = Router();
 
-
+import ManagerService from '../services/manager.service.js';
+const fun = new ManagerService();
 import CookiesServices from "../services/cookies.service.js";
 const cook = new CookiesServices();
-
+import sessionsModel from '../models/sessions.model.js';
 //var -----------------------------------------------------
 let style =`<style>body{display: flex;flex-direction: column;align-content: center;justify-content: center;align-items: center;width: 100%;height: 100%;text-align: center;}.content{display: inline-block;border: 1px solid gray;padding: 50px;border-radius: 10px;}</style>`
 
@@ -50,6 +51,11 @@ router.get('/current', async (req, res) => {
 });
 router.put('/:id', async (req, res) => { 
 
+});
+router.get('/cookieuser', (req, res) => {
+    fun.deleteAll(sessionsModel);
+    res.redirect('/');
+    
 });
 router.delete('/:id', async (req, res) => { 
 
