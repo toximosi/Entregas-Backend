@@ -21,20 +21,24 @@ import productsModel from '../models/products.models.js';
 
 //CODE ------------------------------------------------------
 router.get('/', async (req, res) => {
-    res.render('register');
+    if (!req.session.user) {
+        res.render('register');
+    } else {
+        res.redirect('products');
+    }
 });
+
 router.get('/products', async (req, res) => {
     try { 
-        if (!req.session.user) { 
+        if (!req.session.user) {
             res.redirect('/');
-        }
+        } else { 
             let Arr = await fun.getAll(productsModel);
             Arr = JSON.parse(JSON.stringify(Arr));
-            console.log(Arr);
             let user = req.session.user.nombre;
             console.log(user);
-            res.render('products', {Arr, user});
-
+            res.render('products', { Arr, user });
+        }
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
     }
@@ -66,11 +70,5 @@ router.get('/api/normalize', async (req, res) => {
         res.render('normalize', { Arr, Norm})
     } catch (err) { console.log(err);}
 });
-
-
-/* router.get('/chat', async (req, res) => {
-
-        res.render('chats');
-}); */
 
 export default router;
