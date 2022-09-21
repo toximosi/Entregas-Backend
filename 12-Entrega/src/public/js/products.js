@@ -12,10 +12,16 @@ form.addEventListener('submit', (e) => {
         headers: {
             "Content-type": "application/json"
         }
-    }).then(res => res.json()).then(json => console.log(json)).catch(err => console.log(err));
+    }).then(res => res.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
 });
 
-/* const logout = document.getElementById('logout');
-logout.addEventListener('submit', (e) => { 
-    
-}) */
+const logout = document.getElementById('logout');
+logout.addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('api/users/logout')
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(error => console.log(error));
+});

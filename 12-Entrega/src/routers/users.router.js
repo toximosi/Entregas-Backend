@@ -64,20 +64,15 @@ router.post('/register', async(req, res, next) => {
                 email,
                 rol: "user"
             };
-            const data = await fun.addObj(model, obj);
-            res.send(`👍 Add data is ok.\n
-                      data -> ${data}\n
-                      ${req.session}`);
-            /* res.redirect('/products'); */
+            res.redirect('/products');
         };
-        
-        
-        /* res.redirect('http://google.es');
-        next(); */
-
     } catch (err) { 
         res.send(`💣  Error: ${err}`);
     }
+});
+router.get('/logout', async (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 
