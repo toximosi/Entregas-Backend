@@ -1,0 +1,57 @@
+[
+    {
+        "id": "Diana.Corona81@yahoo.com",
+        "timestamp": 1663058839929,
+        "nombre": "Horacio",
+        "apellido": "Trujillo",
+        "email": "Diana.Corona81@yahoo.com",
+        "edad": 10,
+        "password": "patata",
+        "alias": "Ordenador",
+        "avatar": "https://cdn.fakercloud.com/avatars/overra_128.jpg"
+    },
+    {
+        "id": "MaraEugenia_Alva@gmail.com",
+        "timestamp": 1663058839929,
+        "nombre": "Antonio",
+        "apellido": "Ulibarri",
+        "email": "MaraEugenia_Alva@gmail.com",
+        "edad": 11,
+        "password": "patata",
+        "alias": "Universal",
+        "avatar": "https://cdn.fakercloud.com/avatars/ooomz_128.jpg"
+    },
+    {
+        "id": "Luca21@hotmail.com",
+        "timestamp": 1663058839929,
+        "nombre": "María Luisa",
+        "apellido": "Ontiveros",
+        "email": "Luca21@hotmail.com",
+        "edad": 12,
+        "password": "patata",
+        "alias": "Hormigon",
+        "avatar": "https://cdn.fakercloud.com/avatars/herkulano_128.jpg"
+    },
+    {
+        "id": "JosMara.Velasco@hotmail.com",
+        "timestamp": 1663058839929,
+        "nombre": "Eloisa",
+        "apellido": "Alonso",
+        "email": "JosMara.Velasco@hotmail.com",
+        "edad": 13,
+        "password": "patata",
+        "alias": "productize",
+        "avatar": "https://cdn.fakercloud.com/avatars/kimcool_128.jpg"
+    },
+    {
+        "id": "Lorenzo65@yahoo.com",
+        "timestamp": 1663058839929,
+        "nombre": "María Elena",
+        "apellido": "Carrera",
+        "email": "Lorenzo65@yahoo.com",
+        "edad": 14,
+        "password": "patata",
+        "alias": "Auto",
+        "avatar": "https://cdn.fakercloud.com/avatars/bennyjien_128.jpg"
+    }
+]
