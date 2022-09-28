@@ -1,7 +1,7 @@
 const form = document.getElementById('productForm');
 
 form.addEventListener('submit', (e) => {
-    /* e.preventDefault(); */
+    e.preventDefault();
     let formData = new FormData(productForm);
     let obj = {};
     formData.forEach((value, key) => obj[key] = value);
@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
             "Content-type": "application/json"
         }
     }).then(res => res.json())
-        .then(json => console.log(json))
+        .then(data => console.log(data))
         .catch(err => console.log(err));
 });
 
@@ -22,6 +22,6 @@ logout.addEventListener('click', (e) => {
     e.preventDefault();
     fetch('api/users/logout')
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(data => console.log(data))
         .catch(error => console.log(error));
 });
