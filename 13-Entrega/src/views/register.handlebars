@@ -1,45 +1,49 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-6">
             <h1 style="text-align: center; font-size: 100px;">🤘</h1>
-            <h1>Formulario de registro</h1>
-            {{#if error}}
-                {{error}} 
-            {{/if}}
+            <h1>Registro por formulario</h1>
+            <div class="message-error">{{#if error}}{{error}}{{/if}}</div>
             <form id="registerForm">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre:</label>
-                            <input id="nombre" name="nombre" type="text" class="form-control"  placeholder="Escribe tu nombre" >
-                        </div>
-                        <div class="mb-3" style="opacity: 0.3;">
-                            <label for="apellido" class="form-label">Apellidos <sup style="color:red">(disabled)</sup>:</label>
-                            <input id="apellido" name="apellido" type="text" class="form-control"  placeholder="Escribe tus apellidos"  aria-label="Disabled input" disabled="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input id="email" name="email" type="email" class="form-control"  placeholder="email@email.com" >
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password:</label>
-                            <input id="password" name="password" type="password" class="form-control"  placeholder="Por defecto será PATATA si se deja vacio" value="">
-                        </div>
-                        <div class="mb-3"  style="opacity: 0.3;">
-                            <label for="edad" class="form-label">Edad <sup style="color:red">(disabled)</sup>:</label>
-                            <input id="edad" name="edad" type="number" class="form-control"  placeholder="00" aria-label="Disabled input" disabled="">
-                        </div>
-                        <div class="mb-3" style="opacity: 0.3;">
-                            <label for="alias" class="form-label">Alias <sup style="color:red">(disabled)</sup>:</label>
-                            <input id="alias" name="alias" type="text" class="form-control"  placeholder="Escribe tu nombre de usuario" aria-label="Disabled input" disabled="">
-                        </div>
-                        <div class="mb-3" style="opacity: 0.3;">
-                            <label for="formFile" class="form-label">Avatar <sup style="color:red">(disabled)</sup>:</label>
-                            <input class="form-control" type="file" id="formFile" aria-label="Disabled input" disabled="">
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Acceder</button>
-                        </div>
-                    </form>
-        </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input id="nombre" name="nombre" type="text" class="form-control"  placeholder="Escribe tu nombre" >
+                </div>
+                <div class="mb-3" style="opacity: 0.3;">
+                    <label for="apellido" class="form-label">Apellidos <sup style="color:red">(disabled)</sup>:</label>
+                    <input id="apellido" name="apellido" type="text" class="form-control"  placeholder="Escribe tus apellidos"  aria-label="Disabled input" disabled="">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input id="email" name="email" type="email" class="form-control"  placeholder="email@email.com" >
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input id="password" name="password" type="password" class="form-control"  placeholder="Por defecto será PATATA si se deja vacio" value="">
+                </div>
+                <div class="mb-3"  style="opacity: 0.3;">
+                    <label for="edad" class="form-label">Edad <sup style="color:red">(disabled)</sup>:</label>
+                    <input id="edad" name="edad" type="number" class="form-control"  placeholder="00" aria-label="Disabled input" disabled="">
+                </div>
+                <div class="mb-3" style="opacity: 0.3;">
+                    <label for="alias" class="form-label">Alias <sup style="color:red">(disabled)</sup>:</label>
+                    <input id="alias" name="alias" type="text" class="form-control"  placeholder="Escribe tu nombre de usuario" aria-label="Disabled input" disabled="">
+                </div>
+                <div class="mb-3" style="opacity: 0.3;">
+                    <label for="formFile" class="form-label">Avatar <sup style="color:red">(disabled)</sup>:</label>
+                    <input class="form-control" type="file" id="formFile" aria-label="Disabled input" disabled="">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Acceder</button>
+                </div>
+                <div class="mb-3">
+                    <a href="/login" class="btn btn-warning">login</a>
+                    <a href="/data" class="btn btn-warning">Data</a>
+                    {{aviso}}
+                </div>
+
+            </form>
+        </div>     
     </div>
 </div>
 
