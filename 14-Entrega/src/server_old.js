@@ -1,6 +1,4 @@
 // importaciones ----------------------------
-import yargs from './config/yargs.config.js';
-import config from './config/config.js';
 import express from 'express';//express server
 import session from 'express-session';//sessions user
 
@@ -22,18 +20,7 @@ import usersRouter from './routers/users.router.js';
 
 //Server ------------------------------------
 const app = express();
-//const PORT = 8080;
-//Variables entorno ---------------------------
-const PORT = config.app.PORT||3000;
-//const PORT = 8080;
-const SECRET = config.app.SECRET;
-const MONGO_URI = config.mongo.MONGO_URI;
-const MONGO_USER = config.mongo.MONGO_USER;
-const MONGO_PASS = config.mongo.MONGO_PASS;
-const MONGO_DB = config.mongo.MONGO_DB;
-//const MONGO_URL = config.mongo.MONGO_URL;
-//---------------------------
-
+const PORT = 8080;
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
@@ -44,12 +31,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //session user
 app.use(session({
-    secret: SECRET,
-    /* secret: "Sessi0n", */
+    secret: "Sessi0n",
     store: MongoStore.create({
-        //mongoUrl: MONGO_URI,
-        //mongoUrl: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}.wxdsjub.mongodb.net/${MONGO_DB}?retryWrites=true&w=majority`,
-        mongoUrl: "mongodb+srv://toximosi:Quier0Entrar@cluster0.wxdsjub.mongodb.net/MongoBD?retryWrites=true&w=majority",
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.wxdsjub.mongodb.net/MongoBD?retryWrites=true&w=majority`,
         mongoOptions: {
             useNewUrlParser: true,
             useUnifiedTopology: true
