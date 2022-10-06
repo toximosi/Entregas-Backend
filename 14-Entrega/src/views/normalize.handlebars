@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        {{#if Arr}}
+            <div class="col-6">
+                <h1> mensajes JSON</h1>
+                   <div>
+                    {{#each Arr}}
+                    [
+                        {
+                            <ul style="list-style: none ;">
+                                <li><b>id:</b> {{this.id}}</li>
+                                <li><b>timestamp:</b> {{this.timestamp}}</li>
+                                <li><b>author:</b> {
+                                    <ul style="list-style: none ;">
+                                        <li><b>id:</b> {{this.author.id}}</li>
+                                        <li><b>nombre:</b> {{this.author.nombre}}</li>
+                                    </ul>
+                                }
+                                </li>
+                                <li><b>comments:</b>{
+                                    <ul style="list-style: none ;">
+                                        {{#each this.comments}}
+                                        <li><b>id:</b> {{this.id}}</li>
+                                        <li><b>author:</b> {
+                                            <ul style="list-style: none ;">
+                                                <li><b>id:</b> {{this.author.id}}</li>
+                                                <li><b>nombre:</b> {{this.author.nombre}}</li>
+                                            </ul>
+                                        }
+                                        </li>
+                                        <li><b>content:</b> {{this.content}}</li>
+                                        {{/each}}
+                                    </ul>
+                                }
+                                </li>
+                            </ul>
+                        }
+                    ]
+                    {{/each}}
+                   </div>
+            </div>
+        {{else}}
+                <h1>no hay mensajes</h1>    
+        {{/if}}
+        {{#if Norm}}
+            <div class="col-6">
+                <h1>NORMALIZE</h1>
+                <div>
+                    {{#each Norm}}
+                        <ul style="list-style: none ;">
+                            <li><b>entities:</b> {
+                                <ul style="list-style: none ;">
+                                    <li>
+                                        <b>authors:</b> {
+                                            <ul style="list-style: none ;">
+                                                {{#each this.authors}}
+                                                    <li>{{@key}}: {
+                                                        <ul style="list-style: none ;">
+                                                            <li><b>id:</b> {{this.id}}</li>
+                                                            <li><b>nombre:</b> {{this.nombre}}</li>
+                                                        </ul>
+                                                        }
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+                                        }
+                                    </li>
+                                    <li>
+                                        <b>comments:</b> {
+                                            <ul style="list-style: none ;">
+                                                {{#each this.comments}}
+                                                <li>{{@key}}: {
+                                                    <ul style="list-style: none ;">
+                                                        <li><b>id:</b> {{this.id}}</li>
+                                                        <li><b>author:</b> {{this.author}}</li>
+                                                        <li><b>content:</b> {{this.content}}</li>
+                                                    </ul>
+                                                    }
+                                                </li>
+                                                {{/each}}
+                                            </ul>
+                                        }
+                                    </li>
+                                    <li><b>message:</b> {
+                                        {{#each this.message}}
+                                            <ul style="list-style: none ;">
+                                                <li>{{@key}}: {
+                                                <ul style="list-style: none ;">
+                                                    <li><b>id:</b> {{this.id}}</li>
+                                                    <li><b>tinestamp:</b> {{this.timestamp}}</li>
+                                                    <li><b>author:</b> {{this.author}}</li>
+                                                    <li><b>comments:</b>{
+                                                        <ul style="list-style: none ;">
+                                                            {{#each this.comments}}
+                                                                    <li>{{this}}</li>
+                                                            {{/each}}
+                                                        </ul>
+                                                        }
+                                                    </li>
+                                                </ul>
+                                                }
+                                            </li>
+                                            </ul>
+                                        {{/each}}
+                                        }
+                                    </li>
+                                    
+                                </ul>
+                            }
+                            </li>
+                            <li><b>result:</b> {{this.result}}</li>
+                        </ul>
+                    {{/each}}
+                </div>
+            </div>
+        {{else}}
+            <h1>Fallo en la Normalización</h1> 
+        {{/if}}
+    </div>
+</div>
