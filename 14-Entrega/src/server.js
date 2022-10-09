@@ -43,14 +43,12 @@ server.on("error", error => console.log(`Error en el servidor ${error}`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //session user
-console.log('MONGO_URI');
-console.log(MONGO_URI);
-/* app.use(session({
+/* console.log('MONGO_URI');
+console.log(MONGO_URI); */
+app.use(session({
     secret: SECRET,
     store: MongoStore.create({
         mongoUrl: MONGO_URI,
-        mongoUrl: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}.wxdsjub.mongodb.net/${MONGO_DB}?retryWrites=true&w=majority`,
-        mongoUrl: "mongodb+srv://toximosi:Quier0Entrar@cluster0.wxdsjub.mongodb.net/MongoBD?retryWrites=true&w=majority",
         mongoOptions: {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -59,7 +57,7 @@ console.log(MONGO_URI);
     }),
     resave: false,
     saveUninitialized: false,
-})); */
+}));
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
