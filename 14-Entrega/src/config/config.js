@@ -2,10 +2,10 @@ import dotenv from 'dotenv';
 
 const mode = process.argv.slice(2)[0];
 
-/* dotenv.config({
+dotenv.config({
     path: mode === "PROD" ? './.env.production' : './.env.development'
 });
- */
+
 export default {
     app: {
         MODE: process.env.MODE ||   'DEV',
