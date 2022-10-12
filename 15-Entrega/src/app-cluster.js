@@ -11,7 +11,7 @@ import viewsRouter from './routers/views.router.js';
 
 //Levantar servidor
 const CPUs = os.cpus().length;//nos trae información de cada uno de los nucleos del sistema operativo
-//const CPUs = os.cpus().length / 2; //para no usar todos los hijos y no saturar la memoria del servidor
+//ejem limitar uso de hijos: const CPUs = os.cpus().length / 2; //para no usar todos los hijos y no saturar la memoria del servidor
 //console.log('  -> Número de núcleos en el procesador: ' + CPUs);
 const PORT = 8080;
 const app = express();
