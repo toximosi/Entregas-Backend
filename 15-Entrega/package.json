@@ -1,0 +1,19 @@
+{
+  "name": "15-entrega",
+  "version": "0.0.1",
+  "description": "entrega 15 de backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivna villarrubia",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node": "^18.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
