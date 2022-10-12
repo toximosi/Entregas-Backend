@@ -49,6 +49,41 @@ index.html
 ````
 
 ```javascript
+worker_processes 1;
 
+events {}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    upstream node_app {
+        server 127.0.0.1:8081;
+        server 127.0.0.1:8082;
+        server 127.0.0.1:8083 weight=3;
+    }
+
+    server {
+        listen       80;
+        server_name  nginx_node_server;
+
+        root ./node_app/src/public;
+
+
+        location / {
+            try_files $uri $uri/ @express;
+        }
+        
+        location @express {
+            proxy_pass http://node_app;
+        }
+
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
 ```
-[nginx.config]( nginx.conf)	
+[nginx.config]( https://github.com/toximosi/Entregas-Backend/blob/master/15-Entrega/assets/nginx.conf)	
