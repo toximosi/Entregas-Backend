@@ -13,8 +13,8 @@ server.on("error", error => console.log(`Error en el servidor ${error}`));
 const logger = winston.createLogger({
     transports: [
         new winston.transports.Console({ level: 'info' }),
-        new winston.transports.File({level: 'warning', filename: './logger/warn.log'}),
-        new winston.transports.File({ level: 'error}', filename: './logger/error.log' }),
+        new winston.transports.File({level: 'warning', filename: './warn.winston.log'}),
+        new winston.transports.File({ level: 'error}', filename: './error.winston. log' }),
     ]
 });
 

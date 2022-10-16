@@ -5,11 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "fork": "node ./src/app.js 8080 FORK",
-    "forkA": "artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_fork.txt",
-    "cluster": "node ./src/app.js 8080 CLUSTER",
-    "clusterA": "artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_cluster.txt",
-    "start": "node ./src/app.js",
+    "winston": "node ./src/app.winston.js",
+    "pino": "node ./src/app.pino.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
