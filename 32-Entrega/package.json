@@ -5,16 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "fork": "node ./src/app.js 8080 FORK",
+    "fork": "node ./src/app.artiller.js 8081 FORK",
     "forkA": "artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_fork.txt",
-    "cluster": "node ./src/app.js 8080 CLUSTER",
+    "cluster": "node ./src/app.artiller.js 8082 CLUSTER",
     "clusterA": "artillery quick --count 50 -n 40 http://localhost:8081?max=100000 > result_cluster.txt",
+    "startArtiller": "node ./src/app.artiller.js",
     "start": "node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autocannon": "^7.10.0",
+    "crypto": "^1.0.1",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "node": "^18.11.0",

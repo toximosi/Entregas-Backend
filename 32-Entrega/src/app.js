@@ -1,60 +1,40 @@
 import express from 'express';
-import cluster from 'cluster';
-import { cpus } from 'os';
+import crypto, { randomFillSync } from 'crypto';
+import infoRouter from './routes/info.router.js';
+
 
 //Levantar servidor
-//const PORT = process.env.PORT || 8080;
-const PORT = parseInt(process.argv[2]) || 8080
-const modoCluster = process.argv[3] == 'CLUSTER';
-/* const app = express();
+const PORT = process.env.PORT || 8080;
+const app = express();
 
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
-server.on("error", error => console.log(`Error en el servidor ${error}`));  */
-//ROUTERS ------------------------------------------------------------------------- INICIO
-if (modoCluster && cluster.isPrimary) {
-   const numCPUs = cpus().length
+server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
-   console.log(`Número de procesadores: ${numCPUs}`)
-   console.log(`PID MASTER ${process.pid}`)
 
-   for (let i = 0; i < numCPUs; i++) {
-       cluster.fork()
-   }
 
-   cluster.on('exit', worker => {
-       console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
-       cluster.fork()
-   })
-} else {
-   const app = express()
+//ROUTES
+app.use('/info', infoRouter);
 
-   app.get('/', (req, res) => {
-       const primes = []
-       const max = Number(req.query.max) || 1000
-       for (let i = 1; i <= max; i++) {
-           if (isPrime(i)) primes.push(i)
-       }
-       res.json(primes);
-   })
+let cant = 10000;
+let cantfin = 9;
 
-   app.listen(PORT, () => {
-       console.log(`Servidor express escuchando en el puerto ${PORT}`);
-       console.log(`PID WORKER ${process.pid}`);
-   })
-};
+app.get('/random-debug', (req, res) => {
+    let randoms = [];
+    for (let i = 0; i < cant; i++) {
+        let num = Math.floor(Math.random() * cantfin);
+        console.log(num)
+        randoms.push(num);
+    };
+    console.log(randoms);
+    res.send({ randoms });
+});
 
-function isPrime(num) {
-   if ([2, 3].includes(num)) return true;
-   else if ([2, 3].some(n => num % n == 0)) return false;
-   else {
-       let i = 5, w = 2;
-       while ((i ** 2) <= num) {
-           if (num % i == 0) return false
-           i += w
-           w = 6 - w
-       }
-   }
-   return true
-};
+app.get('/random-nodebug', (req, res) => { 
+    let randoms = [];
+    for (let i = 0; i < cant;i++ ) { 
+        randoms.push(Math.floor(Math.random() * cantfin));
+    };
+    res.send({ randoms });
+})
