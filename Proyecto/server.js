@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: "Sessi0n",
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://coderhouse:Quier0Entrar@cluster0.wxdsjub.mongodb.net/MongoBD?retryWrites=true&w=majority`,
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.qnf87ai.mongodb.net/MongoDB?retryWrites=true&w=majority`,
         mongoOptions: {
             useNewUrlParser: true,
             useUnifiedTopology: true

@@ -69,7 +69,6 @@ class Managers {
             return data;
         } catch (err) { 
             console.log(`🚩 Error in read id fuction -> getById.\n 
-                         Can not read file: ${file},\n
                         💣  Error: ${err}`);
         }
         console.log('🙊 uho! there is a problem');

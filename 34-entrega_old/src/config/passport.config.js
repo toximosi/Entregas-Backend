@@ -1,12 +1,17 @@
 import passport from "passport";
 import local from 'passport-local';
+
+//& DB ----------------------------------------------
 import userModel from '../models/users.model.js';
+
+import { createHash, isValidPassword } from "../utils.js";
+import GithubStrategy from 'passport-github2';
+
+//function
 import FunctionsService from '../services/carts.service.js';
 const fun = new FunctionsService();
 import cartsService from '../services/carts.service.js';
 const funCart = new cartsService();
-import { createHash, isValidPassword } from "../utils.js";
-import GithubStrategy from 'passport-github2';
 
 const LocalStrategy = local.Strategy; //local = username + password
 
@@ -14,16 +19,13 @@ const initializePassport = () => {
 
     passport.use('register', new LocalStrategy({ passReqToCallback: true, usernameField: 'email' }, async (req, email, password, done) => {
         try {
-            const { nombre, email, password } = req.body;
+            const { nombre } = req.body;
             if (!nombre || !email || !password) return done(null, false);
             let exists = await userModel.findOne({ email: email });
             if (exists) return done(null, false);
-            
-            await funCart.createCartEmpty(email);
             let result = await userModel.create({
                 nombre,
                 email,
-                cartid : email,
                 password: createHash(password)
             })
             //SI TODO SALIÓ BIEN

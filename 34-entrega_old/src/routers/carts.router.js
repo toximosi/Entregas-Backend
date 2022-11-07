@@ -48,7 +48,8 @@ router.post('/create', async (req, res) => {
         }
         let obj = {
             id,
-            timestamp: { type: Date, default: Date.now() },
+            /* timestamp: { type: Date, default: Date.now() }, */
+            timestamp: Date.now(),
             /* userid, */
             products
         }
@@ -64,12 +65,12 @@ router.post('/create', async (req, res) => {
 router.post('/addproducts', async (req, res) => { 
     
     try { 
-        const {id, products} = await req.body;
-        if (!id || products ) { 
+        const { id, products, } = await req.body;
+        if (!id || !products ) { 
              return res.status(400).send({ status: 'error', error: 'incomplete values', values: 'products, id'});
         }
     
-        const data = await fun.addObj(id, products);
+        const data = await funCart.addProduct(id, products);
         res.send(`👍 Add products ok.`);
 
     } catch (err) { 

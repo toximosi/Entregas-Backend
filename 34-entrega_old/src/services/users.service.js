@@ -3,8 +3,8 @@ import faker from "faker";
 export default class userService { 
     constructor() { }
 
-    existUser = async(model, email) => { 
-        let exist = await model.findOne({ email: email });
+    existUser = async(model, id) => { 
+        let exist = await model.find({ "id": id });
         if (exist) { 
             console.log(`👍 find the element ${email} is ok`);
             return exist;
@@ -13,7 +13,6 @@ export default class userService {
             console.log(`🫣  don't find user ${email}`);
             return exist;
         }
-
     }
 
     createUser = async (model, obj) => {
