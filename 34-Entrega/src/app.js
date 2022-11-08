@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 
 import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
@@ -13,6 +14,10 @@ const app = express();
 
 const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`);
 
+//format od files json
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //Static files
 app.use(express.static(__dirname + '/public'));
 //Templates wiews
@@ -25,17 +30,14 @@ app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+app.use(cookieParser());
+
+//Router
+app.use('/', viwesRouter);
+app.use('/api/sessions', sesionsRouter);
 
 //Server
 const server = app.listen(8080, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
-
-//format od files json
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-//Router
-app.use('/', viwesRouter);
-app.use('/api/sessions', sesionsRouter);

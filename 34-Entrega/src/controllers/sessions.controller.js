@@ -29,6 +29,8 @@ const register = async (req, res) => {
 const login = async(req, res) => {
     const { email, password } = await req.body;
     if (!email || !password) return res.status(400).send({ status: 'error', error: '💀 incomplet values' });
+    console.log(password);
+    console.log(config.session.ADMIN_PWD)
     if( email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) { 
         const sessionAdminUser = {
             name: 'Admin',
@@ -41,6 +43,7 @@ const login = async(req, res) => {
     const user = await usersService.getUserByEmail(email);
     if (!user) return res.status(400).send({ status: 'error', error: 'User not exist' });
     const passwordValidation = await isValidPassword(user, password);
+    
     if (!passwordValidation) return res.status(400).send({ status: 'error', error: '💀 passwod incorrect' });
     const tokenUser = {
         email: user.email,
@@ -49,8 +52,8 @@ const login = async(req, res) => {
         id: user.id,
         cart: user.cart,
     };
-    const token = jwt.sign(tokenUser, config.jwt.SECRET, { expiresIn: '1h' });
-    res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 }).send({ status: 'success', messages: '👍 Loguin ok' });
+    const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
+    res.cookie(config.jwt.COOKIE,token,{maxAge:3600000}).send({ status: 'success', messages: '👍 Loguin ok' });
 };
 
 export default {

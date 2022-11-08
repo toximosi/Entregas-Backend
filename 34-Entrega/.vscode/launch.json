@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/src/app.js",
+            "program": "${workspaceFolder}\\src\\app.js",
             "env":{
                 "MONGO_USER": "toximosi",
                 "MONGO_PWD": "Quier0Entrar",
@@ -19,9 +19,9 @@
                 "MONGO_HOSTNAME": "cluster0.dkrjcaf.mongodb.net",
                 "MONGO_CONEXION":"mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority",
                 "ADMIN_EMAIL": "toximosi@toximosi.es",
-                "ADMIN_PWD": "adminPass",
+                "ADMIN_PWD": "1234",
                 "JWT_SECRET": "SecretToken",
-                "JWT_COOKIE": "CookieToken",
+                "JWT_COOKIE": "CookieLogin",
             }
         }
     ]
