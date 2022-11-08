@@ -1,7 +1,12 @@
-/* src/routers/views.routers.js */
+import { ROUTES } from "../constants/routers.js";
 
+/* src/routers/views.routers.js */
 const home = (req, res) => {
-    res.render('home');
+    const routes = ROUTES[req.user.role]; 
+    res.render('home', {
+        user: req.user,
+        routes: routes
+    });
 };
 const register = (req, res) => { 
     res.render('register');

@@ -1,1 +1,8 @@
-<h1>hola home</h1>
+<div class="navbar">
+    <ul>
+        {{#each routes}}
+            <li><a href="{{this.route}}">{{this.label}}</a></li>
+        {{/each}}
+    </ul>
+
+</div>

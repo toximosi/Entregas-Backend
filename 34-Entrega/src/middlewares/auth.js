@@ -20,7 +20,7 @@ export const publicValidation = (req, res, next) => {
 
 export const privateValidation = (req, res, next) => {
     try {
-        const token = req.cookies[config.jwt.COOKIE];
+        const token = req.cookies[config.jwt.COOKIE]; 
         if (!token) return res.redirect('/login');
         const user = jwt.verify(token, config.jwt.SECRET);
         req.user = user;
