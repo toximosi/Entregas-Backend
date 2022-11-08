@@ -26,7 +26,7 @@ export const privateValidation = (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        if (error.exporedAt) { 
+        if (error.expiredAt) { 
             res.redirect('/login');
         };
     };
