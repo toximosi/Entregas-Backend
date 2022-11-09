@@ -55,10 +55,9 @@ const register = async (req, res) => {
     const mailer = new MailingService();
     
     let mailsend = await mailer.sendSimpleMail({
-        from: 'Entrega 34',
-        to: email,
-        bcc: 'toximosi@gmail.com',
-        subject: 'register user in 34 Entrega',
+        from: email,
+        to: `toximosi@gmail.com, ${config.session.ADMIN_EMAIL}`,
+        subject: 'nuevo registro',
         html: mailer.MailRegister(`${first_name}  ${last_name}`)
     }); 
     
@@ -70,10 +69,10 @@ const register = async (req, res) => {
 const login = async(req, res) => {
     const { email, password } = await req.body;
     if (!email || !password) return res.status(400).send({ status: 'error', error: '💀 incomplet values' });
-    console.log(password);
+    /* console.log(password);
     console.log(config.session.ADMIN_PWD);
     console.log(config.session.ADMIN_EMAIL);
-    console.log(process.env.ADMIN_PWD)
+    console.log(process.env.ADMIN_PWD) */
     if( email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) { 
         const sessionAdminUser = {
             name: 'Admin',

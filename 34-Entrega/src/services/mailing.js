@@ -12,11 +12,10 @@ export default class MailingService {
         })
     }
 
-    sendSimpleMail = async({from,to,bcc,subject,html,attachments=[]})=>{
+    sendSimpleMail = async({from,to,subject,html,attachments=[]})=>{
         let result = await this.client.sendMail({
             from,
             to,
-            bcc,
             subject,
             html,
             attachments
@@ -27,9 +26,7 @@ export default class MailingService {
     //templates mail------------------------------------------
 
     MailRegister = (name = "",) => { 
-        const mail = `<div>Hola ${name},<br>
-        Has sido dadao de alta en al Entrega 34
-        </div>` ;
+        const mail = `<div>Nueva alta de: ${name}</div>` ;
         
         return mail;
     }

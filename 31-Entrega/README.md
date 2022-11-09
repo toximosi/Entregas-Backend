@@ -1,7 +1,7 @@
 # ENTREGA 31: _Logs, debug, profiling_
 
 ### Para ejecutar mediante la opción winston:
-Escribir ten terminal:
+Escribir en terminal:
 
 ```
 npm run winston
