@@ -23,7 +23,7 @@
                 "JWT_SECRET": "SecretToken",
                 "JWT_KEY": "SecretToken",
                 "JWT_COOKIE": "CookieLogin",
-                "PORT": "8080"
+                "PORT": "8081"
             }
         }
     ]

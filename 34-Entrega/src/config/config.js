@@ -1,6 +1,7 @@
 export default {
     app:{
-        DOMAIN:process.env.DOMAIN
+        DOMAIN: process.env.DOMAIN,
+        PORT: process.env.PORT
     },
     session:{
         ADMIN_EMAIL:process.env.ADMIN_EMAIL,

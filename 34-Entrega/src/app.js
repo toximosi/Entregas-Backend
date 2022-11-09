@@ -2,6 +2,8 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config();
 
 import express from 'express';
+import pino from 'pino';
+
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 
@@ -41,7 +43,7 @@ app.use('/', viwesRouter);
 app.use('/api/sessions', sesionsRouter);
 app.use('/api/product', productRouter);
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.app.PORT || 8080;
 //Server
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
@@ -49,3 +51,22 @@ const server = app.listen(PORT, ()=>{
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
 
+//LOG------------------------------------------------------------------------- FIN
+const streams = [
+    { level: 'info', stream: process.stdout },//by Console
+    { level: 'warn', stream: pino.destination('./src/logs/warn.log') },
+    { level: 'error', stream: pino.destination('./src/logs/error.log') },
+    
+];
+const logger = pino({}, pino.multistream(streams));
+
+//ROUTERS ------------------------------------------------------------------------- INICIO
+app.get('/', (req, res) => {
+    logger.fatal('fatal');
+    logger.error('error');
+    logger.warn('warn');
+    logger.info('info');
+    logger.debug('debug');
+    logger.fatal('fatal');
+    res.send('logging');
+});

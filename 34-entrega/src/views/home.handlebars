@@ -1,8 +1,21 @@
-<div class="navbar">
-    <ul>
-        {{#each routes}}
-            <li><a href="{{this.route}}">{{this.label}}</a></li>
-        {{/each}}
-    </ul>
-
+<!-- menú navegación -------------------- INICIO -->
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-6">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {{#each routes}}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{this.route}}">{{this.label}}</a>
+                        </li>
+                        {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
 </div>
+<!-- menú navegación -------------------- FIN -->
