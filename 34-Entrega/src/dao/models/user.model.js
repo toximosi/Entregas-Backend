@@ -8,6 +8,7 @@ const schema = new mongoose.Schema({
     email:String,
     password:String,
     age:Number,
+    image:String,
     role: {
         type:String,
         enum:['user','admin'],

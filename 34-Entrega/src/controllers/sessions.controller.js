@@ -3,23 +3,49 @@ import { createHash, isValidPassword } from '../utils.js';
 
 import jwt from 'jsonwebtoken';
 import config from "../config/config.js";
-console.log(config)
+
+/* const schema = new mongoose.Schema({
+    first_name:String,
+    last_name:String,
+    email:String,
+    password:String,
+    age:Number,
+    image:String,
+    role: {
+        type:String,
+        enum:['user','admin'],
+        default:'user'
+    },
+    phone:String,
+    cart:{
+        type:mongoose.SchemaTypes.ObjectId,
+        ref:'Carts'
+    }
+}) */
+
 const register = async (req, res) => {
-    /* console.log(await req.body); */
-    let {first_name,last_name,email,phone,password,age} = await req.body;
+    console.log('Sesioncontroller register body');
+    console.log(req.body);
+    let {first_name,last_name,email,phone,image,password,age} = await req.body;
     if(!first_name||!last_name||!email||!phone||!password) return res.status(400).send({status:'error',error:'💀 incomplet values'});
     let exists = await usersService.getUserByEmail(email);
     if(exists) return res.status(400).send({status:'error', error:'the user exist yet'});
     //Anexar el carrito
     const cart = await cartsService.createCart();
     const hashedPassword = await createHash(password);
+    if (!image) { 
+        image = `${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/avatar.png`;
+    } else {
+        image=`${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/${req.file.filename}`;
+    }
     const user ={
         first_name,
         last_name,
         email,
         phone,
         age,
-        password:hashedPassword,
+        password: hashedPassword,
+        image,
         cart:cart._id
     }
     const result = await  usersService.saveUser(user);

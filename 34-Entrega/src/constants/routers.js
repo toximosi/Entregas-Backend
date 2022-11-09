@@ -11,7 +11,7 @@ export const ROUTES = {
     ],
     admin: [
         {
-            route: '/productscreator',
+            route: '/product',
             label: 'Crear producto'
         }, 
         {

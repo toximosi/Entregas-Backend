@@ -12,13 +12,13 @@ import { productsService } from '../services/index.js';
 const createProduct = async (req, res) => { 
     if (!req.file) return res.status(500).send({ status: 'error', error: 'Error to uploader file' });
     const { name, code, description,price, quantity } = req.body;
-    if (!name || !code || !description|| !price || !quantity) return res.status(400).send({status:'error', error: 'Incomplete error'})
+    if (!name || !code || !description || !price || !quantity) return res.status(400).send({ status: 'error', error: 'Incomplete error' })
     const product = {
         name,
         code,
         description,
         quantity,
-        image: `${req.protocol}://${req.host}:${process.env.PORT}/images/${req.file.filename}`
+        image: `${req.protocol}://${req.host}:${process.env.PORT}/images/product/${req.file.filename}`
     }
     let result = await productsService.createProduct(product);
     res.send({ status: 'success', playload: result });
