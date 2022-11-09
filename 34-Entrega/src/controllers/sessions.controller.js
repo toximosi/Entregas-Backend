@@ -3,6 +3,7 @@ import { createHash, isValidPassword } from '../utils.js';
 
 import jwt from 'jsonwebtoken';
 import config from "../config/config.js";
+import MailingService from '../services/mailing.js';
 
 /* const schema = new mongoose.Schema({
     first_name:String,
@@ -48,7 +49,19 @@ const register = async (req, res) => {
         image,
         cart:cart._id
     }
-    const result = await  usersService.saveUser(user);
+     const result = await usersService.saveUser(user);
+    
+    
+    /* const mailer = new MailingService();
+    let mailsend = await mailer.sendSimpleMail({
+        from: 'Entrega 34',
+        to: email,
+        subject: 'register user in 34 Entrega',
+        html: mailer.MailRegister(`${first_name}  ${last_name}`)
+    }); 
+    console.log(mailsend);  */
+
+
     res.send({status:'success',payload:result})
 }
 
