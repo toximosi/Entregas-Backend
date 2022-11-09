@@ -32,10 +32,10 @@ export const privateValidation = (req, res, next) => {
     };
 };
 
-export const executePolices = (policies) => {
+/* export const executePolices = (policies) => {
     return (req, res, next) => {
         if (policies[0].toUppercase() === 'PUBLIC') return next();
-        if (policies.includes(req.user.role.toUppercase())) return next();
+        if(policies.includes(req.user.role.toString().toUpperCase())) return next();
         res.redirect('/');
     };
-};
+}; */

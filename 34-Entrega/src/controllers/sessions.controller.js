@@ -3,7 +3,7 @@ import { createHash, isValidPassword } from '../utils.js';
 
 import jwt from 'jsonwebtoken';
 import config from "../config/config.js";
-
+console.log(config)
 const register = async (req, res) => {
     /* console.log(await req.body); */
     let {first_name,last_name,email,phone,password,age} = await req.body;
@@ -30,7 +30,9 @@ const login = async(req, res) => {
     const { email, password } = await req.body;
     if (!email || !password) return res.status(400).send({ status: 'error', error: '💀 incomplet values' });
     console.log(password);
-    console.log(config.session.ADMIN_PWD)
+    console.log(config.session.ADMIN_PWD);
+    console.log(config.session.ADMIN_EMAIL);
+    console.log(process.env.ADMIN_PWD)
     if( email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) { 
         const sessionAdminUser = {
             name: 'Admin',

@@ -21,7 +21,9 @@
                 "ADMIN_EMAIL": "toximosi@toximosi.es",
                 "ADMIN_PWD": "1234",
                 "JWT_SECRET": "SecretToken",
+                "JWT_KEY": "SecretToken",
                 "JWT_COOKIE": "CookieLogin",
+                "PORT": "8080"
             }
         }
     ]

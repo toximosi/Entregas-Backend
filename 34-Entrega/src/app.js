@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
@@ -7,6 +10,7 @@ import __dirname from './utils.js';
 
 import viwesRouter from './routers/views.routers.js';
 import sesionsRouter from './routers/sessions.router.js';
+import productRouter from './routers/product.router.js';
 
 import config from './config/config.js';
 
@@ -35,9 +39,11 @@ app.use(cookieParser());
 //Router
 app.use('/', viwesRouter);
 app.use('/api/sessions', sesionsRouter);
+app.use('/api/product', productRouter);
 
+const PORT = process.env.PORT || 8080;
 //Server
-const server = app.listen(8080, ()=>{
+const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 

@@ -12,7 +12,7 @@ export default {
         DB:process.env.MONGO_DATABASE
     },
     jwt:{
-        SECRET:process.env.JWT_SECRET,
+        SECRET:process.env.JWT_KEY,
         COOKIE:process.env.JWT_COOKIE
     }
 }
