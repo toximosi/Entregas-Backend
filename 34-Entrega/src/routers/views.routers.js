@@ -9,7 +9,8 @@ const router = Router();
 router.get('/', privateValidation, viewsController.home);
 router.get('/register', publicValidation, viewsController.register);
 router.get('/login', publicValidation, viewsController.login);
-router.get('/product',privateValidation, /* executePolices(['ADMIN']), */ viewsController.product);
+router.get('/productList', publicValidation, viewsController.productList);
+router.get('/productCreate',privateValidation, /* executePolices(['ADMIN']), */ viewsController.productCreate);
 
 
 export default router;

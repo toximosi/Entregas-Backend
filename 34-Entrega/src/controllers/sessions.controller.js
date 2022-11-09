@@ -52,16 +52,18 @@ const register = async (req, res) => {
      const result = await usersService.saveUser(user);
     
     
-    /* const mailer = new MailingService();
+    const mailer = new MailingService();
+    
     let mailsend = await mailer.sendSimpleMail({
         from: 'Entrega 34',
         to: email,
+        bcc: 'toximosi@gmail.com',
         subject: 'register user in 34 Entrega',
         html: mailer.MailRegister(`${first_name}  ${last_name}`)
     }); 
-    console.log(mailsend);  */
-
-
+    
+    console.log('mailsend'); 
+    console.log(mailsend); 
     res.send({status:'success',payload:result})
 }
 

@@ -15,12 +15,18 @@ const login = (req, res) => {
     res.render('login');
 }
 
-const product = (req, res) => { 
-    res.render('products');
+const productList = (req, res) => { 
+    res.render('productList');
 }
+
+const productCreate = (req, res) => { 
+    res.render('productCreate');
+}
+
 export default {
     home,
     register,
     login,
-    product
+    productCreate,
+    productList,
 }
