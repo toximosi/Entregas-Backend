@@ -27,14 +27,15 @@ import MailingService from '../services/mailing.js';
 const register = async (req, res) => {
     console.log('--> Sesioncontroller register body');
     console.log(req.body);
-    let {first_name,last_name,email,phone,image,password,age} = await req.body;
+    let {first_name,last_name,email,phone,password,age} = await req.body;
     if(!first_name||!last_name||!email||!phone||!password) return res.status(400).send({status:'error',error:'💀 incomplet values'});
     let exists = await usersService.getUserByEmail(email);
     if(exists) return res.status(400).send({status:'error', error:'the user exist yet'});
     //Anexar el carrito
     const cart = await cartsService.createCart();
     const hashedPassword = await createHash(password);
-    if (!image) { 
+    let image = "";
+    if (!req.file.filename) { 
         image = `${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/avatar.png`;
     } else {
         image=`${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/${req.file.filename}`;
