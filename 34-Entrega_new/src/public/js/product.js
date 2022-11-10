@@ -3,10 +3,10 @@ const form = document.getElementById('productForm');
 form.addEventListener('submit',evt=>{
     evt.preventDefault();
     let data = new FormData(form);
-    
+
     const obj = {};
     data.forEach((value, key) => obj[key] = value);
-    console.log('-- productForm');
+    console.log('--> productForm');
 
     console.log(JSON.stringify(obj));
 

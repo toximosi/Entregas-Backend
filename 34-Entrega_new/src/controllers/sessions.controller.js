@@ -61,7 +61,7 @@ const register = async (req, res) => {
         html: mailer.MailRegister(`${first_name}  ${last_name}`)
     }); 
     
-    console.log('mailsend'); 
+    console.log('--> mailsend'); 
     console.log(mailsend); 
     res.send({status:'success',payload:result})
 }

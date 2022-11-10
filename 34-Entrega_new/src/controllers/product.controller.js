@@ -14,10 +14,10 @@ const createProduct = async (req, res) => {
     console.log('--> createProduct');
     console.log(req.body);
     if (!req.file) return res.status(500).send({ status: 'error', error: 'Error to uploader file' });
-    const { product_name, code, description,  price, quantity } = req.body;
+    const { product_name, code, description,  price, quantity, image } = req.body;
     if (!product_name || !code || !description || !price || !quantity) return res.status(400).send({ status: 'error', error: 'Incomplete error' })
     const product = {
-        name,
+        product_name,
         code,
         description,
         quantity,
