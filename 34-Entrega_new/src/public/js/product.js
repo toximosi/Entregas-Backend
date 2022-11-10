@@ -3,8 +3,13 @@ const form = document.getElementById('productForm');
 form.addEventListener('submit',evt=>{
     evt.preventDefault();
     let data = new FormData(form);
-    console.log('registerForm');
-    console.log(JSON.stringify(data));
+    
+    const obj = {};
+    data.forEach((value, key) => obj[key] = value);
+    console.log('-- productForm');
+
+    console.log(JSON.stringify(obj));
+
     fetch('api/product', {
         method:'POST',
         body:data

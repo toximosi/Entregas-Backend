@@ -10,8 +10,9 @@ import { productsService } from '../services/index.js';
 }) */
 
 const createProduct = async (req, res) => { 
+    console.log('--> createProduct');
     if (!req.file) return res.status(500).send({ status: 'error', error: 'Error to uploader file' });
-    const { name, code, description,price, quantity } = req.body;
+    const { name, code, description,  price, quantity } = req.body;
     if (!name || !code || !description || !price || !quantity) return res.status(400).send({ status: 'error', error: 'Incomplete error' })
     const product = {
         name,
