@@ -22,6 +22,12 @@ const productList = (req, res) => {
 const productCreate = (req, res) => { 
     res.render('productCreate');
 }
+const carts = (req, res) => { 
+    res.render('carts');
+}
+const perfil = (req, res) => { 
+    res.render('perfil');
+}
 
 export default {
     home,
@@ -29,4 +35,6 @@ export default {
     login,
     productCreate,
     productList,
+    carts,
+    perfil
 }

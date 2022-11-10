@@ -1,7 +1,7 @@
 export const ROUTES = {
     user: [
         {
-            route: '/profile',
+            route: '/perfil',
             label: 'perfil'
         },
         {
