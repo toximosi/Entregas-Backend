@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/src/app.js",
+            "env":{
+                "MONGO_USER": "toximosi",
+                "MONGO_PWD": "Quier0Entrar",
+                "MONGO_DATABASE": "34Entrega",
+                "MONGO_HOSTNAME": "cluster0.dkrjcaf.mongodb.net",
+                "MONGO_CONEXION":"mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority",
+                "ADMIN_EMAIL": "toximosi@toximosi.es",
+                "ADMIN_PWD": "1234",
+                "JWT_SECRET": "SecretToken",
+                "JWT_KEY": "SecretToken",
+                "JWT_COOKIE": "CookieLogin",
+                "PORT": "8081"
+            }
+        }
+    ]
+}
