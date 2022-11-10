@@ -25,7 +25,7 @@ import MailingService from '../services/mailing.js';
 }) */
 
 const register = async (req, res) => {
-    console.log('Sesioncontroller register body');
+    console.log('--> Sesioncontroller register body');
     console.log(req.body);
     let {first_name,last_name,email,phone,image,password,age} = await req.body;
     if(!first_name||!last_name||!email||!phone||!password) return res.status(400).send({status:'error',error:'💀 incomplet values'});

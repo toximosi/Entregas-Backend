@@ -6,6 +6,6 @@ import producController from '../controllers/product.controller.js';
 import uploader from '../services/uploader.js';
 
 /* app.use('/api/product', productRouter); */
-router.post('/', uploader.single('image/product'), producController.createProduct);
+router.post('/', uploader.single('images/product'), producController.createProduct);
 
 export default router;
