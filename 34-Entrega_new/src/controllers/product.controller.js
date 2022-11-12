@@ -19,9 +19,9 @@ const createProduct = async (req, res) => {
     if (!product_name || !code || !description || !price || !quantity) return res.status(400).send({ status: 'error', error: 'Incomplete error' })
     let image = "";
     if (!req.file.filename) { 
-        image = `${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/avatar.png`;
+        image = `${req.protocol}://${req.host}:${process.env.PORT}/images/product/product.png`;
     } else {
-        image=`${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/${req.file.filename}`;
+        image=`${req.protocol}://${req.host}:${process.env.PORT}/images/product/${req.file.filename}`;
     }
     const product = {
         product_name,

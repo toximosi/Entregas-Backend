@@ -1,4 +1,5 @@
 import { ROUTES } from "../constants/routers.js";
+import { productsService } from "../services/index.js";
 
 /* src/routers/views.routers.js */
 const home = (req, res) => {
@@ -8,6 +9,7 @@ const home = (req, res) => {
         routes: routes
     });
 };
+
 const register = (req, res) => { 
     res.render('register');
 }
@@ -22,6 +24,18 @@ const productList = (req, res) => {
 const productCreate = (req, res) => { 
     res.render('productCreate');
 }
+
+const productCard = async (req, res) => {
+    try {
+        let Arr = await productsService.getProduct();
+        console.log('Arr');
+        console.log(Arr);
+        res.render('productCard', {Arr});
+    } catch (error) {
+        console.log(error)
+     }
+}
+
 const carts = (req, res) => { 
     res.render('carts');
 }
@@ -29,12 +43,15 @@ const perfil = (req, res) => {
     res.render('perfil');
 }
 
+
+
 export default {
     home,
     register,
     login,
     productCreate,
     productList,
+    productCard,
     carts,
     perfil
 }
