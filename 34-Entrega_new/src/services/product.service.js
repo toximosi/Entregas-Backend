@@ -5,7 +5,6 @@ export default class ProductService{
 
     getProduct = async () => { 
         let result = await this.dao.getAll();
-        console.log(result)
         return result;
     }
 

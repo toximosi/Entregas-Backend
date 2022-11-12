@@ -26,14 +26,11 @@ const productCreate = (req, res) => {
 }
 
 const productCard = async (req, res) => {
-    try {
-        let Arr = await productsService.getProduct();
-        console.log('Arr');
-        console.log(Arr);
-        res.render('productCard', {Arr});
-    } catch (error) {
-        console.log(error)
-     }
+    let Arr = await productsService.getProduct();
+    /* Arr = JSON.stringify(Arr);
+    Arr[0]; */
+    console.log(Arr);
+    res.render('productCard', {Arr});
 }
 
 const carts = (req, res) => { 

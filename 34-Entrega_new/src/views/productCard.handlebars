@@ -1,2 +1,31 @@
-product
-{{Arr}}
+<div class="container">
+    <diw class="row">
+        <div class="col-12">
+            <h1>Productos</h1>
+        </div>
+        {{#if Arr}}
+            {{#each Arr}}
+                {{#each this}}
+                {{#if this._id}}
+                    <div class="col-4">
+                        <div class="card">
+                            <img src="{{image}}" class="card-img-top" alt="{{product_name}}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product_name}}</h5>
+                                <p class="card-text">{{description}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">precio:<br> {{price}}</li>
+                                <li class="list-group-item">code:<br> {{code}}</li>
+                                <li class="list-group-item">stock:<br> {{quantity}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+            {{/each}}
+           {{/each}}
+        {{else}}
+            <h1>no hay productos</h1> 
+        {{/if}}   
+    </diw>
+</div>

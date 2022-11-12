@@ -17,15 +17,21 @@ import productRouter from './routers/product.router.js';
 import config from './config/config.js';
 
 const app = express();
+const PORT = config.app.PORT || 8080;
+//Server
+const server = app.listen(PORT, ()=>{
+    console.log(`👽 Now listenig on 👉 ${server.address().port}`)
+});
+server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
 const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`);
+
 
 //format od files json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//Static files
-app.use(express.static(__dirname + '/public'));
+
 //Templates wiews
 /* app.engine('handlebars', handlebars.engine({
   extname: 'handlebars',
@@ -36,19 +42,19 @@ app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+
+//Static files
+app.use(express.static(__dirname + '/public'));
+
 app.use(cookieParser());
+
 
 //Router
 app.use('/', viwesRouter);
 app.use('/api/sessions', sesionsRouter);
 app.use('/api/product', productRouter);
 
-const PORT = config.app.PORT || 8080;
-//Server
-const server = app.listen(PORT, ()=>{
-    console.log(`👽 Now listenig on 👉 ${server.address().port}`)
-});
-server.on("error", error => console.log(`Error en el servidor ${error}`)); 
+
 
 
 //LOG------------------------------------------------------------------------- FIN
