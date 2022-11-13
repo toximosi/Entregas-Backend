@@ -17,6 +17,7 @@ const login = (req, res) => {
     res.render('login');
 }
 const logout = (req, res) => { 
+    if (!req.session.user) return res.redirect('/login');   
     res.render('logout');
 }
 const productList = (req, res) => { 

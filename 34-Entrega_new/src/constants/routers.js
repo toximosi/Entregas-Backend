@@ -8,6 +8,10 @@ export const ROUTES = {
             route: '/carts',
             label:'carrito'
         },
+        {
+            route: '/logout',
+            label:'logout'
+        },
     ],
     admin: [
         {
@@ -17,6 +21,10 @@ export const ROUTES = {
         {
             route: '/userspanel',
             label: 'usuarios registrados'
-        }
+        },
+        {
+            route: '/logout',
+            label:'logout'
+        },
     ]
 }
