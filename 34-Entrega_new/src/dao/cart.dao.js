@@ -1,6 +1,11 @@
 import cartsModel from "./models/cart.model.js";
 
 export default class CartsDao { 
+
+    getAll = () =>{
+        return cartsModel.find();
+    };
+
     getById = (id) => {
         return cartsModel.findOne({ _id: id }).lean();
     };

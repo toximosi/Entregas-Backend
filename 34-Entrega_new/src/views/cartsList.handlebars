@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1>Cart List</h1>
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">user</th>
+                    <th scope="col">product:<br>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Arr}}
+                    {{#each this}}
+                    {{#if this._id}}
+                    <tr>                    
+                        <th scope="row">{{this._id}}</th>
+                        {{!-- <td>
+                        {{#if Product}}
+                            <ul>
+                            {{#each Product}}
+                                <li>{{id}} - {{quantity}} und</li>
+                            {{/each}}
+                            </ul>                         
+                        {{else}}
+                            <i>No hay productos</i>
+                        {{/if}}
+                        </td> --}}
+                    </tr>
+                {{/if}}
+                {{/each}}
+                {{/each}}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

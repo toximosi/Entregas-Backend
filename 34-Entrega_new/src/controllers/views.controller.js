@@ -1,5 +1,6 @@
 import { ROUTES } from "../constants/routers.js";
-import { productsService } from "../services/index.js";
+import { cartsService, productsService } from "../services/index.js";
+import cartController from "./cart.controller.js";
 
 /* src/routers/views.routers.js */
 const home = (req, res) => {
@@ -27,15 +28,24 @@ const productCreate = (req, res) => {
 
 const productCard = async (req, res) => {
     let Arr = await productsService.getProduct();
-    /* Arr = JSON.stringify(Arr);
-    Arr[0]; */
     console.log(Arr);
     res.render('productCard', {Arr});
 }
 
-const carts = (req, res) => { 
-    res.render('carts');
+const carts = async(req, res) => { 
+    let Arr = await cartController.showCart();
+    console.log('Arr');
+    console.log(Arr);
+    res.render('carts', { Arr });
 }
+const cartsList = async(req, res) => { 
+    let Arr = await cartController.cartList();
+
+    console.log('Arr');
+    console.log(Arr);
+    res.render('cartsList', { Arr });
+}
+
 const perfil = (req, res) => { 
     res.render('perfil');
 }
@@ -50,5 +60,6 @@ export default {
     productList,
     productCard,
     carts,
+    cartsList,
     perfil
 }

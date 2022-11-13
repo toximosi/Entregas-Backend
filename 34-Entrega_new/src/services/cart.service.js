@@ -3,6 +3,11 @@ export default class CartsService {
         this.dao = dao;
     }
 
+    getCart = async () => { 
+        let result = await this.dao.getAll();
+        return result;
+    }
+
     createCart = () =>{
         return this.dao.save();
     }

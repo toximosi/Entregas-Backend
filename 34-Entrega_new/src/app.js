@@ -13,6 +13,7 @@ import __dirname from './utils.js';
 import viwesRouter from './routers/views.routers.js';
 import sesionsRouter from './routers/sessions.router.js';
 import productRouter from './routers/product.router.js';
+import cartRouter from './routers/cart.router.js'
 
 import config from './config/config.js';
 
@@ -53,7 +54,7 @@ app.use(cookieParser());
 app.use('/', viwesRouter);
 app.use('/api/sessions', sesionsRouter);
 app.use('/api/product', productRouter);
-
+app.use('/api/cart', cartRouter);
 
 
 
