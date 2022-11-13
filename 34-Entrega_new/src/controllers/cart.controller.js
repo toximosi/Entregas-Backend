@@ -1,15 +1,10 @@
-import { cartsService, usersService } from '../services/index.js'
-import jwt from 'jsonwebtoken';
-import config from '../config/config.js';
-import UserService from '../services/user.service.js';
+import { ROUTES } from "../constants/routers.js";
+import { cartsService, usersService } from '../services/index.js';
 
 
-const showCart = async (req, res) => { 
-     /* const token = req.cookies[config.jwt.COOKIE];
-        if (token) {
-            console.log('token')
-        }  */
-    const userid = '6367fd0848f879fe056c34ec';
+
+const showCart = async (userid) => { 
+    //01@mail.es
     let Arr = await cartsService.getCartById(userid);
     return Arr
 }
@@ -25,7 +20,6 @@ const cartList = async (req, res) => {
 
             }
         })
-        
     });
  
     return Arr;

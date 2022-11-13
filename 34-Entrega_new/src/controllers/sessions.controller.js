@@ -95,6 +95,14 @@ const login = async(req, res) => {
         id: user.id,
         cart: user.cart,
     };
+    req.session.user = {
+        email: user.email,
+        role: user.role,
+        name: `${user.first_name} ${user.last_name}`,
+        id: user.id,
+        cart: user.cart,
+    };
+    /* req.session.user = tokenUser; */
     const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
     res.cookie(config.jwt.COOKIE,token,{maxAge:3600000}).send({ status: 'success', messages: '👍 Loguin ok' });
 };

@@ -3,8 +3,10 @@ dotenv.config();
 
 import express from 'express';
 import pino from 'pino';
+import session from 'express-session'
 
 import mongoose from 'mongoose';
+import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
 
 import handlebars from 'express-handlebars';
@@ -26,7 +28,19 @@ const server = app.listen(PORT, ()=>{
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
 const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`);
-
+app.use(session({
+    secret: "Sessi0n",
+    store: MongoStore.create({
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`,
+        mongoOptions: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        },
+        ttl: 600
+    }),
+    resave: false,
+    saveUninitialized: false,
+}));
 
 //format od files json
 app.use(express.json());
