@@ -5,12 +5,10 @@ import UserService from '../services/user.service.js';
 
 
 const showCart = async (req, res) => { 
-    /* const user = [];
-    if (tokenUser) { 
-        user = req.tokenUser;
-        console.log(user)
-    } */
-
+     /* const token = req.cookies[config.jwt.COOKIE];
+        if (token) {
+            console.log('token')
+        }  */
     const userid = '6367fd0848f879fe056c34ec';
     let Arr = await cartsService.getCartById(userid);
     return Arr

@@ -12,7 +12,7 @@ export const publicValidation = (req, res, next) => {
         } else {
             next();
         };
-    } catch (erro) {
+    } catch (error) {
         console.log('error');
         next();
     };

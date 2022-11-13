@@ -40,6 +40,7 @@ const carts = async(req, res) => {
 }
 const cartsList = async(req, res) => { 
     let Arr = await cartController.cartList();
+    
     console.log('Arr');
     console.log(Arr);
     res.render('cartsList', { Arr });

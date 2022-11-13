@@ -13,12 +13,13 @@
             <tbody>
                 {{Arr}}
                 {{#each Arr}}
+                {{#each this}}
                     <tr>                    
-                        <th scope="row">{{this._id}}</th>
+                        <th scope="row">{{_id}}</th>
                         <td>
-                        {{#if this.product}}
+                        {{#if products}}
                             <ul>
-                            {{#each this.product}}
+                            {{#each products}}
                                 <li>{{id}} - {{quantity}} und</li>
                             {{/each}}
                             </ul>                         
@@ -27,6 +28,7 @@
                         {{/if}}
                         </td>
                     </tr>
+                {{/each}}
                 {{/each}}
             </tbody>
             </table>
