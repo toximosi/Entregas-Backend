@@ -34,13 +34,12 @@ const productCard = async (req, res) => {
 
 const carts = async(req, res) => { 
     let Arr = await cartController.showCart();
-    console.log('Arr');
+    Arr = JSON.stringify(Arr);
     console.log(Arr);
     res.render('carts', { Arr });
 }
 const cartsList = async(req, res) => { 
     let Arr = await cartController.cartList();
-
     console.log('Arr');
     console.log(Arr);
     res.render('cartsList', { Arr });

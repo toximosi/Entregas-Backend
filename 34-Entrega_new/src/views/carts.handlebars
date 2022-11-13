@@ -1,2 +1,35 @@
-<h1>Carrito</h1>
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1>Carrito Usuario</h1>
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">user</th>
+                    <th scope="col">product:<br>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{Arr}}
+                {{#each Arr}}
+                    <tr>                    
+                        <th scope="row">{{this._id}}</th>
+                        <td>
+                        {{#if this.product}}
+                            <ul>
+                            {{#each this.product}}
+                                <li>{{id}} - {{quantity}} und</li>
+                            {{/each}}
+                            </ul>                         
+                        {{else}}
+                            <i>No hay productos</i>
+                        {{/if}}
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
