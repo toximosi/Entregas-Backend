@@ -99,7 +99,13 @@ const login = async(req, res) => {
     res.cookie(config.jwt.COOKIE,token,{maxAge:3600000}).send({ status: 'success', messages: '👍 Loguin ok' });
 };
 
+const logout = (req,res) => {
+        req.session.destroy();
+        res.redirect('/');
+};
+    
 export default {
     register,
-    login
+    login,
+    logout
 };

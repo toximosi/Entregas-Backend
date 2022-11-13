@@ -17,6 +17,9 @@ const register = (req, res) => {
 const login = (req, res) => { 
     res.render('login');
 }
+const logout = (req, res) => { 
+    res.render('logout');
+}
 
 const productList = (req, res) => { 
     res.render('productList');
@@ -56,6 +59,7 @@ export default {
     home,
     register,
     login,
+    logout,
     productCreate,
     productList,
     productCard,

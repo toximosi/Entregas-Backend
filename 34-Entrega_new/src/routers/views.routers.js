@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', privateValidation, viewsController.home);
 router.get('/register', publicValidation, viewsController.register);
 router.get('/login', publicValidation, viewsController.login);
+router.get('/logout', publicValidation, viewsController.logout);
 router.get('/productList', publicValidation, viewsController.productList);
 router.get('/carts', /* publicValidation, */ viewsController.carts);
 router.get('/perfil', publicValidation, viewsController.perfil);
