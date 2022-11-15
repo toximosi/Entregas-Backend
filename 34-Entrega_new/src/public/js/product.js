@@ -13,8 +13,11 @@ form.addEventListener('submit',evt=>{
     fetch('api/product', {
         method:'POST',
         body:data
+        /* body: JSON.stringify(obj),
+        headers: {
+            "Content-type": "application/json"
+        } */
     }).then(result => result.json())
-        .then(json => {
-        console.log(json);
-    });
+        .then(json => {console.log(json)})
+            /* .catch(err => console.log(err)); */
 })

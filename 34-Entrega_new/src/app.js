@@ -1,7 +1,7 @@
+import express from 'express';
 import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
-import express from 'express';
 import pino from 'pino';
 import session from 'express-session'
 
@@ -9,8 +9,8 @@ import mongoose from 'mongoose';
 import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
 
-import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
+import handlebars from 'express-handlebars';
 
 import viwesRouter from './routers/views.routers.js';
 import sesionsRouter from './routers/sessions.router.js';
@@ -20,7 +20,7 @@ import cartRouter from './routers/cart.router.js'
 import config from './config/config.js';
 
 const app = express();
-const PORT = config.app.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 //Server
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
@@ -36,7 +36,7 @@ app.use(session({
             useNewUrlParser: true,
             useUnifiedTopology: true
         },
-        ttl: 600
+        ttl: 6000
     }),
     resave: false,
     saveUninitialized: false,

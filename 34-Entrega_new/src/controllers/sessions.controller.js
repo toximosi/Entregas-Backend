@@ -27,6 +27,12 @@ import MailingService from '../services/mailing.js';
 const register = async (req, res) => {
     console.log('--> Sesioncontroller register body');
     console.log(req.body);
+    /* if (!req.file) return res.status(500).send({ status: 'error', error: 'Error to uploader file' }); */
+    if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+        image = `${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/avatar.png`;
+    } else {
+        image=`${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/${req.file.filename}`;
+    }
     let {first_name,last_name,email,phone,password,age} = await req.body;
     if(!first_name||!last_name||!email||!phone||!password) return res.status(400).send({status:'error',error:'💀 incomplet values'});
     let exists = await usersService.getUserByEmail(email);
@@ -35,11 +41,6 @@ const register = async (req, res) => {
     const cart = await cartsService.createCart();
     const hashedPassword = await createHash(password);
     let image = "";
-    if (!req.file.filename) { 
-        image = `${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/avatar.png`;
-    } else {
-        image=`${req.protocol}://${req.host}:${process.env.PORT}/images/avatar/${req.file.filename}`;
-    }
     const user ={
         first_name,
         last_name,
@@ -65,6 +66,7 @@ const register = async (req, res) => {
     console.log('--> mailsend'); 
     console.log(mailsend); 
     res.send({status:'success',payload:result})
+    res.redirect('/home');
 }
 
 const login = async(req, res) => {
@@ -104,12 +106,14 @@ const login = async(req, res) => {
     };
     /* req.session.user = tokenUser; */
     const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
-    res.cookie(config.jwt.COOKIE,token,{maxAge:3600000}).send({ status: 'success', messages: '👍 Loguin ok' });
+    res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 }).send({ status: 'success', messages: '👍 Loguin ok' });
+     
+    res.redirect('/home');
 };
 
 const logout = (req,res) => {
         req.session.destroy();
-        res.redirect('/');
+        res.redirect('/login');
 };
     
 export default {
