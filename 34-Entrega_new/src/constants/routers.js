@@ -26,5 +26,11 @@ export const ROUTES = {
             route: '/logout',
             label:'logout'
         },
+    ],
+    invitado: [
+        { 
+            route: '/loguin',
+            label:'loguin'
+        }
     ]
 }

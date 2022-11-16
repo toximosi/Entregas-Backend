@@ -4,11 +4,17 @@ import cartController from "./cart.controller.js";
 
 /* src/routers/views.routers.js */
 const home = (req, res) => {
-    const routes = ROUTES[req.user.role]; 
-    res.render('home', {
-        user: req.user,
-        routes: routes
-    });
+     const sesion = req.session;
+    /*const user = sesion.user.cart; */
+    if (!sesion.user) {
+        res.redirect('/login');
+    } else { 
+        const routes = ROUTES[sesion.user.role];
+        res.render('home', {
+            user: req.user,
+            routes: routes
+        });
+    }
 };
 const register = (req, res) => { 
     res.render('register');
@@ -17,8 +23,12 @@ const login = (req, res) => {
     res.render('login');
 }
 const logout = (req, res) => { 
-    if (!req.session.user) return res.redirect('login');   
-    res.render('logout');
+    if (!req.session.user) {
+        return res.redirect('login');
+    } else { 
+        req.session.destroy();
+        res.redirect('/login');
+    }
 }
 const productList = (req, res) => { 
     res.render('productList');
@@ -34,10 +44,15 @@ const productCard = async (req, res) => {
 
 const carts = async(req, res) => { 
     const sesion = req.session;
-    const userid = sesion.user.cart;
-    let Arr = await cartController.showCart(userid);
-    Arr = JSON.stringify(Arr);
-    res.render('carts', { Arr });
+    console.log(sesion.user)
+    if (!sesion.user) {
+        return res.redirect('/login');
+    } else { 
+        const userid = sesion.user.cart;
+        let Arr = await cartController.showCart(userid);
+        Arr = JSON.stringify(Arr);
+        res.render('carts', { Arr });
+    }
 }
 const cartsList = async(req, res) => { 
     let Arr = await cartController.cartList();

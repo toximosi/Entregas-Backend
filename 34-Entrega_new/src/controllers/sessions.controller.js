@@ -108,7 +108,7 @@ const login = async(req, res) => {
     const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
     res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 }).send({ status: 'success', messages: '👍 Loguin ok' });
      
-    res.redirect('/home');
+    /* res.redirect('/home'); */
 };
 
 const logout = (req,res) => {
