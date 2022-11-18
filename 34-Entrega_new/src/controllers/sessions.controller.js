@@ -103,6 +103,7 @@ const login = async(req, res) => {
         name: `${user.first_name} ${user.last_name}`,
         id: user.id,
         cart: user.cart,
+        image: user.image
     };
     /* req.session.user = tokenUser; */
     const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
