@@ -1,6 +1,6 @@
 import { ROUTES } from "../constants/routers.js";
 import { cartsService, productsService, usersService } from "../services/index.js";
-import cartController from "./cart.controller.js";
+/* import cartController from "./cart.controller.js"; */
 
 /* src/routers/views.routers.js */
 const home = (req, res) => {
@@ -53,13 +53,26 @@ const carts = async (req, res) => {
         return res.redirect('/login');
     } else {
         const userid = sesion.user.cart;
-        let Arr = await cartController.showCart(userid);
+        let Arr = await cartsService.getCartById(userid);
         /* Arr = JSON.stringify(Arr); */    
         let id = Arr._id;
         let products = Arr.products;
-        console.log(Arr)
-        console.log(products)
-        res.render('carts', { Arr, id, products });
+        let product = "";
+        console.log(JSON.stringify(Arr))
+        /* console.log(products) */
+        let productsAll = await productsService.getProduct(); 
+        console.log('produsctAll');
+        console.log(productsAll);
+        const productUser = [];
+        products.forEach((p) => {
+            productsAll.forEach((pa) => { 
+                if (p.id == pa._id) { 
+                    productUser.push(pa);
+                }
+            })
+        });
+
+        res.render('carts', { Arr, id, productUser });
     }
 };
 

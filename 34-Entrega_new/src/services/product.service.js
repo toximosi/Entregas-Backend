@@ -10,7 +10,7 @@ export default class ProductService{
 
     getProductById = async (id) => { 
         let result = await this.dao.getById(id);
-        return result.toObjet();
+        return result/* .toObjet() */;
     }
 
     createProduct = product => { 
