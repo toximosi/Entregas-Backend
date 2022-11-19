@@ -19,6 +19,8 @@
                                 <li class="list-group-item">code:<br> {{code}}</li>
                                 <li class="list-group-item">stock:<br> {{quantity}}</li>
                             </ul>
+                            {{ this._id }}
+                            <a onclick="addCart('{{ this._id }}')" type="submit" class="btn-addCart btn btn-primary">Añadir a carrito</a>
                         </div>
                     </div>
                 {{/if}}
@@ -29,3 +31,5 @@
         {{/if}}   
     </diw>
 </div>
+<script src="/js/product.js"></script>
+<script src="/js/cart.js"></script>

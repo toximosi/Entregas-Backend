@@ -28,3 +28,14 @@ position: relative;
 .disable{
     opacity: 0.3;
 }
+
+.avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.avatar img{
+    width: 100%;
+    height: auto;
+}

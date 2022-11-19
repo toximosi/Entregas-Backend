@@ -4,10 +4,11 @@ const collection = "Carts";
 
 const schema = new mongoose.Schema({
     products: [{
-        id: {
+        id: String
+        /* {
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'product'
-            },
+            } */,
         quantity: {
             type: Number,
             default: 1

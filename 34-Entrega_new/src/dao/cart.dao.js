@@ -15,7 +15,22 @@ export default class CartsDao {
     save = () => {
         return cartsModel.create({ artwoks: [] });
     };
-    update = (id, cart) => {
+    /* update = (id, cart) => {
         return cartsModel.findByIdAndUpdate(id, { $set: { products: cart.products } })
+    }; */
+
+    findProduct = (cart_Id, productId) => {
+        return cartsModel.find({$and:[{ _id: cart_Id}, {'products.id': productId}]});
+    };
+
+    addProduct = (cart_Id, obj) => {
+        return cartsModel.updateOne({ _id: cart_Id},{ $push: { 'products': obj }});
+    };
+
+    updateProduct = (cart_Id, productId, quantity) => {
+        return cartsModel.updateOne(
+            { $and: [{ _id: cart_Id }, { 'products.id': productId }] },
+            { 'products.$.quantity': quantity });
+
     };
 };
