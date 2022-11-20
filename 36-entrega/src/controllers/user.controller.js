@@ -1,8 +1,10 @@
+import { userDtoPresenter } from "../dao/dto/user.dto.js";
 import { usersService } from "../services/index.js";
 
 const getUsers = async(req,res)=>{
-    let users = await usersService.getUsers();
-    res.send({status:"success",payload:users})
+    let result = await usersService.getUsers();
+    const users = result.map(u => new userDtoPresenter(u));
+    res.send({ status: "success", payload: users })
 }
 
 const getUserById = async(req,res)=>{
