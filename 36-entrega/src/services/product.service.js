@@ -1,6 +1,14 @@
+import PersistenceFactory from "../dao/Factory.js";
+
 export default class ProductService{ 
-    constructor(dao) { 
-        this.dao = dao;
+    constructor(dao) {
+        this.dao;
+        this.init();
+    };
+    
+    init = async () => { 
+        const {products} = await PersistenceFactory.getPersistence();
+        this.dao = products;
     }
 
     getProduct = async () => { 

@@ -9,8 +9,8 @@ export default class PersistenceFactory {
                 let { default: CartFileDao } = await import('./cart.file.dao.js');
                 return {
                     users: new UserFileDao(),
-                    product: new ProductFileDao(),
-                    cart: new CartFileDao(),
+                    products: new ProductFileDao(),
+                    carts: new CartFileDao(),
                 }
                 break;
                 
@@ -20,8 +20,8 @@ export default class PersistenceFactory {
                     let{default:CartMongoDao} = await import('./cart.dao.js');
                     return {
                         users: new UserMongoDao(),
-                        product: new ProductMongoDao(),
-                        cart: new CartMongoDao(),
+                        products: new ProductMongoDao(),
+                        carts: new CartMongoDao(),
                     }
                 break;
 
