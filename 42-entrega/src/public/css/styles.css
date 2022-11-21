@@ -1,0 +1,41 @@
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ebebeb;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.content-fixed{
+position: relative;
+}
+.formulario-fixed{
+    position: sticky;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #f2f7ff;
+}
+/* #productForm{
+    position: fixed;
+} */
+.product-table{
+    font-size: 12px;
+}
+.disable{
+    opacity: 0.3;
+}
+
+.avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.avatar img{
+    width: 100%;
+    height: auto;
+}
