@@ -1,7 +1,7 @@
 import { ROUTES } from "../constants/routers.js";
 import { cartsService, productsService, usersService } from "../services/index.js";
 /* import cartController from "./cart.controller.js"; */
-
+import MailingService from '../services/mailing.js';
 /* src/routers/views.routers.js */
 const home = (req, res) => {
     if (!req.session.user) {
@@ -61,8 +61,8 @@ const carts = async (req, res) => {
         console.log(JSON.stringify(Arr))
         /* console.log(products) */
         let productsAll = await productsService.getProduct(); 
-        console.log('produsctAll');
-        console.log(productsAll);
+        /* console.log('produsctAll');
+        console.log(productsAll); */
         const productUser = [];
         products.forEach((p) => {
             productsAll.forEach((pa) => { 
@@ -85,11 +85,15 @@ const perfil = (req, res) => {
     if (!req.session.user) {
         res.redirect('/login');
     } else {
-        console.log('hola')
-        console.log(req.session.user);
+        /* console.log('hola')
+        console.log(req.session.user); */
         res.render('perfil', { user: req.session.user });
     }
 };
+
+const endBuy = async (req, res) => { 
+    res.render('endBuy');
+}
 
 export default {
     home,
@@ -101,5 +105,6 @@ export default {
     productCard,
     carts,
     cartsList,
+    endBuy,
     perfil
 }

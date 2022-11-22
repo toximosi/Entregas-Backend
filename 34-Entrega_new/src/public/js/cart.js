@@ -1,15 +1,31 @@
-const addCart = (id) => { 
+const addCart = (id) => {
     /*  evt.preventDefault(); */
     const obj = {
         id: id,
     };
     fetch('api/cart/cartUpdate', {
-            method:'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                "Content-type": "application/json"
-            }
-        }).then(result => result.json())
-            .then(json => {console.log(json)})
-                /* .catch(err => console.log(err)); */
-}
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(result => result.json())
+        .then(json => { console.log(json) })
+    /* .catch(err => console.log(err)); */
+};
+
+const buyCart = (id) => {
+    /*  evt.preventDefault(); */
+    const obj = {
+        id: id,
+    };
+    fetch('api/cart/cartBuy', {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(result => result.json())
+        .then(json => { console.log(json) })
+    /* .catch(err => console.log(err)); */
+};

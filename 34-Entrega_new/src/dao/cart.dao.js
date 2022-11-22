@@ -33,4 +33,8 @@ export default class CartsDao {
             { 'products.$.quantity': quantity });
 
     };
+    deleteCart = (cart_Id) => { 
+        console.log('entro')
+        return cartsModel.updateOne({ _id: cart_Id } ,{'products': []})
+    }
 };

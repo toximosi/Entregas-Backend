@@ -1,6 +1,8 @@
 import { ROUTES } from "../constants/routers.js";
 import { cartsService, usersService } from '../services/index.js';
 
+import MailingService from '../services/mailing.js';
+
 const showCart = async (userid) => { 
     //01@mail.es
     let Arr = await cartsService.getCartById(userid);
@@ -65,17 +67,36 @@ const cartUpdate = async (req, res) => {
             }
                 /*return data;  */
     }
-
-
-
        /*  const cartId = sesion.user.cart;
         cartsService.update(idProduct.id, cartId);
         console.log(`Add product ${idProduct.id} in cart ${cartId}`); */
     };
 };
 
+const cartBuy = async (req, res) => { 
+    console.log('--> cartUpdate');
+    const id = await req.body.id
+
+    const deleteCart = await cartsService.deleteCart(id);
+    const mailer = new MailingService();
+
+    let mailsend = await mailer.sendSimpleMail({
+        // from: email
+        to: `toximosi@gmail.com`, 
+        subject: 'nueva compra',
+        html: mailer.MailRegister(`nueva compra`)
+    }); 
+
+    console.log('--> cartBuy mailsend'); 
+    console.log(mailsend);
+
+       res.status(307).redirect('/endBuy');
+
+}
+
 export default {
     showCart,
     cartList,
-    cartUpdate
+    cartUpdate,
+    cartBuy
 }

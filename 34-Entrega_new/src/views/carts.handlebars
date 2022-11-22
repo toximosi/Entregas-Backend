@@ -32,6 +32,8 @@
             {{else}}
                     <h2>No tienes productos, adquiere alguno: <a href="productCard">ver productos</a></h2>
                 {{/if}}
+            {{#if productUser}}<button class="btn btn-primary" id="btnBy" onClick="buyCart('{{id}}')" >Comprar</button>{{/if}}                
         </div>
     </div>
 </div>
+<script src="/js/cart.js"></script>

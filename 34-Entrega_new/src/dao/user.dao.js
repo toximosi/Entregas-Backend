@@ -17,4 +17,10 @@ export default class UsersDao {
     save = (user) =>{
         return usersModel.create(user);
     };
+    updateCartHistory = (user_Id, cart) => {
+        return usersModel.updateOne(
+            { _id: user_Id },
+            { 'cart_history': cart });
+
+    };
 };

@@ -20,4 +20,8 @@ export default class UserService {
     saveUser = (user) =>{
         return this.dao.save(user);
     };
+
+    updateCartHistory = (user_Id, cart) => { 
+        return this.dao.updateCartHistory(user_Id, cart);
+    }
 };

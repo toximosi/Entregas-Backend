@@ -10,6 +10,7 @@ class dataService {
         const users = await usersService.getUsers();
         const carts = await cartsService.getCart();
         const products = await productsService.getProduct();
+        
         console.log(data)
         console.log(data)
         data.push(users);

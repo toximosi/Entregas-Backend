@@ -35,4 +35,11 @@ export default class CartsService {
     updateProduct = (cart_Id, productId, quantity) => {
         return this.dao.updateProduct(cart_Id, productId, quantity);
     };
+    
+    deleteCart = (cart_id) => { 
+        console.log('cart_id')
+        console.log(cart_id)
+        console.log('deleteCart')
+        return this.dao.deleteCart(cart_id)
+    }
 }

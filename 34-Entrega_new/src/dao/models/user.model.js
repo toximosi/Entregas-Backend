@@ -1,3 +1,4 @@
+import { timeStamp } from 'console';
 import mongoose from 'mongoose';
 
 const collection = 'Users';
@@ -18,7 +19,18 @@ const schema = new mongoose.Schema({
     cart:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'Carts'
-    }
+    },
+    /* cart_history: [{
+        id: String,
+        date: Date,
+        products: [{
+            id: String,
+            quantity: {
+                type: Number,
+                default: 1
+            }
+        }]
+    }] */
 })
 
 const usersModel =  mongoose.model(collection,schema);
