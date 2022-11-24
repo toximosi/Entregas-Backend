@@ -7,13 +7,13 @@ const requester = Supertest('http://localhost:' + config.app.PORT);
 
 
 
-describe('User testing', () => {
+describe('🐵 --> User testing', () => {
     describe('GETS', () => {
-        it('La petición base debe retornar 200', async () => {
+        it('🐵 Get status 200', async () => {
             let response = await requester.get('/api/user');
             expect(response.status).to.be.equal(200);
         })
-        it('la petición base debe retornar un arreglo de usuarios', async () => { 
+        it('🐵 Get array of product', async () => { 
             const response = await requester.get('/api/user');
             const { _body } = response;
             expect(_body.payload).to.be.an('array');
@@ -38,4 +38,34 @@ describe('User testing', () => {
 
         })
     }) */
+});
+
+describe('📦 --> Product testing', () => {
+    describe('GETS', () => {
+        it('📦 Get status 200', async () => {
+            let response = await requester.get('/api/product');
+            expect(response.status).to.be.equal(200);
+        })
+        it('📦 Get array of product', async () => { 
+            const response = await requester.get('/api/product');
+            const { _body } = response;
+            expect(_body.payload).to.be.an('array');
+        })
+    })
+    describe('POST', () => { 
+        it('📦 Maybe create product', async () => { 
+            let product = {
+                product_name: 'Test',
+                code: 'Test',
+                description: 'product to test POST',
+                price: 0,
+                quantity: 0,
+                /* image: 'product.png', */
+            }
+            const response = await (requester.post('/api/product/create')).send(product);
+            const { _body } = response;
+            console.log(_body);
+            /* expect(_body.payload).to.include.keys('_id'); */
+        })
+    })
 });

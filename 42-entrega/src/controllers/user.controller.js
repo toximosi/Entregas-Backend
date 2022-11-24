@@ -12,6 +12,7 @@ const getBy = async (req, res) => {
 
     const data = req.params;
     const id = data.id;
+    
     const result = await usersService.getBy({_id:id});
     if (!result) return res.status(404).send({ status: "error", error: "User don't find" });
     res.send({ status: "success", payload: result })

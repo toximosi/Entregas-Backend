@@ -57,9 +57,9 @@ export default class Dao {
         return cartsModel.findOne(params).lean().populate(populate);
     }; 
     
-    save = (document, entity) => {
+    save = (data, entity) => {
         if (!this.models[entity]) throw new Error({function: 'save' ,error: 'the entityt don`t exist'});
-        return this.models[entity].create(document);
+        return this.models[entity].create(data);
     };
     
     /* add = (params, data, entity) => {

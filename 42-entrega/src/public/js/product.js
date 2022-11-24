@@ -11,9 +11,9 @@ if (form) {
 
         console.log(JSON.stringify(obj));
 
-        fetch('api/product', {
-            method:'POST',
-            body:data
+        fetch('api/product/create', {
+            method: 'POST',
+            body: data
             /* body: JSON.stringify(obj),
             headers: {
                 "Content-type": "application/json"
