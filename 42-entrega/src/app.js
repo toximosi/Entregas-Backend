@@ -17,6 +17,7 @@ import viwesRouter from './routers/views.routers.js';
 import sesionsRouter from './routers/sessions.router.js';
 import productRouter from './routers/product.router.js';
 import cartRouter from './routers/cart.router.js'
+import userRouter from './routers/user.router.js'
 import dataRouter from './routers/data.router.js'
 
 import config from './config/config.js';
@@ -77,6 +78,7 @@ app.use('/', viwesRouter);
 app.use('/api/sessions', sesionsRouter);
 app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
+app.use('/api/user', userRouter);
 app.use('/api/data', dataRouter);
 
 

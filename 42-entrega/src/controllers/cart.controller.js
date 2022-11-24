@@ -22,8 +22,8 @@ const cartList = async (req, res) => {
     return Arr;
 };
 
-const cartUpdate = async (req, res) => {
-    console.log('--> cartUpdate');
+const update = async (req, res) => {
+    console.log('--> cart update');
     const body = await req.body;
     let idProduct = body.id;
     /* { id } */
@@ -77,5 +77,5 @@ const cartUpdate = async (req, res) => {
 export default {
     showCart,
     cartList,
-    cartUpdate
+    update
 }

@@ -1,19 +1,23 @@
-import { userDtoPresenter } from "../dao/dto/user.dto.js";
-import { usersService } from "../services/index.js";
+import { usersService } from '../services/services.js';
 
-const getUsers = async(req,res)=>{
-    let result = await usersService.getUsers();
-    const users = result.map(u => new userDtoPresenter(u));
-    res.send({ status: "success", payload: users })
+const getAll = async (req, res) => {
+    console.log('--> Run user getAll');
+
+    let result = await usersService.getAll();
+    res.send({ status: "success", payload: result })
 }
 
-const getUserById = async(req,res)=>{
-    const {uid} = req.params;
-    const user = await usersService.getUserById(uid);
-    if(!user) return res.status(404).send({status:"error",error:"Usuario no encontrado"})
+const getBy = async (req, res) => {
+    console.log('--> Run user getBy');
+
+    const data = req.params;
+    const id = data.id;
+    const result = await usersService.getBy({_id:id});
+    if (!result) return res.status(404).send({ status: "error", error: "User don't find" });
+    res.send({ status: "success", payload: result })
 }
 
 export default {
-    getUsers,
-    getUserById
+    getAll,
+    getBy
 }

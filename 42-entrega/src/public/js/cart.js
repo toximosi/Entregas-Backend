@@ -3,7 +3,7 @@ const addCart = (id) => {
     const obj = {
         id: id,
     };
-    fetch('api/cart/cartUpdate', {
+    fetch('api/cart/update', {
             method:'POST',
             body: JSON.stringify(obj),
             headers: {
