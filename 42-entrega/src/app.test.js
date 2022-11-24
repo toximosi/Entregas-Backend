@@ -13,11 +13,11 @@ describe('User testing', () => {
             let response = await requester.get('/api/user');
             expect(response.status).to.be.equal(200);
         })
-    })
-    it('la petición base debe retornar un arreglo de usuarios', async () => { 
-        const response = await requester.get('/api/user');
-        const { _body } = response;
-        expect(_body.payload).to.be.an('array');
+        it('la petición base debe retornar un arreglo de usuarios', async () => { 
+            const response = await requester.get('/api/user');
+            const { _body } = response;
+            expect(_body.payload).to.be.an('array');
+        })
     })
    /*  describe('POST', () => { 
         it('Debería poder crear un usuario', async () => { 
