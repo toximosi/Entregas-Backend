@@ -1,0 +1,42 @@
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjetId
+          description: Id autogeneration of Mongo
+        products:
+          type: array
+          id:
+            type: String
+          quantity:
+            type: Number
+            default: 1
+      example:
+        _id: 6367fd0848f879fe056c34ec
+        products: 
+          0:
+            id: 636b957b8d4ab97dec21f392
+            quantity: 2
+          1:
+          id: 636ba4eac41dfd243c0c7d7c
+          quantity: 3
+        __v: 0
+            
+paths:
+  /api/cart/:
+    get:
+      summary: get all carts of bd
+      tags:
+        - Carts
+      responses:
+        200:
+          description: get all carts ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+

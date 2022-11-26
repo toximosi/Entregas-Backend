@@ -10,6 +10,9 @@ import mongoose from 'mongoose';
 import MongoStore from 'connect-mongo';
 import cookieParser from 'cookie-parser';
 
+import swaggerJSDoc from 'swagger-jsdoc';
+import SwaggerUiExpress from 'swagger-ui-express';
+
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
 
@@ -23,6 +26,22 @@ import dataRouter from './routers/data.router.js'
 import config from './config/config.js';
 
 const app = express();
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: "API Coder",
+            description: "Work to CoderHouse Backend course"
+        }
+    },
+    apis:[`${__dirname}/docs/**/*.yaml`]
+};
+
+const specs = swaggerJSDoc(swaggerOptions);
+app.use('/apidocs', SwaggerUiExpress.serve, SwaggerUiExpress.setup(specs));
+
+
 var corsOptions = {
     origin: `https://${process.env.HOST}:${process.env.PORT}`,
     opotionsSuccessStatus: 200,
