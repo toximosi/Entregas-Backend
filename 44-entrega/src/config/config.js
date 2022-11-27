@@ -34,5 +34,8 @@ export default {
     jwt:{
         SECRET:process.env.JWT_KEY || "SecretToken",
         COOKIE:process.env.JWT_COOKIE || "CookieLogin"
+    },
+    test: {
+        EMAIL: process.env.TEST_EMAIL || "TEST@mail.es"
     }
 }

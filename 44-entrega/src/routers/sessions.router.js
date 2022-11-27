@@ -10,5 +10,4 @@ router.post('/register',uploader.single('images/avatar'), sessionsController.reg
 router.post('/login', sessionsController.login);
 router.get('/logout',sessionsController.logout);
 
-
 export default router;

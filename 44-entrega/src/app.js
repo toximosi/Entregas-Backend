@@ -13,6 +13,10 @@ import cookieParser from 'cookie-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
 import SwaggerUiExpress from 'swagger-ui-express';
 
+import { ApolloServer } from 'apollo-server-express';
+import typeDefs from './graphql/typeDefs.js';
+import resolvers from './graphql/resolvers.js';
+
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
 
@@ -55,11 +59,22 @@ const server = app.listen(PORT, ()=>{
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
-/* const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`); */
+//--> incluir Graphql con apoilloserver
+const apolloServer = new ApolloServer({
+    typeDefs,
+    resolvers
+});
+await apolloServer.start();
+apolloServer.applyMiddleware({ app });
+
+
+/* const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.a1f76bk.mongodb.net/MongoDb?retryWrites=true&w=majority`); */
+
+//--> Crear sesion
 app.use(session({
     secret: "Sessi0n",
     /* store: MongoStore.create({
-        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`,
+        mongoUrl: `mongodb+srv://toximosi:Quier0Entrar@cluster0.a1f76bk.mongodb.net/MongoDb?retryWrites=true&w=majority`,
         mongoOptions: {
             useNewUrlParser: true,
             useUnifiedTopology: true

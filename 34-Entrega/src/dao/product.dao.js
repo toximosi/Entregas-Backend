@@ -14,7 +14,9 @@ export default class UsersDao {
         return productsModel.findOne({code})
     };
 
-    save = (product) =>{
+    save = (product) => {
+        console.log('product')
+        console.log(product)
         return productsModel.create(product);
     };
 

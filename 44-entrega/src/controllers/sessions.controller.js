@@ -23,7 +23,6 @@ import MailingService from '../services/mailing.js';
         ref:'Carts'
     }
 }) */
-
 const register = async (req, res) => {
     console.log('--> Sesioncontroller register body');
     console.log(req.body);
@@ -40,7 +39,7 @@ const register = async (req, res) => {
     let exists = await usersService.getBy({email});
     if(exists) return res.status(400).send({status:'error', error:'the user exist yet'});
     //Anexar el carrito
-    const cart = await cartsService.save({product:[]});
+    const cart = await cartsService.create({product:[]});
     const hashedPassword = await createHash(password);
     let image = "";
     const user ={
@@ -51,14 +50,12 @@ const register = async (req, res) => {
         age,
         password: hashedPassword,
         image,
-        cart:cart._id
+        cart: cart._id
     }
-     const result = await usersService.save(user);
-    
-    
+    const result = await usersService.create(user);
+        
     const mailer = new MailingService();
-    
-    let mailsend = await mailer.sendSimpleMail({
+        let mailsend = await mailer.sendSimpleMail({
         from: email,
         to: `toximosi@gmail.com, ${config.session.ADMIN_EMAIL}`,
         subject: 'nuevo registro',

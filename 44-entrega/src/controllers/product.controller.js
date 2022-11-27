@@ -39,22 +39,28 @@ const create = async (req, res) => {
     } else {
         image=`/images/product/${req.file.filename}`;
     }
-    const { product_name, code, description,  price, quantity} = req.body;
-    if (!product_name || !code || !description || !price || !quantity) return res.status(400).send({ status: 'error', error: 'Incomplete values' })
+    console.log('req.body');
+    console.log(req.body);
+    
+    const { product_name, code, description, price, quantity } = req.body;
+    //! si price o quantity es =0, da error.
+    if ( !product_name || !code || !description || !price || !quantity ) return res.status(400).send({ function: 'create', status: 'error',  error: 'Incomplete values' })
     const product = {
         product_name,
         code,
         description,
-        quantity,
         price,
+        quantity,
         image,
     }
-    let result = await productsService.save(product);
+    let result = await productsService.create(product);
+    console.log('result');
+    console.log(result);
     res.send({ status: 'success', playload: result });
 }
 
 export default { 
     getAll,
     getBy,
-    create,
+    create
 }

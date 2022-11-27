@@ -8,11 +8,8 @@ import Cart from './models/cart.model.js';
 
 export default class Dao { 
     constructor() { 
-        /* this.connection = mongoose.connect(`mongodb+srv://${config.mongo.USER}:${config.mongo.PWD}@cluster0.dkrjcaf.mongodb.net/${config.mongo.DB}?retryWrites=true&w=majority`); */
-        this.connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`);
-
+        this.connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.a1f76bk.mongodb.net/MongoDb?retryWrites=true&w=majority`);
         const timestamp = { timestamp: { createdAt: 'create_at', updateAt: 'update_at' } };
-
         const usersSchema = mongoose.Schema(User.schema, timestamp);
         const productSchema = mongoose.Schema(Product.schema, timestamp);
         const cartSchema = mongoose.Schema(Cart.schema, timestamp);
@@ -24,20 +21,8 @@ export default class Dao {
         }
     }
 
-    //Generall
-    /* getAll = (params, entity) => {
-        console.log('params');
-        console.log(params);
-        console.log('entity');
-        console.log(entity);
-        if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entityt don`t exist'});
-        return this.models[entity].find(params).lean();
-    }; */
+    //General
     getAll = (entity) => {
-        /* console.log('params');
-        console.log(params);
-        console.log('entity');
-        console.log(entity); */
         if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entityt don`t exist'});
         return this.models[entity].find().lean();
     };
@@ -52,13 +37,16 @@ export default class Dao {
         return this.models[entity].findOne(params).lean();
     }
     
-    getByAndPopulate = (params,populate, entity) => {
+    getByAndPopulate = (params, populate, entity) => {
         if (!this.models[entity]) throw new Error({function: 'getByIdAndPopulate' ,error: 'the entityt don`t exist'});
         return cartsModel.findOne(params).lean().populate(populate);
     }; 
     
-    save = (data, entity) => {
-        if (!this.models[entity]) throw new Error({function: 'save' ,error: 'the entityt don`t exist'});
+    create = (data, entity) => {
+        console.log('--> DAO create');
+        console.log('data');
+        console.log(data);
+        if (!this.models[entity]) throw new Error({function: 'create' ,error: 'the entityt don`t exist'});
         return this.models[entity].create(data);
     };
     
@@ -68,37 +56,19 @@ export default class Dao {
     }; */
     
     update = (params, data, entity) => {
-            if (!this.models[entity]) throw new Error({function: 'update' ,error: 'the entityt don`t exist'});
-            return this.models[entity].updateOne(params, data);
+        console.log('--> DAO update');
+        if (!this.models[entity]) throw new Error({function: 'update' ,error: 'the entityt don`t exist'});
+        return this.models[entity].updateOne(params, data);
     };
-    /* update = (id, cart) => {
-        return cartsModel.findByIdAndUpdate(id, { $set: { products: cart.products } })
-    }; */
-    
-    //user
-    /* getByEmail = (email, entity) =>{
-        if (!this.models[entity]) throw new Error({function: 'getByEmail' ,error: 'the entityt don`t exist'});
-        return usersModel.findOne({ email });
-    }; */
-    
-    //product
-    /* getByCode = (code, entity) =>{
-        if (!this.models[entity]) throw new Error({function: 'getByCode' ,error: 'the entityt don`t exist'});
-        return productsModel.findOne({code})
-    }; */
 
-/*     findProduct = (cart_Id, productId) => {
-        return cartsModel.find({$and:[{ _id: cart_Id}, {'products.id': productId}]});
-    }; */
+    delete = () => {
+        //..        
+        return this.models[entity].deleteMany();
+    };
 
-    /* addProduct = (cart_Id, obj) => {
-        return cartsModel.updateOne({ _id: cart_Id},{ $push: { 'products': obj }});
-    }; */
+    deleteBy = () => {
+        //..        
+        return this.models[entity].deleteOne();
+    };
 
-    /* updateProduct = (cart_Id, productId, quantity) => {
-        return cartsModel.updateOne(
-            { $and: [{ _id: cart_Id }, { 'products.id': productId }] },
-            { 'products.$.quantity': quantity });
-
-    }; */
-}
+};

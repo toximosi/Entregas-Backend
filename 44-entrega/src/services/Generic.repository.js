@@ -18,11 +18,11 @@ export default class GenericRepository {
         return this.dao.findOne(params, this.model);
     }
 
-    save = (data) => {
-        console.log('--> Generic save');
+    create = (data) => {
+        console.log('--> Generic create');
         console.log('data');
         console.log(data);
-        return this.dao.save(data, this.model);
+        return this.dao.create(data, this.model);
     }
     
     findOne = (params) => { 
