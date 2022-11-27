@@ -13,7 +13,7 @@ const typeDefs = gql`
         phone: String
         cart: String
     }
-    
+
     type Product{
         _id: ID
         product_name: String
@@ -26,7 +26,7 @@ const typeDefs = gql`
 
 
     type Query{
-        hello: String
+        test: String
         getAllUsers: [User]
         getAllProducts: [Product]
     }

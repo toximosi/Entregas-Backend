@@ -2,7 +2,7 @@ import { productsService, usersService } from "../services/services.js";
 
 const resolvers = {
     Query: {
-        hello: () => 'hola kitty',
+        test: () => '👍 test ok ',
         getAllUsers: async () => { 
             let users = await usersService.getAll();
             return users;
