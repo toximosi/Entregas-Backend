@@ -13,8 +13,22 @@ const typeDefs = gql`
         phone: String
         cart: String
     }
+    
+    type Product{
+        _id: ID
+        product_name: String
+        code: String
+        description: String
+        price: String
+        quantity: String
+        image: String
+    }
+
+
     type Query{
         hello: String
+        getAllUsers: [User]
+        getAllProducts: [Product]
     }
 
 `;

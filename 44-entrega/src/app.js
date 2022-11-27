@@ -31,6 +31,18 @@ import config from './config/config.js';
 
 const app = express();
 
+//!COORS DAN PORBLEMAS CON GRAPHLQL
+//CORS Acceso a la api, desde el exterior
+/* var corsOptions = {
+    origin: `https://${process.env.HOST}:${process.env.PORT}`,
+    opotionsSuccessStatus: 200,
+    // credentials: true,
+    //origin: true
+};
+app.use(cors(corsOptions));//rutas accesible para todo el aplicación */
+//------------------------------------------------------------------
+
+//------------------------------------------------------------------
 const swaggerOptions = {
     definition: {
         openapi: '3.0.1',
@@ -44,14 +56,21 @@ const swaggerOptions = {
 
 const specs = swaggerJSDoc(swaggerOptions);
 app.use('/apidocs', SwaggerUiExpress.serve, SwaggerUiExpress.setup(specs));
+//------------------------------------------------------------------
 
+//--> incluir Graphql con apoilloserver
+const apolloServer = new ApolloServer({
+    typeDefs,
+    /* cors: cors(corsOptions), */
+    resolvers,
+    /* csrfPrevention: true,
+    cache: 'bounded',
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })], */
+});
+await apolloServer.start();
+apolloServer.applyMiddleware({ app });
+//------------------------------------------------------------------
 
-var corsOptions = {
-    origin: `https://${process.env.HOST}:${process.env.PORT}`,
-    opotionsSuccessStatus: 200,
-
-};
-app.use(cors(corsOptions));//rutas accesible para todo el aplicación
 const PORT = process.env.PORT || 8081;
 //Server
 const server = app.listen(PORT, ()=>{
@@ -59,13 +78,6 @@ const server = app.listen(PORT, ()=>{
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
 
-//--> incluir Graphql con apoilloserver
-const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers
-});
-await apolloServer.start();
-apolloServer.applyMiddleware({ app });
 
 
 /* const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.a1f76bk.mongodb.net/MongoDb?retryWrites=true&w=majority`); */
@@ -84,11 +96,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }));
+//------------------------------------------------------------------
 
 //format od files json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+//------------------------------------------------------------------
 
 //Templates wiews
 /* app.engine('handlebars', handlebars.engine({

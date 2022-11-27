@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/sandbox": "^1.0.2",
     "apollo-server-express": "^3.11.1",
     "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",

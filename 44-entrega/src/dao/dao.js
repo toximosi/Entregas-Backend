@@ -21,7 +21,6 @@ export default class Dao {
         }
     }
 
-    //General
     getAll = (entity) => {
         if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entityt don`t exist'});
         return this.models[entity].find().lean();
@@ -49,11 +48,6 @@ export default class Dao {
         if (!this.models[entity]) throw new Error({function: 'create' ,error: 'the entityt don`t exist'});
         return this.models[entity].create(data);
     };
-    
-    /* add = (params, data, entity) => {
-        if (!this.models[entity]) throw new Error({function: 'add' ,error: 'the entityt don`t exist'});
-        return this.model[entity].updateOne(params,data);;
-    }; */
     
     update = (params, data, entity) => {
         console.log('--> DAO update');
