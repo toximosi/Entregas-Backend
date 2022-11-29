@@ -1,0 +1,87 @@
+[
+  {
+    "_id": {
+      "$oid": "636b9e3a8d4ab97dec21f397"
+    },
+    "first_name": "01",
+    "last_name": "01",
+    "email": "01@mail.es",
+    "password": "$2b$10$WdK6c5rIggpEO3WTtsf6dumMH1FyBRuca3.WMesHIchN4.avCuctG",
+    "age": 1,
+    "image": "/images/avatar/avatar.png",
+    "role": "user",
+    "phone": "01",
+    "cart": {
+      "$oid": "636b9e3a8d4ab97dec21f395"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "636ba6596db6f99d785fe933"
+    },
+    "first_name": "02",
+    "last_name": "02",
+    "email": "02@mail.es",
+    "password": "$2b$10$VI1Je/E2.XMbWNBA0aTpI.Ml7g/Cld51TOlI5Tk4GO.Ov4PSdSyYW",
+    "age": 2,
+    "image": "/images/avatar/avatar.png",
+    "role": "user",
+    "phone": "02",
+    "cart": {
+      "$oid": "636ba6596db6f99d785fe931"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "636ba6a1dc911e044d633ae4"
+    },
+    "first_name": "03",
+    "last_name": "03",
+    "email": "03@mail.es",
+    "password": "$2b$10$.F231XVHhmk.FysnyFCszOwkNjeHwj5f1NcF9sOiyYAHf5Kr7eNLG",
+    "age": 3,
+    "image": "http://localhost:8081/images/avatar/avatar.png",
+    "role": "user",
+    "phone": "03",
+    "cart": {
+      "$oid": "636ba6a1dc911e044d633ae2"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "636ba753b465fc01e480c075"
+    },
+    "first_name": "04",
+    "last_name": "04",
+    "email": "04@mail.es",
+    "password": "$2b$10$YdFZU3/xvRsxnpbgHrGYseWTJUQTsLZ8NLAHRFUQUE9f50/0EaHcO",
+    "age": 4,
+    "image": "/images/avatar/avatar.png",
+    "role": "user",
+    "phone": "04",
+    "cart": {
+      "$oid": "636ba753b465fc01e480c073"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "636ba80cb465fc01e480c07a"
+    },
+    "first_name": "05",
+    "last_name": "05",
+    "email": "05@mail.es",
+    "password": "$2b$10$zN8vVDCjdxUwPpTArrgRZOiHycP16jBuCiHeytLbbRwrMlCqC5qrC",
+    "age": 5,
+    "image": "http://localhost:8081/images/avatar/avatar.png",
+    "role": "user",
+    "phone": "05",
+    "cart": {
+      "$oid": "636ba80cb465fc01e480c078"
+    },
+    "__v": 0
+  }
+]
