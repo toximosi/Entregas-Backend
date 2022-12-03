@@ -31,5 +31,3 @@ const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });
 server.on("error", error => console.log(`Error en el servidor ${error}`)); 
-
-/* const connection = mongoose.connect(`mongodb+srv://toximosi:Quier0Entrar@cluster0.dkrjcaf.mongodb.net/34Entrega?retryWrites=true&w=majority`); */

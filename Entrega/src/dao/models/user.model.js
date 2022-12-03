@@ -6,20 +6,26 @@ export default class User {
     }
     static get schema() {
         return {
-            first_name:String,
-            last_name:String,
-            password:String,
-            email:String,
-            role:{
-                type:String,
-                enum:['user','artist','admin'],
-                default:'user'
+            first_name: String,
+            last_name: String,
+            password: {
+                type: String,
+                default: '1234'
             },
-            avatar:String,
-            address:String,
+            email: String,
+            role:{
+                type: String,
+                enum: ['user','artist','admin'],
+                default: 'user'
+            },
+            image: {
+                type: String,
+                default: '/images/avatar/avatar.png'
+            },
+            address: String,
             cart:{
-                type:mongoose.SchemaTypes.ObjectId,
-                ref:'Carts'
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'Carts'
             }
         }
     }

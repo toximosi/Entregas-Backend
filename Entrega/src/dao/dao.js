@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ObjectId } from "bson"
 
 import User from "./models/user.model.js";
 import Cart from "./models/cart.model.js";
@@ -23,17 +24,44 @@ export default class Dao {
     }
 
     getAll = (params, entity) => {
-        if (!this.models[entity]) throw new Error('La entidad no existe');
+        console.log('--> DAO getAll');
+        if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entity don`t exist'});
         return this.models[entity].find(params).lean();
     }
 
-    findOne = (params, entity) => {
-        if (!this.models[entity]) throw new Error('La entidad no existe');
-        return this.models[entity].findOne(params).lean();
+    getByMongo_id = (id, entity) => {
+        console.log('--> DAO getByMongo_id');
+        if (!this.models[entity]) throw new Error({function: 'getByMongo_id' ,error: 'the entity don`t exist'});
+        return this.models[entity].findOne({"_id": new mongo.ObjectID(id)}).lean();
+    };
+
+    getBy = (params, entity) => {
+        if (!this.models[entity]) throw new Error({function: 'getBy' ,error: 'the entity don`t exist'});
+        return this.models[entity].findOne(params);
     }
 
     save = (document, entity) => {
-        if (!this.models[entity]) throw new Error('La entidad no existe');
+        console.log('--> DAO save');
+        if (!this.models[entity]) throw new Error({function: 'save' ,error: 'the entity don`t exist'});
         return this.models[entity].create(document);
+    }
+
+    update = (params, data, entity) => {
+        console.log('--> DAO update');
+        if (!this.models[entity]) throw new Error({function: 'update' ,error: 'the entityt don`t exist'});
+        return this.models[entity].updateOne(params, data);
+    }
+
+    /* deleteAll = (entity) => {
+        console.log('--> DAO delete');
+        if (!this.models[entity]) throw new Error({function: 'deleteAll' ,error: 'the entityt don`t exist'});
+        //..        
+        return this.models[entity].deleteMany();
+    } */
+
+    deleteBy = (param, entity) => {
+        console.log('--> DAO deleteBy');
+        if (!this.models[entity]) throw new Error({function: 'deleteBy' ,error: 'the entityt don`t exist'});
+        return this.models[entity].findByIdAndDelete({param});
     }
 }

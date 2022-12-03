@@ -9,11 +9,22 @@ export default class GenericRepository {
         return this.dao.getAll(params, this.model);
     }
 
+/*     getByMongo_id = (params) => {
+        return this.dao.getByMongo_id(params, this.model);
+    } */
+
     getBy = (params) => {
-        return this.dao.findOne(params, this.model);
+        return this.dao.getBy(params, this.model);
+    }
+    getByMongo_id = (id) => {
+        return this.dao.getByMongo_id(id, this.model);
     }
 
     save = (data) => {
         return this.dao.save(data, this.model);
+    }
+
+    deleteBy = (param) => {
+        return this.dao.deleteBy(param, this.model);
     }
 }
