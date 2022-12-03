@@ -92,14 +92,14 @@ app.use(session({
             useUnifiedTopology: true
         },
         ttl: 6000
-    }), */
+    }),  */
     resave: false,
     saveUninitialized: false,
 }));
 //------------------------------------------------------------------
 
 //format od files json
-app.use(express.json());
+app.use(express.json());// parse application/json
 app.use(express.urlencoded({ extended: true }));
 //------------------------------------------------------------------
 
@@ -140,7 +140,7 @@ const streams = [
 const logger = pino({}, pino.multistream(streams));
 
 //ROUTERS ------------------------------------------------------------------------- INICIO
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     logger.fatal('fatal');
     logger.error('error');
     logger.warn('warn');
@@ -148,4 +148,4 @@ app.get('/', (req, res) => {
     logger.debug('debug');
     logger.fatal('fatal');
     res.send('logging');
-});
+}); */

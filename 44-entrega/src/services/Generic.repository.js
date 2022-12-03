@@ -18,11 +18,11 @@ export default class GenericRepository {
         return this.dao.findOne(params, this.model);
     }
 
-    create = (data) => {
+    save = (data) => {
         console.log('--> Generic create');
         console.log('data');
         console.log(data);
-        return this.dao.create(data, this.model);
+        return this.dao.save(data, this.model);
     }
     
     findOne = (params) => { 
@@ -39,13 +39,20 @@ export default class GenericRepository {
         return this.dao.getByAndPopulate(params, populate, this.model);
     }
     
-    update = (params, data) => { 
+    update = (param, data) => { 
         console.log('--> Generic update');
-        console.log('params');
-        console.log(params);
+        console.log('param');
+        console.log(param);
         console.log('data');
         console.log(data);
-        return this.dao.update(params, data, this.model);
+        return this.dao.update(param, data, this.model);
+    }
+
+    deleteBy = (param) => { 
+        console.log('--> Generic getBy');
+        console.log('param');
+        console.log(param);
+        return this.dao.deleteBy(param, this.model);
     }
 
 

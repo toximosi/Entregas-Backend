@@ -19,5 +19,6 @@ router.get('/productList',/* privateValidation, */ /* executePolices(['ADMIN']),
 router.get('/productCard',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.productCard);
 /* router.get('/cartsList',privateValidation, executePolices(['ADMIN']), viewsController.cartsList); */
 
+router.get('/userList',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userList);
 
 export default router;

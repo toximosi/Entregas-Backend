@@ -94,6 +94,11 @@ const perfil = (req, res) => {
     }
 };
 
+const userList = async (req, res) => { 
+    const Arr = await usersService.getAll();
+    res.render('user-list', { Arr });
+}
+
 export default {
     home,
     register,
@@ -104,5 +109,6 @@ export default {
     productCard,
     carts,
     /* cartsList, */
-    perfil
+    perfil,
+    userList
 }

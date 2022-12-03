@@ -4,7 +4,7 @@ import { usersService, cartsService } from '../services/services.js';
 import { createHash, isValidPassword } from '../utils.js';
 
 
-const create = async (req, res) => {
+const save= async (req, res) => {
     console.log('--> run user create');
     console.log(req.body);
     /* if (!req.file) return res.status(500).send({ status: 'error', error: 'Error to uploader file' }); */
@@ -16,7 +16,7 @@ const create = async (req, res) => {
             return res.status(400).send({ status: 'error', error: 'the user exist yet' });
     } */
     //Anexar el carrito
-    const cart = await cartsService.create({ product: [] });
+    /* const cart = await cartsService.save({ product: [] }); */
     const hashedPassword = await createHash(password);
     const user = {
         first_name,
@@ -26,9 +26,9 @@ const create = async (req, res) => {
         age,
         password: hashedPassword,
         image: `/images/avatar/avatar.png`,
-        cart: cart._id
+        cart: ''
     }
-    const result = await usersService.create(user);
+    const result = await usersService.save(user);
 
     res.send({ status: 'success', payload: result })
 };
@@ -43,17 +43,25 @@ const getAll = async (req, res) => {
 
 const getBy = async (req, res) => {
     console.log('--> Run user getBy');
-
     const data = req.params;
-    const id = data.id;
-    
-    const result = await usersService.getBy({_id:id});
-    if (!result) return res.status(404).send({ status: "error", error: "User don't find" });
+    const result = await usersService.getBy(data);
+    if (!result) return res.status(404).send({ status: "error", function:"getBy", error: `User don't find by ${param}` });
+    res.send({ status: "success", payload: result })
+}
+
+const deleteBy = async (req, res) => {
+    console.log('--> Run user getBy');
+    const data = req.params;
+    console.log('data')
+    console.log(data)
+    const result = await usersService.deleteBy(data);
+    if (!result) return res.status(404).send({ status: "error", function:"deleteBy", error: `User don't find by ${param}` });
     res.send({ status: "success", payload: result })
 }
 
 export default {
-    create,
+    save,
     getAll,
-    getBy
+    getBy,
+    deleteBy
 }

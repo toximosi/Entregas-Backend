@@ -24,12 +24,12 @@ export default class Dao {
     getAll = (entity) => {
         if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entityt don`t exist'});
         return this.models[entity].find().lean();
-    };
+    }
     
     getBy = (params, entity) => {
         if (!this.models[entity]) throw new Error({function: 'getBy' ,error: 'the entityt don`t exist'});
-        return cartsModel.findOne(params).lean();
-    };
+        return this.models.findOne(params).lean();
+    }
     
     findOne = async (params, entity) => {
         if (!this.models[entity]) throw new Error({function: 'findOne' ,error: 'the entityt don`t exist'});
@@ -38,31 +38,33 @@ export default class Dao {
     
     getByAndPopulate = (params, populate, entity) => {
         if (!this.models[entity]) throw new Error({function: 'getByIdAndPopulate' ,error: 'the entityt don`t exist'});
-        return cartsModel.findOne(params).lean().populate(populate);
-    }; 
+        return this.models.findOne(params).lean().populate(populate);
+    }
     
-    create = (data, entity) => {
-        console.log('--> DAO create');
+    save = (data, entity) => {
+        console.log('--> DAO save');
         console.log('data');
         console.log(data);
-        if (!this.models[entity]) throw new Error({function: 'create' ,error: 'the entityt don`t exist'});
+        if (!this.models[entity]) throw new Error({function: 'save' ,error: 'the entityt don`t exist'});
         return this.models[entity].create(data);
-    };
+    }
     
     update = (params, data, entity) => {
         console.log('--> DAO update');
         if (!this.models[entity]) throw new Error({function: 'update' ,error: 'the entityt don`t exist'});
         return this.models[entity].updateOne(params, data);
-    };
+    }
 
     delete = () => {
         //..        
         return this.models[entity].deleteMany();
-    };
+    }
 
-    deleteBy = () => {
-        //..        
-        return this.models[entity].deleteOne();
-    };
+    deleteBy = (param, entity) => {
+        console.log('--> DAO deletyBy'); 
+        console.log('param');
+        console.log(param);
+        return this.models[entity].findByIdAndDelete(param);
+    }
 
 };
