@@ -36,12 +36,6 @@ export default class Dao {
         return result;
     }
 
-    getByMongo_id = (id, entity) => {
-        console.log('--> DAO getByMongo_id');
-        if (!this.models[entity]) throw new Error({function: 'getByMongo_id' ,error: 'the entity don`t exist'});
-        return this.models[entity].findOne({_id:id}).lean();
-    }
-
     save = (document, entity) => {
         console.log('--> DAO save');
         if (!this.models[entity]) throw new Error({function: 'save' ,error: 'the entity don`t exist'});
@@ -64,6 +58,6 @@ export default class Dao {
     deleteBy = (param, entity) => {
         console.log('--> DAO deleteBy');
         if (!this.models[entity]) throw new Error({function: 'deleteBy' ,error: 'the entityt don`t exist'});
-        return this.models[entity].findByIdAndDelete({param});
+        return this.models[entity].findByIdAndDelete(param);
     }
 }

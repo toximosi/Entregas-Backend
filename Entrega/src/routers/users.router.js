@@ -6,12 +6,14 @@ const router = Router();
 //! app.use('/api/user', userRouter);
 
 router.get('/', usersController.getAll);
-router.get('/:id', usersController.getBy);
 router.get('/byId/:_id', usersController.getBy);
 router.get('/byEmail/:email', usersController.getBy);
 
 router.post('/save', usersController.save);
 
-router.delete('/deleteById/:_id', usersController.deleteById);
+router.update('/update', usersController.update);
+
+router.delete('/delete/byId/:_id', usersController.deleteBy);
+router.delete('/delete/byEmail/:email', usersController.deleteBy);
 
 export default router;

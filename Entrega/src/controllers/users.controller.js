@@ -67,22 +67,21 @@ const save = async (req, res) => {
     }
 };
 
-const deleteById = async (rec, req) => {
+const deleteById = async (req, res) => {
     console.log('--> User controller deleteById ');
     try {
-        const param = req.paramas;
-        console.log('req.params');
-        console.log(req.params);
-        console.log('param')
-        console.log(param)
+        const param = await req.params;
+        const user = await userService.getBy(param);
+        const cart = await cartService.getBy({ _id: user.cart });
         const result = await userService.deleteBy(param);
-        let message = { status: "success", message: `👍 User ${id} delete `, function: '👩‍🚀 User deleteById ', payload: result };
+        const deletecart = await cartService.deleteBy({_id: cart._id})//borrar cart relacionada con el usuario
+        let message = { status: "success", message: `👍 User ${JSON.stringify(param)} and cart ${JSON.stringify(user.cart )} delete `, function: '👩‍🚀 User deleteById ', payload: result };
         console.log(message);
         res.status(200).send(message);
     } catch (error) {
         let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User deleteById ', trace: error };
         console.log(message);
-    };    
+    };
 };
 
 export default {
