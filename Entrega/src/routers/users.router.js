@@ -10,7 +10,7 @@ router.get('/:id', usersController.getBy);
 router.get('/byId/:_id', usersController.getBy);
 router.get('/byEmail/:email', usersController.getBy);
 
-router.post('/create', usersController.create);
+router.post('/save', usersController.save);
 
 router.delete('/deleteById/:_id', usersController.deleteById);
 

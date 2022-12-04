@@ -3,7 +3,7 @@ import { ObjectId } from "bson"
 
 import User from "./models/user.model.js";
 import Cart from "./models/cart.model.js";
-import Artwork from "./models/product.model.js";
+import Product from "./models/product.model.js";
 
 import config from "../config/config.js";
 
@@ -14,30 +14,32 @@ export default class Dao {
         const timestamps = { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } };
         const userSchema = mongoose.Schema(User.schema, timestamps);
         const gallerySchema = mongoose.Schema(Cart.schema, timestamps);
-        const artworkSchema = mongoose.Schema(Artwork.schema, timestamps);
+        const productSchema = mongoose.Schema(Product.schema, timestamps);
 
         this.models = {
             [User.model]: mongoose.model(User.model, userSchema),
             [Cart.model]: mongoose.model(Cart.model, gallerySchema),
-            [Artwork.model]: mongoose.model(Artwork.model, artworkSchema)
+            [Product.model]: mongoose.model(Product.model, productSchema)
         }
     }
 
-    getAll = (params, entity) => {
+    getAll = ( entity) => {
         console.log('--> DAO getAll');
         if (!this.models[entity]) throw new Error({function: 'getAll' ,error: 'the entity don`t exist'});
-        return this.models[entity].find(params).lean();
+        return this.models[entity].find().lean();
+    }
+
+    getBy = (params, entity) => {
+        console.log('--> DAO getBy');
+        if (!this.models[entity]) throw new Error({ function: 'getBy', error: 'the entity don`t exist' });
+        const result = this.models[entity].findOne(params).lean();
+        return result;
     }
 
     getByMongo_id = (id, entity) => {
         console.log('--> DAO getByMongo_id');
         if (!this.models[entity]) throw new Error({function: 'getByMongo_id' ,error: 'the entity don`t exist'});
-        return this.models[entity].findOne({"_id": new mongo.ObjectID(id)}).lean();
-    };
-
-    getBy = (params, entity) => {
-        if (!this.models[entity]) throw new Error({function: 'getBy' ,error: 'the entity don`t exist'});
-        return this.models[entity].findOne(params);
+        return this.models[entity].findOne({_id:id}).lean();
     }
 
     save = (document, entity) => {

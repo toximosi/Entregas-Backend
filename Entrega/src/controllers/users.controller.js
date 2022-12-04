@@ -22,26 +22,13 @@ const getAll = async (req, res) => {
 const getBy = async (req, res) => {
     console.log('--> User controller getBy');
     try {
-        const data = req.params;
-        /* console.log('data');
-        console.log(data);
-        let newdata = data;
-        let key = Object.keys(data);
-        let result = "";
-        if (key[0] == '_id') {
-            let _id = data._id;
-            result = await userService.getByMongo_id(_id);
-        } else { 
-            result = await userService.getBy(newdata);
-        } */
-        console.log('data');
-        console.log(data);
-        const result = await userService.getBy(data);
-        if (!result) { 
-            let message = { status: "success", message: "👍 Users find", function: '👩‍🚀 User controller getBy', payload: result };
-            console.log(message);
-            return res.status(404).send(message);
-        }
+        const params = await req.params;
+        const result = await userService.getBy(params);
+        /* const users = result.map(u=>new UserPresenterDTO(u));
+        res.send({ users }); */
+        let message = { status: "success", message: "👍 Users find", function: '👩‍🚀 User controller getBy', payload: result };
+        console.log(message);
+        res.status(200).send(message);
     } catch (error) {
         let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User controller getBy', trace: error };
         console.log(message);
@@ -49,8 +36,7 @@ const getBy = async (req, res) => {
     };
 };
 
-
-const create = async (req, res) => {
+const save = async (req, res) => {
     console.log('--> User controller create');
     try {
         let { first_name, last_name, password, email, address, role } = req.body;
@@ -65,9 +51,8 @@ const create = async (req, res) => {
             password: hashedPassword,
             email,
             role,
+            image: '/images/avatar/avatar.png',
             address,
-            avatar: '/images/avatar/avatar.png',
-            adress: '',
             cart: cart._id,
         }
         /* const insertUser = new UserInsertDTO(newUser); */
@@ -103,6 +88,6 @@ const deleteById = async (rec, req) => {
 export default {
     getAll,
     getBy,
-    create,
+    save,
     deleteById
 }

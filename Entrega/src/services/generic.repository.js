@@ -5,8 +5,8 @@ export default class GenericRepository {
         this.model = model;
     }
 
-    getAll = (params) => {
-        return this.dao.getAll(params, this.model);
+    getAll = () => {
+        return this.dao.getAll(this.model);
     }
 
 /*     getByMongo_id = (params) => {
@@ -16,7 +16,7 @@ export default class GenericRepository {
     getBy = (params) => {
         return this.dao.getBy(params, this.model);
     }
-    
+
     getByMongo_id = (id) => {
         return this.dao.getByMongo_id(id, this.model);
     }
