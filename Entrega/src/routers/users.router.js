@@ -11,7 +11,8 @@ router.get('/byEmail/:email', usersController.getBy);
 
 router.post('/save', usersController.save);
 
-router.update('/update', usersController.update);
+router.put('/updateById/:_id', usersController.updateBy);
+router.put('/updateByEmail/:email', usersController.updateBy);
 
 router.delete('/delete/byId/:_id', usersController.deleteBy);
 router.delete('/delete/byEmail/:email', usersController.deleteBy);

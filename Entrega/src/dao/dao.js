@@ -42,18 +42,11 @@ export default class Dao {
         return this.models[entity].create(document);
     }
 
-    update = (params, data, entity) => {
+    updateBy = (param, data, entity) => {
         console.log('--> DAO update');
-        if (!this.models[entity]) throw new Error({function: 'update' ,error: 'the entityt don`t exist'});
-        return this.models[entity].updateOne(params, data);
+        if (!this.models[entity]) throw new Error({function: 'updateBy' ,error: 'the entityt don`t exist'});
+        return this.models[entity].updateOne(param, data, {returnNewDocument:true});
     }
-
-    /* deleteAll = (entity) => {
-        console.log('--> DAO delete');
-        if (!this.models[entity]) throw new Error({function: 'deleteAll' ,error: 'the entityt don`t exist'});
-        //..        
-        return this.models[entity].deleteMany();
-    } */
 
     deleteBy = (param, entity) => {
         console.log('--> DAO deleteBy');

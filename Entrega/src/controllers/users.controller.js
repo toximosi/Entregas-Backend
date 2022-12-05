@@ -67,7 +67,31 @@ const save = async (req, res) => {
     }
 };
 
-const deleteById = async (req, res) => {
+const updateBy = async (req, res) => {
+    console.log('--> User controller updateBy');
+    try {
+        const param = req.params;
+        let { first_name, last_name,email, address, role } = req.body;
+        const data = {
+                first_name,
+                last_name,
+                email,
+                role,
+                image: '/images/avatar/avatar.png',
+                address
+        }
+        const result = await userService.updateBy(param, data);
+        let message = { status: "success", message: "👍 User update", function: '👩‍🚀 User controller updateBy', payload: result };
+        console.log(message);
+        res.status(200).send(message);
+    } catch (error) {
+        let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User controller updateBy', trace: error };
+        console.log(message);
+        res.status(500).send(message);
+    }
+};
+
+const deleteBy = async (req, res) => {
     console.log('--> User controller deleteById ');
     try {
         const param = await req.params;
@@ -88,5 +112,6 @@ export default {
     getAll,
     getBy,
     save,
-    deleteById
+    updateBy,
+    deleteBy
 }
