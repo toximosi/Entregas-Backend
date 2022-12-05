@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import userRouter from './routers/users.router.js';
 import sessionsRouter from './routers/sessions.router.js';
+import productRouter from './routers/products.router.js';
 
 //APP ------------------------------------------------------------------------- INICIO
 const app = express();
@@ -19,11 +20,11 @@ app.use(express.static(__dirname + '/public'));
 
 //ROUTERS ------------------------------------------------------------------------- INICIO
 /* app.use('/', viwesRouter);
-app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/data', dataRouter); */
 app.use('/api/user', userRouter);
 app.use('/api/sessions/',sessionsRouter);
+app.use('/api/product', productRouter);
 
 //SERVER ------------------------------------------------------------------------- INICIO
 const PORT = process.env.PORT || 8081;

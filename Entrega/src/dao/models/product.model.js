@@ -6,13 +6,35 @@ export default class Product {
 
     static get schema() {
         return {
-            title:String,
-            description:String,
-            author:String,
-            price:Number,
-            copies:Number,
-            creationDate:Date,
-            image:String
+            code: {
+                type: String,
+                require: true
+            },
+            product_name: {
+                type: String,
+                require: true
+            },
+            description: {
+                type: String,
+                require: false
+            },
+            price: {
+                type: Number,
+                require: true
+            },
+            offer: {
+                type: Number,
+                require: false,
+                default: 0
+            },
+            stock: {
+                type: Number,
+                require: true
+            },
+            image:{
+                type: String,
+                default: '/images/product/product.png'
+            }
         }
     }
 }

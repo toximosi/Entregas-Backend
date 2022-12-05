@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { userService, cartService } from "../services/services.js"
+import { userService, cartService, productService } from "../services/services.js"
 import {UserPresenterDTO} from "../dto/User.dto.js";
 import { createHash } from "../utils.js";
 
@@ -81,7 +81,7 @@ const updateBy = async (req, res) => {
                 address
         }
         const result = await userService.updateBy(param, data);
-        let message = { status: "success", message: "👍 User update", function: '👩‍🚀 User controller updateBy', payload: result };
+        let message = { status: "success", message: `👍 User ${param} update`, function: '👩‍🚀 User controller updateBy', change: data};
         console.log(message);
         res.status(200).send(message);
     } catch (error) {
@@ -108,10 +108,82 @@ const deleteBy = async (req, res) => {
     };
 };
 
+const userInfoBy = async(req, res) => { 
+    console.log('--> User controller userInfoBy');
+    try {
+        const id = req.params;
+        console.log('id')
+        console.log(id)
+        const user = await userService.getBy(id);
+        const cart = await cartService.getBy(user.cart);
+        console.log('cart')
+        console.log(cart)
+        let productInfo = []
+        let count = 0;
+        let productExten;
+        console.log("cart.products")    
+        console.log(cart.products[0])    
+        console.log(cart.products[0].id)    
+
+        let p = await productService.getBy({_id: cart.products[0].id})
+        /* await cart.products.map((e) => { 
+console.log('e')
+            console.log(e)
+            let p =  productService.getBy({ id: e.id });
+            console.log('p')
+            console.log(p)
+            }
+        ) */
+
+        /* cart.products.forEach(e => {
+            
+            console.log('e')
+            console.log(e.id)
+
+            
+            count++;
+        }); */
+
+
+        let data = user;
+        data.cart = cart;
+
+
+        /* console.log('data');
+        console.log(data); */
+
+        
+        /* await data.forEach(e => {
+            console.log('e.cart')
+            console.log(e.cart)
+            cart = cartService.getBy(e.cart);
+
+        }); */
+
+
+
+
+
+        /* console.log(info) */
+        /* let message = { status: "success", message: `👍 User have all info`, function: '👩‍🚀 User userInfo', payload: info };
+        console.log(message);
+        res.status(200).send(message); */
+        } catch (error) {
+        let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User userInfo', trace: error };
+        console.log(message);
+    };
+
+}
+
+const userInfo = async (req, res) => { 
+
+}
 export default {
     getAll,
     getBy,
     save,
     updateBy,
-    deleteBy
+    deleteBy,
+    userInfo,
+    userInfoBy,
 }
