@@ -10,7 +10,7 @@ router.get('/byId/:_id', productsController.getBy);
 
 router.post('/save', productsController.save);
 
-router.put('/updateById/:_id', productsController.updateBy);
+router.put('/update/byId/:_id', productsController.updateBy);
 
 router.delete('/delete/byId/:_id', productsController.deleteBy);
 

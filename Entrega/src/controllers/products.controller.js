@@ -38,9 +38,8 @@ const save = async (req, res) => {
     try {
         let { code, product_name, description, price, offer, stock } = req.body;
         /* if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"}); */
-        let Product = await productService.getBy(code);
-        if (Product) return res.status(400).send({ status: "error", error: "El usuario ya existe" });
-        let cart = await cartService.save({ product: [] })
+        let product = await productService.getBy({code: code});
+        if (product) return res.status(400).send({ status: "error", error: `🧳 Product with code:${code} exist` });
         const newProduct = {
             code,
             product_name,
@@ -52,7 +51,7 @@ const save = async (req, res) => {
         }
         /* const insertProduct = new ProductInsertDTO(newProduct); */
         let result = await productService.save(newProduct);
-        let message = { status: "success", message: "👍 Product create", function: '🧳 Product controller create', payload: result };
+        let message = { status: "success", message: "👍 Product save", function: '🧳 Product controller create', payload: result };
         console.log(message);
         res.status(200).send(message);
     } catch (error) {
@@ -66,14 +65,23 @@ const updateBy = async (req, res) => {
     console.log('--> Product controller updateBy');
     try {
         const param = req.params;
-        let { first_name, last_name,email, address, role } = req.body;
+        //comprobación-----------------------------------------        
+        /* const exist = await productService.getBy(param);
+        if (!exist) { 
+            let message = { status: "error", message: `👍 Product ${param} No exist`, function: '🧳 Product controller updateBy'};
+            console.log(message);
+            res.status(400).send(message);
+        }; */
+        //-----------------------------------------------------
+        let { code, product_name, description, price, offer, stock } = req.body;
         const data = {
-                first_name,
-                last_name,
-                email,
-                role,
-                image: '/images/avatar/avatar.png',
-                address
+                code,
+                product_name,
+                description,
+                price,
+                offer,
+                stock,
+                image: '/images/product/product.png'
         }
         const result = await productService.updateBy(param, data);
         let message = { status: "success", message: `👍 Product ${param} update`, function: '🧳 Product controller updateBy', change: data};
@@ -90,11 +98,8 @@ const deleteBy = async (req, res) => {
     console.log('--> Product controller deleteById ');
     try {
         const param = await req.params;
-        const Product = await productService.getBy(param);
-        const cart = await cartService.getBy({ _id: Product.cart });
         const result = await productService.deleteBy(param);
-        const deletecart = await cartService.deleteBy({_id: cart._id})//borrar cart relacionada con el usuario
-        let message = { status: "success", message: `👍 Product ${JSON.stringify(param)} and cart ${JSON.stringify(Product.cart )} delete `, function: '🧳 Product deleteById ', payload: result };
+        let message = { status: "success", message: `👍 Product ${JSON.stringify(param)} delete `, function: '🧳 Product deleteById ', payload: result };
         console.log(message);
         res.status(200).send(message);
     } catch (error) {
