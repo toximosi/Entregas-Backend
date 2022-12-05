@@ -7,6 +7,13 @@ const getAll = async (req, res) => {
     console.log('--> User controller getAll');
     try {
         const result = await userService.getAll();
+        //COMPROBACION -------------------------------------------------
+        if (!result || result.length == 0) { 
+            let message = { status: "without result", message: "🌪 There are not any User", function: '👩‍🚀 User controller getAll'};
+            console.log(message);
+            res.status(200).send(message);
+        }
+        //----------------------------------------------------------------
         /* const users = result.map(u=>new UserPresenterDTO(u));
         res.send({ users }); */
         let message = { status: "success", message: "👍 Users find", function: '👩‍🚀 User controller getAll', payload: result };
@@ -22,8 +29,16 @@ const getAll = async (req, res) => {
 const getBy = async (req, res) => {
     console.log('--> User controller getBy');
     try {
-        const params = await req.params;
-        const result = await userService.getBy(params);
+        const param = await req.params;
+        /* if(!params || params == "" || params == undefined) console.log('vaya')*/
+        const result = await userService.getBy(param); 
+        //COMPROBACION -------------------------------------------------
+        if (!result || Object.keys(result).length == 0) { 
+            let message = { status: "without result", message: "🌪 There are not any User", function: '👩‍🚀 User controller getAll'};
+            console.log(message);
+            res.status(200).send(message);
+        }
+        //----------------------------------------------------------------
         /* const users = result.map(u=>new UserPresenterDTO(u));
         res.send({ users }); */
         let message = { status: "success", message: "👍 Users find", function: '👩‍🚀 User controller getBy', payload: result };
@@ -39,10 +54,20 @@ const getBy = async (req, res) => {
 const save = async (req, res) => {
     console.log('--> User controller create');
     try {
-        let { first_name, last_name, password, email, address, role } = req.body;
-        /* if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"}); */
-        let user = await userService.getUserByEmail(email);
-        if (user) return res.status(400).send({ status: "error", error: "El usuario ya existe" });
+        console.log('req.file')
+        console.log(req.file)
+        let { first_name, last_name, password, age, phone, email, address, role } = await req.body;
+        if(!first_name || !last_name || !password || !email ) return res.status(400).send({status:'error', error:'💀 incomplet values', function: '👩‍🚀 User controller create',});
+        //if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"});
+        let image = " ";
+        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+            image = `/images/avatar/avatar.png`;
+        } else {
+            image =`/images/avatar/${req.file.filename}`;
+        }
+        let user = await userService.getBy({email:email});
+        if (user) return res.status(400).send({ status: "error", error: `💀 The user with email ${email} exist`, function: '👩‍🚀 User controller save' });
+        
         let cart = await cartService.save({ product: [] })
         const hashedPassword = await createHash(password);
         const newUser = {
@@ -50,18 +75,20 @@ const save = async (req, res) => {
             last_name,
             password: hashedPassword,
             email,
+            age,
             role,
-            image: '/images/avatar/avatar.png',
+            phone,
             address,
+            image,
             cart: cart._id,
         }
-        /* const insertUser = new UserInsertDTO(newUser); */
+        //const insertUser = new UserInsertDTO(newUser);
         let result = await userService.save(newUser);
-        let message = { status: "success", message: "👍 User create", function: '👩‍🚀 User controller create', payload: result };
+        let message = { status: "success", message: "👍 User create", function: '👩‍🚀 User controller save', payload: result };
         console.log(message);
         res.status(200).send(message);
     } catch (error) {
-        let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User controller create', trace: error };
+        let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User controller save', trace: error };
         console.log(message);
         res.status(500).send(message);
     }

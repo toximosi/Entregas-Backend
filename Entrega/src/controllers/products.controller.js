@@ -4,6 +4,13 @@ const getAll = async (req, res) => {
     console.log('--> Product controller getAll');
     try {
         const result = await productService.getAll();
+        //COMPROBACION -------------------------------------------------
+        if (!result || result.length == 0) { 
+            let message = { status: "without result", message: "🌪 There are not any User", function: '👩‍🚀 User controller getAll'};
+            console.log(message);
+            res.status(200).send(message);
+        }
+        //----------------------------------------------------------------
         /* const Products = result.map(u=>new ProductPresenterDTO(u));
         res.send({ Products }); */
         let message = { status: "success", message: "👍 Products find", function: '🧳 Product controller getAll', payload: result };

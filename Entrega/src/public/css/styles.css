@@ -10,6 +10,30 @@ header{
     padding: 20px;
     margin-bottom: 20px;
 }
+
+
+/* MENU ---------------------------------- */
+.navbar{
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.navbar>.container-fluid #navbarSupportedContent{
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar a{
+    color: #2d2d2d;
+}
+.navbar a:hover{
+    color: #0d6efd;
+}
+
+/* CUERPO ---------------------------------- */
+.plantillas{
+    padding-top: 50px;
+}
+
+
 .content-fixed{
 position: relative;
 }

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1>Carrito Usuario</h1>
+            {{#if productUser}}
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">code</th>
+                    <th scope="col">producto:<br>
+                    <th scope="col">cantidad:<br>
+                    <th scope="col"><br>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productUser}}
+                        {{#if this._id}}
+                            <tr>                    
+                                <th scope="row">{{code}}</th>
+                                <td>{{product_name}}</td>
+                                <td>{{quantity}} und</td>
+                                <td><img style="width:100px; height:auto" src="{{image}}" alt="{{product_name}}"></td>
+                            </tr>
+                        {{/if}}
+                {{/each}}
+                
+            </tbody>
+            </table>
+            {{else}}
+                    <h2>No tienes productos, adquiere alguno: <a href="productCard">ver productos</a></h2>
+                {{/if}}
+        </div>
+    </div>
+</div>

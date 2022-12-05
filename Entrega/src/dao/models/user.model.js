@@ -13,16 +13,18 @@ export default class User {
                 default: '1234'
             },
             email: String,
+            age: Number,
             role:{
                 type: String,
                 enum: ['user','artist','admin'],
                 default: 'user'
             },
+            phone: String,
+            address: String,
             image: {
                 type: String,
                 default: '/images/avatar/avatar.png'
             },
-            address: String,
             cart:{
                 type: mongoose.SchemaTypes.ObjectId,
                 ref: 'Carts'
