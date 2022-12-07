@@ -13,7 +13,8 @@ router.get('/byEmail/:email', usersController.getBy);
 
 router.post('/save', uploader.single('image'), usersController.save);
 
-router.put('/update/byId/:_id', usersController.updateBy);
+router.put('/update/byId/:_id', uploader.single('image'), usersController.updateBy);
+/* router.post('/update/byId/:_id', usersController.updateBy); */
 router.put('/update/byEmail/:email', usersController.updateBy);
 
 router.delete('/delete/byId/:_id', usersController.deleteBy);

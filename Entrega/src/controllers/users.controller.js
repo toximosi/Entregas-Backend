@@ -98,13 +98,20 @@ const updateBy = async (req, res) => {
     console.log('--> User controller updateBy');
     try {
         const param = req.params;
-        let { first_name, last_name,email, address, role } = req.body;
+        if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"});
+        let image = " ";
+        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+            image = `/images/avatar.png`;
+        } else {
+            image =`/images/${req.file.filename}`;
+        }
+        let { first_name, last_name,email, address, role } = await req.body;
         const data = {
                 first_name,
                 last_name,
                 email,
                 role,
-                image: '/images/avatar/avatar.png',
+                image,
                 address
         }
         const result = await userService.updateBy(param, data);
@@ -120,6 +127,7 @@ const updateBy = async (req, res) => {
 
 const deleteBy = async (req, res) => {
     console.log('--> User controller deleteById ');
+    console.log(req.params)
     try {
         const param = await req.params;
         const user = await userService.getBy(param);

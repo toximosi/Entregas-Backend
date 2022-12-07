@@ -16,7 +16,7 @@ export default class User {
             age: Number,
             role:{
                 type: String,
-                enum: ['user','artist','admin'],
+                enum: ['user','admin'],
                 default: 'user'
             },
             phone: String,

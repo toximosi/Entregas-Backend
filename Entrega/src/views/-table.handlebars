@@ -1,0 +1,89 @@
+    <div class="container-fluid">
+        <div class="row {{!-- align-items-center  --}} justify-content-center">
+            <div class="col-12 align-self-center mb-3">
+            <table class="table align-self-center " style="width: auto; margin:auto;">
+                <tr>
+                    <td>
+                            <button type="button"  class="btn btn-primary" alt="ver Información">👁‍🗨 Ver información</button>
+                    </td>
+                    <td>
+                        <button type="button"  class="btn btn-warning" alt="Actualizar">➕ Actualizar información</button>
+                    </td>
+                    <td>
+                        <button type="button"  class="btn btn-danger" alt=" borrar">💀 Borrar elemento</button>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div class="col-12 align-self-center mb-3" style="text-align: center;">
+                {{#if Arr}}
+                        <form id="userArminForm">
+                            <table class="table align-self-center " style="width: auto; margin:auto;">
+                                <thead>
+                                    <tr>
+                                        {{!-- <th scope="col">id</th> --}}
+                                        <th scope="col">FRIST NAME</th>
+                                        <th scope="col">SECOND NAME</th>
+                                        <th scope="col">AGE</th>
+                                        <th scope="col">EMAIL</th>
+                                        <th scope="col">PHONE</th>
+                                        <th scope="col">ADDRESS</th>
+                                        <th scope="col">ROLE</th>
+                                        {{!-- <th scope="col">CONTRASEÑA</th> --}}
+                                        <th scope="col"></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    {{#each Arr}}
+                                <tr>
+                                    {{!-- <th scope="row">
+                                        {{this._id}}
+                                    </th> --}}
+                                    <td style="width: 150px;"> 
+                                        <input id="first_name" name="first_name" type="text" class="form-control"   value="{{this.first_name}}" >
+                                    </td>
+                                    <td style="width: 250px;">
+                                        <input id="last_name" name="last_name" type="text" class="form-control"  value="{{this.last_name}}" >
+                                    </td>
+                                    <td style="width: 70px;">
+                                        <input id="age" name="age" type="number" class="form-control "  value="{{this.age}}">
+                                    </td>
+                                    <td style="width: 250px;">
+                                        <input id="email" name="email" type="email" class="form-control"  value="{{this.email}}" >
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <input id="phone" name="phone" type="text" class="form-control"  value="{{this.phone}}" >
+                                    </td>
+                                    <td style="width: 300px;">
+                                        <input id="address" name="address" type="text" class="form-control"  value="{{this.address}}" >
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <select id="role" class="form-select " aria-label=".form-select-sm example" id="role" name="role" type="text" class="form-control"   >
+                                            <option selected value="{{this.role}}">{{this.role}}</option>
+                                            <option value="user">user</option>
+                                            <option value="admin">admin</option>
+                                        </select>
+                                    </td>
+                                    {{!-- <td>
+                                        <input id="password" name="password" type="password" class="form-control"  disabled value="1234">
+                                    </td> --}}
+                                    <td >
+                                        <button type="button" onclick="seeElement('{{this._id}}')" class="btn btn-primary" alt="ver Información">👁‍🗨</button>
+                                    
+                                        <button type="button" onclick="updateElement('{{this._id}}')" class="btn btn-warning" alt="Actualizar">➕</button>
+                                    
+                                        <button type="button" onclick="deleteElement('{{this._id}}')" class="btn btn-danger" alt=" borrar">💀</button>
+                                    </td>
+                                </tr>
+                    {{/each}}
+                                </tbody>
+                            </table>
+                        </form>
+                {{else}}
+                    <h1>No hay usuarios</h1>
+                {{/if}} 
+            </div>
+        </div>
+    </div>
+<script src="/js/admin.js"></script>

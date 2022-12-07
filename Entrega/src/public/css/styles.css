@@ -63,3 +63,37 @@ position: relative;
     width: 100%;
     height: auto;
 }
+
+/*---------------------------
+  USUARIOS ALL
+  ---------------------------*/
+  .form-content-border{
+    border: 1px solid #dadada;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 17px;
+    background-color: #f2f2f2;
+    margin-top: 24px;
+    }
+.form-content-border label{
+    font-size: 12px;
+}
+  .form-avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 500px;
+    overflow: hidden;
+    margin: auto;
+  }
+   .form-avatar img{
+    width: 100%;
+    height: auto;
+   }
+  .form-button-right{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 8px;
+  }
+  .form-button-right button{
+   margin: 0 8px;
+  }
