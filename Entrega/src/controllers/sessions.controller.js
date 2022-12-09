@@ -1,6 +1,10 @@
 /* import { UserInsertDTO } from "../DTO/User.dto.js"; */
 import { userService, cartService } from "../services/services.js";
-import { createHash } from "../utils.js";
+import { createHash, isValidPassword } from "../utils.js";
+import jwt from 'jsonwebtoken';
+import config from "../config/config.js";
+
+import MailingService from '../middlewares/mailing.js';
 
 const register = async (req, res) => {
     console.log('--> Session controller register');
@@ -47,6 +51,65 @@ const register = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    console.log('--> Session controller login');
+    try{
+        const { email, password } = await req.body;
+        if (!email || !password) return res.status(400).send({ status: 'error',function: '🔑 Session controller login', error: '💀 incomplet values' });
+        if( email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) { 
+            const sessionAdminUser = {
+                name: 'Admin',
+                role: 'admin',
+                id: '0'
+            };
+            const token = jwt.sign(sessionAdminUser, config.jwt.SECRET, { expiresIn: '1h' });
+            return res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 }).send({ status: 'success', messages: '👍 Loguin ok' });
+        };
+        const user = await userService.getBy({email});
+        console.log('user');
+        console.log(user);
+        if (!user) return res.status(400).send({ status: 'error', error: 'User not exist' });
+        const passwordValidation = await isValidPassword(user, password);
+        
+        if (!passwordValidation) return res.status(400).send({ status: 'error', error: '💀 passwod incorrect' });
+        const tokenUser = {
+            email: user.email,
+            role: user.role,
+            name: `${user.first_name} ${user.last_name}`,
+            id: user._id,
+            cart: user.cart,
+        };
+        console.log('req.session');
+        console.log(req.session);
+        console.log('config.jwt.SECRET');
+        console.log(config.jwt.SECRET);
+        req.session.user = {
+            email: user.email,
+            role: user.role,
+            name: `${user.first_name} ${user.last_name}`,
+            id: user._id,
+            cart: user.cart,
+            image: user.image
+        };
+        const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
+        res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 })
+        let message = { status: "success", message: "👍 User login", function: '🔑 Session controller login'};
+        console.log(message);
+        res.status(200).send(message);
+    } catch (error) {
+        let message = { status: "error", error: "💀 Internal error", function: '🔑 Session controller login', trace: error };
+        console.log(message);
+        res.status(500).send(message);
+    }
+};
+
+const logout = (req,res) => {
+        req.session.destroy();
+        res.redirect('/login');
+};
+
 export default {
-    register
+    register,
+    login,
+    logout
 }

@@ -149,7 +149,13 @@ const userInfoBy = async(req, res) => {
         const id = req.params;
         console.log('id')
         console.log(id)
-        const user = await userService.getBy(id);
+        let result = await userService.getUSerPopulate(id);
+        console.log('result')
+        
+        let message = { status: "success", message: "👍 Users info find", function: '👩‍🚀 User controller userInfoBy ', payload: result };
+        console.log(message);
+        res.status(200).send(message);
+       /*  const user = await userService.getBy(id);
         const cart = await cartService.getBy(user.cart);
         console.log('cart')
         console.log(cart)
@@ -160,7 +166,7 @@ const userInfoBy = async(req, res) => {
         console.log(cart.products[0])    
         console.log(cart.products[0].id)    
 
-        let p = await productService.getBy({_id: cart.products[0].id})
+        let p = await productService.getBy({_id: cart.products[0].id}) */
         /* await cart.products.map((e) => { 
 console.log('e')
             console.log(e)
@@ -180,8 +186,8 @@ console.log('e')
         }); */
 
 
-        let data = user;
-        data.cart = cart;
+        /* let data = user;
+        data.cart = cart; */
 
 
         /* console.log('data');

@@ -1,5 +1,6 @@
 import { ROUTES } from "../constants/routers.js";
 import { cartService, productService, userService } from '../services/services.js';
+import usersController from "./users.controller.js";
 /* import cartController from "./cart.controller.js"; */
 
 /* REF: app.use('/', viewsRouter);*/
@@ -42,8 +43,6 @@ const userPerfil = (req, res) => {
     if (!req.session.user) {
         res.redirect('session-login');
     } else {
-        console.log('hola')
-        console.log(req.session.user);
         res.render('user-perfil', { user: req.session.user });
     }
 };
@@ -59,9 +58,6 @@ const userAll = async (req, res) => {
 const products = async (req, res) => {
     console.log('--> viewControllers > products');
     let Arr = await productService.getAll();
-    console.log('Arr');
-    console.log(Arr);
-
     res.render('products', { Arr });
 };
 
@@ -70,6 +66,7 @@ const productCreate = (req, res) => {
 };
 
 const productAll = (req, res) => {
+    console.log('--> viewControllers > productAll');
     res.render('product-all');
 };
 
@@ -104,11 +101,12 @@ const carts = async (req, res) => {
     }
 };
 
-/* const cartsList = async (req, res) => {
-    let Arr = await cartController.cartList();
-    res.render('cartsList', { Arr });
-}; */
-
+const userInfo = async (req, res)=>{ 
+    console.log('--> viewControllers > userInfo');
+    const param = await req.params;
+    const Arr = await userService.getBy(param);
+    res.render('user-info', {Arr});
+}
 
 export default {
     home,
@@ -119,6 +117,7 @@ export default {
 
     userPerfil,
     userAll,
+    userInfo,
     
     products,
     productCreate,

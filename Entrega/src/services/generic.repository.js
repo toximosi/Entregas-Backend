@@ -16,11 +16,20 @@ export default class GenericRepository {
     save = (data) => {
         return this.dao.save(data, this.model);
     }
+
+    addBy = (param, data) => {
+        return this.dao.addBy(param, data, this.model);
+    }
+
     updateBy = (param, data) => { 
         return this.dao.updateBy(param, data, this.model);
     }
 
     deleteBy = (param) => {
         return this.dao.deleteBy(param, this.model);
+    }
+
+    getUSerPopulate  = (param) => {
+        return this.dao.getUSerPopulate(param, this.model);
     }
 }

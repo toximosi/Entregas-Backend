@@ -8,6 +8,8 @@ const router = Router();
 router.get('/', cartsController.getAll);
 router.get('/byId/:_id', cartsController.getBy);
 
+router.post('/update', cartsController.updateById);
+
 /* router.post('/save', cartsController.save);
 
 router.put('/update/byId/:_id', cartsController.updateBy);

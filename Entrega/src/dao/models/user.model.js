@@ -27,7 +27,17 @@ export default class User {
             },
             cart:{
                 type: mongoose.SchemaTypes.ObjectId,
-                ref: 'Carts'
+                ref: 'Carts',
+                /* products: [{
+                    product: {
+                        type: mongoose.SchemaTypes.ObjectId,
+                        ref: 'Products'
+                    },
+                    quantity: {
+                        type: Number,
+                        default: 1
+                    }
+                }] */
             }
         }
     }

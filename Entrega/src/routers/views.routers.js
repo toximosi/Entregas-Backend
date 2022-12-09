@@ -20,6 +20,7 @@ router.get('/session-logout',/*  publicValidation, */ viewsController.sessionLog
 //user
 router.get('/user-perfil', /* publicValidation, */ viewsController.userPerfil);
 router.get('/user-all',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userAll);
+router.get('/user-info/:_id',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userInfo);
 
 //product
 router.get('/products', /* publicValidation, */ viewsController.products);

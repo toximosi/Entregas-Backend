@@ -1,10 +1,8 @@
-
-
 const seeElement = (id) => {
- console.log(`---> admin.js seeElement user ${id}`)
-    alert(id)
-
+    console.log(`---> admin.js seeElement user ${id}`)
+    window.location.href = `/user-info/${id}`;
 };
+
 const updateElement = (id) => { 
     console.log(`---> admin.js updateElement user ${id}`)
     const form = document.getElementById(id);
@@ -48,5 +46,4 @@ const deleteElement = (id) => {
     } else {
         console.log('error in read id of user');
     }
-
 };

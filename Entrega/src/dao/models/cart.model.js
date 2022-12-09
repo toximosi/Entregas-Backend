@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export default class Gallery {
+export default class Cart {
 
     static get model() {
         return 'Carts'
@@ -8,14 +8,16 @@ export default class Gallery {
 
     static get schema() {
         return {
-            cart: [
-                {
-                    product:{
-                        type:mongoose.SchemaTypes.ObjectId,
-                        ref:'Products'
-                    }
+            products: [{
+                product: {
+                    type: mongoose.SchemaTypes.ObjectId,
+                    ref: 'Products'
+                },
+                quantity: {
+                    type: Number,
+                    default: 1
                 }
-            ]
+            }]
         }
     }
 }

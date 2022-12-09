@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { ObjectId } from "bson"
 
 import User from "./models/user.model.js";
 import Cart from "./models/cart.model.js";
@@ -42,15 +41,35 @@ export default class Dao {
         return this.models[entity].create(document);
     }
 
+    addBy = (param, data, entity) => {
+        console.log('--> DAO addBy');
+        if (!this.models[entity]) throw new Error({function: 'updateBy' ,error: 'the entityt don`t exist'});
+        return this.models[entity].updateOne(param,{ $push: data } , {upsert:true, returnNewDocument:true});
+    };
+
     updateBy = (param, data, entity) => {
         console.log('--> DAO update');
         if (!this.models[entity]) throw new Error({function: 'updateBy' ,error: 'the entityt don`t exist'});
-        return this.models[entity].updateOne(param, data, {returnNewDocument:true});
+        return this.models[entity].updateOne(param, data, {upsert:true, returnNewDocument:true});
     }
 
     deleteBy = (param, entity) => {
         console.log('--> DAO deleteBy');
         if (!this.models[entity]) throw new Error({function: 'deleteBy' ,error: 'the entityt don`t exist'});
         return this.models[entity].findByIdAndDelete(param);
+    }
+
+    
+
+    getUSerPopulate = (id, entity) => { 
+        console.log('--> DAO getUSerPopulate');
+        if (!this.models[entity]) throw new Error({function: 'deleteBy' ,error: 'the entityt don`t exist'});
+        
+        const result = this.models[entity].find(id).populate('cart', {populate:'products'})
+        /* const result = this.models[entity].find(id).populate[{ path: 'cart'}] */
+        console.log('result')
+        console.log(result)
+
+        return result;
     }
 }

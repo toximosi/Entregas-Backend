@@ -1,7 +1,7 @@
 const addCart = (id) => { 
     /*  evt.preventDefault(); */
     const obj = {
-        id: id,
+        _id: id,
     };
     fetch('api/cart/update', {
             method:'POST',
