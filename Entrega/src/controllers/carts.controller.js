@@ -42,68 +42,39 @@ const getBy = async (req, res) => {
 
 const updateById = async (req, res) => {
     console.log('--> cart controller updateById');
-    /* try{ */
+    try{
         const body = await req.body;
-        console.log('body')
-        console.log(body)
         let idProduct = body._id;
-        console.log('idProduct')
-        console.log(idProduct)
         const sesion = req.session;
-        console.log('sesion')
-        console.log(sesion)
         let idCart = sesion.user.cart;
-        console.log('idProduct -> ' + idProduct);
-        console.log('idCart -> ' + idCart);
-        
-    /*         const newCart = await cartService.updateBy({ _id: idCart }, { 'products.product.id': idProduct, 'product.quantity': 1 }); */
-    /* updateOne({ _id: cart_Id},{ $push: { 'products': obj }}); */
-    
-
-    const newCart = await cartService.addBy({ _id: idCart },  { 'products': { _id: idProduct } } );
-
-    console.log('newCart')
-    console.log(newCart)
-    
+        let result = null;
         // { email, role, name, id, cart, image}
-        /* if (!sesion.user) {
+        if (!sesion.user) {
             return res.redirect('/login');
         } else {
-            let productNew = false;
-            let productId = "";
-            let data = await cartService.getBy({_id:idCart});
-            // console.log('data');
-            //console.log(data); 
-                if (data.length <= 0) {
-                    console.log(`dont't find cart with id: ${id}`);
+            let data = await cartService.getBy({_id: idCart});
+             if (data.length <= 0) {
+                console.log(`-> dont't find cart with id: ${id}`);
+                // let result =
                 //!  Crear cart del usuario y añadir producto
             } else {
-                let existProduct = await cartService.findOne({ $and: [{ _id: idCart }, { 'products.id': idProduct }] });
-                    
-                if (existProduct <= 0) {
-                    let obj = {
-                        id: idProduct,
-                        quantity: 1
-                    }
-                    await cartService.addProduct(idCart, obj);
-                } else { 
+                let existProduct = await cartService.getBy({ $and: [{ _id: idCart }, { 'products._id': idProduct }] });
+                 if (existProduct <= 0) {
+                    console.log(`-> there is not this product in cart`);
+                    result = await await cartService.addBy({ _id: idCart },  { 'products': { _id: idProduct } } );
+                 } else { 
+                    console.log(`-> there is this product in cart`);
                     let cart = data;
                     let product = cart.products;
                     let productQuantity = 0;
                     product.forEach(e => {
-                        if (e.id == idProduct) { 
+                        if (e._id == idProduct || e._id == `new ObjectId("${idProduct}")`) { 
                             productQuantity = e.quantity + 1;
                         };
                     });
-                    await cartService.update({ $and: [{ _id: idCart }, { 'products.id': idProduct }] },{ 'products.$.quantity': productQuantity });
+                    result = await cartService.updateBy({ $and: [{ _id: idCart }, { 'products._id': idProduct }] },{ 'products.$.quantity': productQuantity });
                 }
             } 
-
-
-
-        // const cartId = sesion.user.cart;
-        //    cartsService.update(idProduct.id, cartId);
-        //    console.log(`Add product ${idProduct.id} in cart ${cartId}`);
         };
         let message = { status: "success", message: "👍 carts upload", function: '🛒 cart controller updateById ', payload: result };
         console.log(message);
@@ -112,13 +83,31 @@ const updateById = async (req, res) => {
         let message = { status: "error", error: "💀 Internal error", function: '🛒 cart controller updateById ', trace: error };
         console.log(message);
         res.status(500).send(message);
-    };*/
+    };
 };
 
+const cartInfoBy = async (req, res) => {
+    console.log('--> User controller userInfoBy');
+    try {
+        const id = req.params;
+        console.log('id')
+        console.log(id)
+        let result = await cartService.getCartPopulate(id);
+        console.log('result')
+        
+        let message = { status: "success", message: "👍 carts info find", function: '🛒 cart controller cartInfoBy ', payload: result };
+        console.log(message);
+        res.status(200).send(message);
+    } catch (error) {
+        let message = { status: "error", error: "💀 Internal error", function: '🛒 cart controller cartInfoBy', trace: error };
+        console.log(message);
+    };
+};
 export default {
     getAll,
     getBy,
     updateById,
+    cartInfoBy 
     /* save,
     deleteBy */
 };

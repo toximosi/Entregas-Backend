@@ -32,4 +32,8 @@ export default class GenericRepository {
     getUSerPopulate  = (param) => {
         return this.dao.getUSerPopulate(param, this.model);
     }
+
+    getCartPopulate  = (param) => {
+        return this.dao.getCartPopulate(param, this.model);
+    }
 }

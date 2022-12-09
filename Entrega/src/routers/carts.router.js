@@ -16,4 +16,7 @@ router.put('/update/byId/:_id', cartsController.updateBy);
 
 router.delete('/delete/byId/:_id', cartsController.deleteBy); */
 
+router.get('/Info/ById/:_id', cartsController.cartInfoBy);
+
+
 export default router;

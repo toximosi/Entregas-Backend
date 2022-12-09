@@ -63,13 +63,21 @@ export default class Dao {
 
     getUSerPopulate = (id, entity) => { 
         console.log('--> DAO getUSerPopulate');
-        if (!this.models[entity]) throw new Error({function: 'deleteBy' ,error: 'the entityt don`t exist'});
+        if (!this.models[entity]) throw new Error({function: 'getUSerPopulate' ,error: 'the entityt don`t exist'});
         
-        const result = this.models[entity].find(id).populate('cart', {populate:'products'})
+        const result = this.models[entity].find(id).populate({ path: 'cart', populate: { path: 'products', populate: {path:'product'} } })
         /* const result = this.models[entity].find(id).populate[{ path: 'cart'}] */
         console.log('result')
         console.log(result)
+        return result;
+    }
 
+    getCartPopulate = async (id, entity) => { 
+        console.log('--> DAO getUSerPopulate');
+        if (!this.models[entity]) throw new Error({function: 'getCartPopulate' ,error: 'the entityt don`t exist'});
+        const result = await this.models[entity].find(id).populate({ path: 'products', populate: { path: 'product', model: 'Products' } });
+        console.log('result')
+        console.log(result)
         return result;
     }
 }

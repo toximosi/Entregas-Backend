@@ -21,7 +21,7 @@ router.delete('/delete/byId/:_id', usersController.deleteBy);
 router.delete('/delete/byEmail/:email', usersController.deleteBy);
 
 /* router.get('/userInfo/', usersController.userInfo); */
-router.get('/userInfo/ById/:_id', usersController.userInfoBy);
+router.get('/Info/ById/:_id', usersController.userInfoBy);
 
 
 export default router;
