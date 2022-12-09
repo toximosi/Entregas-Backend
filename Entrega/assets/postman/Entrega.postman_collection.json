@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "48413c3d-7923-426e-b968-d11b6cf1b505",
+		"name": "Entrega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10334869"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "GETALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBY _ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/user/byId/636ba753b465fc01e480c075",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"byId",
+								"636ba753b465fc01e480c075"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBY EMAIL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/user/byId/638b75b955262a01b693db8a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"byId",
+								"638b75b955262a01b693db8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INFO ALL BY _ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"/images/avatar/avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/Info/ById/63921fd6bfd413fc7d3b0911",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"Info",
+								"ById",
+								"63921fd6bfd413fc7d3b0911"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"2TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETEBY _ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/user/delete/byId/638cf106c4def295b0527349",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"delete",
+								"byId",
+								"638cf106c4def295b0527349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATEBY _ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"TEST5\",\n    \"last_name\": \"TEST\",\n    \"email\": \"test4@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"/images/avatar/avatar2.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/user/update/byId/638dc0d8ed4bee9d9ac71fa9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"user",
+								"update",
+								"byId",
+								"638dc0d8ed4bee9d9ac71fa9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "GETALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBY _ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/product/byId/638693d0bc438324adfb7341",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"product",
+								"byId",
+								"638693d0bc438324adfb7341"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"3024\",\n    \"product_name\": \"TEST\",\n    \"description\": \"TEST TEST\",\n    \"price\": 15500,\n    \"offer\": 0,\n    \"stock\": 5,\n    \"image\": \"/images/product/product.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/product/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"product",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETEBY _ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/product/delete/byId/638693d0bc438324adfb7341",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"product",
+								"delete",
+								"byId",
+								"638693d0bc438324adfb7341"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATEBY _ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"40245\",\n    \"product_name\": \"4TEST3\",\n    \"description\": \"4TEST3 TEST\",\n    \"price\": 4,\n    \"offer\": 3,\n    \"stock\": 3,\n    \"image\": \"/images/product/product.png\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/product/update/byId/638de02ee13fbea7d933820",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"product",
+								"update",
+								"byId",
+								"638de02ee13fbea7d933820"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "GETALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETBY _ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/cart/byId/636ba753b465fc01e480c075",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cart",
+								"byId",
+								"636ba753b465fc01e480c075"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INFO ALL BY _ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"/images/avatar/avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/cart/Info/ById/63921fd6bfd413fc7d3b090f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cart",
+								"Info",
+								"ById",
+								"63921fd6bfd413fc7d3b090f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"3024\",\n    \"product_name\": \"TEST\",\n    \"description\": \"TEST TEST\",\n    \"price\": 15500,\n    \"offer\":0,\n    \"stock\": 5,\n    \"image\": \"/images/product/product.png\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/cart/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"cart",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETEBY _ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/cart/deleteById/638cf106c4def295b0527349",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cart",
+								"deleteById",
+								"638cf106c4def295b0527349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATEBY _ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"TEST5\",\n    \"last_name\": \"TEST\",\n    \"email\": \"test4@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"/images/avatar/avatar2.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/cart/updateById/638dc0d8ed4bee9d9ac71fa9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cart",
+								"updateById",
+								"638dc0d8ed4bee9d9ac71fa9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"2TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"phone\": \"00000000\",\n    \"age\": 2,\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/session/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"session",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

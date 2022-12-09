@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "636b957b8d4ab97dec21f392"
+  },
+  "code": "1",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique mauris ultricies varius finibus.",
+  "price": 4,
+  "offer": 3,
+  "stock": 3,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670242350694"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670243594736"
+    }
+  },
+  "__v": 0,
+  "product_name": "1"
+},{
+  "_id": {
+    "$oid": "636ba4eac41dfd243c0c7d7c"
+  },
+  "code": "2",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique mauris ultricies varius finibus.",
+  "price": 4,
+  "offer": 3,
+  "stock": 3,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670242350694"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670243594736"
+    }
+  },
+  "__v": 0,
+  "product_name": "2"
+},{
+  "_id": {
+    "$oid": "637416809ef9324177ed23d3"
+  },
+  "product_name": "3",
+  "code": "3",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique mauris ultricies varius finibus.",
+  "price": 4,
+  "offer": 3,
+  "stock": 3,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670242350694"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670243594736"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63741765e4f3704c49d1cf00"
+  },
+  "product_name": "4",
+  "code": "4",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique mauris ultricies varius finibus.",
+  "price": 4,
+  "offer": 3,
+  "stock": 3,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670242350694"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670243594736"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638de02ee13fbea7d9338201"
+  },
+  "code": "40245",
+  "product_name": "4TEST3",
+  "description": "4TEST3 TEST",
+  "price": 4,
+  "offer": 3,
+  "stock": 3,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670242350694"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670243594736"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63912a515cefbd1f201089ce"
+  },
+  "code": "3024",
+  "product_name": "TEST",
+  "description": "TEST TEST",
+  "price": 15500,
+  "offer": 0,
+  "stock": 5,
+  "image": "/images/product/product.png",
+  "created_at": {
+    "$date": {
+      "$numberLong": "1670457937481"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1670457937481"
+    }
+  },
+  "__v": 0
+}]
