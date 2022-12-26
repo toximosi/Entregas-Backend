@@ -65,9 +65,10 @@ const productCreate = (req, res) => {
     res.render('product-create');
 };
 
-const productAll = (req, res) => {
+const productAll = async (req, res) => {
     console.log('--> viewControllers > productAll');
-    res.render('product-all');
+    let Arr = await productService.getAll();
+    res.render('product-all', { Arr });
 };
 
 //cart ---------------------------------------------------------

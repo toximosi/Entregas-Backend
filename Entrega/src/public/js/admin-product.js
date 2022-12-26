@@ -14,7 +14,7 @@ const updateElement = (id) => {
     console.log(JSON.stringify(obj));
 //https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
     if (id) {
-        fetch(`api/user/update/byId/${id}`, {
+        fetch(`/api/user/update/byId/${id}`, {
             method: 'PUT',
             /*  headers: {
             "Content-Type": "application/json",

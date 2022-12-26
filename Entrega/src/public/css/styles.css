@@ -78,14 +78,19 @@ position: relative;
 .form-content-border label{
     font-size: 12px;
 }
-  .form-avatar{
+  .form-avatar,
+  .form-product-image{
     width: 200px;
     height: 200px;
-    border-radius: 500px;
-    overflow: hidden;
+    
     margin: auto;
   }
-   .form-avatar img{
+   .form-avatar{
+    border-radius: 500px;
+    overflow: hidden;
+   }
+   .form-avatar img, 
+   .form-product-image img{
     width: 100%;
     height: auto;
    }

@@ -3,13 +3,13 @@
             <div class="col-8  mb-3">
                 {{#if Arr}}
                     <h1>👩‍🚀 Users Info: </h1>
-                    <h2>{{Arr.first_name}} {{Arr.second_name}}</h2>
+                    <h2>{{Arr.first_name}} {{Arr.last_name}}</h2>
                     <h6>{{Arr._id}}</h6>
                             <form id="{{Arr._id}}">
                                 <div class="">
                                     <div class="col-12 mb-2" style="text-align: center;">
                                         <div class="form-avatar">
-                                            <img  src="{{Arr.image}}" alt="{{Arr.first-name}} {{Arr.second-name}}"/>
+                                            <img  src="{{Arr.image}}" alt="{{Arr.first-name}} {{Arr.last_name}}"/>
                                         </div><br>
                                         <input class="form-control form-control-sm mb-5" type="file" id="image" name="image" >
                                     </div>
@@ -65,4 +65,4 @@
             </div>
         </div>
     </div>
-<script src="/js/admin.js"></script>
+<script src="/js/admin-user.js"></script>

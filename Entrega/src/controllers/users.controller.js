@@ -98,21 +98,28 @@ const updateBy = async (req, res) => {
     console.log('--> User controller updateBy');
     try {
         const param = req.params;
-        if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"});
-        let image = " ";
+        let { first_name, last_name, age, phone, email, address, role } = await req.body;
+        let userInfo = await userService.getBy(param);
+        const imageOld = userInfo.image;
+        console.log("userInfo"); 
+        console.log(userInfo); 
+        console.log("imageOld"); 
+        console.log(imageOld); 
+        let imageNew = " ";
         if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
-            image = `/images/avatar.png`;
-        } else {
-            image =`/images/${req.file.filename}`;
+            imageNew = imageOld;
+        }else {
+            imageNew =`/images/${req.file.filename}`;
         }
-        let { first_name, last_name,email, address, role } = await req.body;
         const data = {
                 first_name,
                 last_name,
+                age,
+                phone,
                 email,
+                address,
                 role,
-                image,
-                address
+                image: imageNew
         }
         const result = await userService.updateBy(param, data);
         let message = { status: "success", message: `👍 User ${param} update`, function: '👩‍🚀 User controller updateBy', change: data};

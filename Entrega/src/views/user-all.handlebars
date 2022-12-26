@@ -1,7 +1,7 @@
     <div class="container-fluid ">
         <div class="row ">
             <div class="col-12  mb-3">
-                <h1>👩‍🚀 Users List</h1>
+                <h1>👩‍🚀 Lista de Usuarios</h1>
                 {{#if Arr}}
                         {{#each Arr}}
                             <form id="{{this._id}}">
@@ -16,15 +16,15 @@
                                             <div class="mb-2"><strong>id: {{this._id}}</strong></div>
                                             <div class="row mb-2">
                                                 <div class="col-2"> 
-                                                    <label for="first_name" class="form-label">Name:</label>
+                                                    <label for="first_name" class="form-label">Nombre:</label>
                                                     <input id="first_name" name="first_name" type="text" class="form-control"   value="{{this.first_name}}" >
                                                 </div>
                                                 <div class="col-4">
-                                                    <label for="last_name" class="form-label">Last Name:</label>
+                                                    <label for="last_name" class="form-label">Apellidos:</label>
                                                     <input id="last_name" name="last_name" type="text" class="form-control"  value="{{this.last_name}}" >
                                                 </div>
                                                 <div class="col-2">
-                                                    <label for="age" class="form-label">Age:</label>
+                                                    <label for="age" class="form-label">Años:</label>
                                                     <input id="age" name="age" type="number" class="form-control "  value="{{this.age}}">
                                                 </div>
                                                 <div class="col-4">
@@ -34,19 +34,19 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-2">
-                                                    <label for="role" class="form-label">Role:</label>
+                                                    <label for="role" class="form-label">Rol:</label>
                                                     <select id="role" class="form-select " aria-label=".form-select-sm example" id="role" name="role" type="text" class="form-control"   >
                                                         <option selected value="{{this.role}}">{{this.role}}</option>
-                                                        <option value="user">user</option>
-                                                        <option value="admin">admin</option>
+                                                        <option value="user">usuario</option>
+                                                        <option value="admin">administrador</option>
                                                     </select>
                                                 </div>     
                                                 <div class="col-6">
-                                                    <label for="address" class="form-label">Address:</label>
+                                                    <label for="address" class="form-label">Dirección:</label>
                                                     <input id="address" name="address" type="text" class="form-control"  value="{{this.address}}" >
                                                 </div>
                                                 <div class="col-4">
-                                                    <label for="phone" class="form-label">Phone:</label>
+                                                    <label for="phone" class="form-label">teléfono:</label>
                                                     <input id="phone" name="phone" type="text" class="form-control"  value="{{this.phone}}" >
                                                 </div>
                                             </div>
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-<script src="/js/admin.js"></script>
+<script src="/js/admin-user.js"></script>

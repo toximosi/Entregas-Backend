@@ -1,33 +1,67 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">code</th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">descripción</th>
-                    <th scope="col">precio</th>
-                    <th scope="col">stock</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{!-- {{#each product}}
-                    <tr>                    
-                        <th scope="row">{{_id}}</th>
-                        <td>{{code}}</td>
-                        <td>{{name}}</td>
-                        <td>{{description}}</td>
-                        <td>{{price}}</td>
-                        <td>{{quantity}}</td>
-                        <td>{{image}}</td>
-                        <th><a data_product="{{_id}}" class="addCart">Add cart</a></th>
-                    </tr>
-                {{/each}} --}}
-            </tbody>
-            </table>
+    <div class="container-fluid ">
+        <div class="row ">
+            <div class="col-12  mb-3">
+                <h1>🧳 Lista de Productos</h1>
+                {{#if Arr}}
+                        {{#each Arr}}
+                            <form id="{{this._id}}">
+                                <div class="form-content-border">
+                                    <div class="row" >
+                                        <div class="col-3" style="text-align: center;">
+                                            <div class="form-product-image">
+                                            <img  src="{{this.image}}" alt="{{this.first-name}} {{this.second-name}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="mb-2"><strong>id: {{this._id}}</strong></div>
+                                            <div class="row mb-2">
+                                                <div class="col-2"> 
+                                                    <label for="code" class="form-label">Código:</label>
+                                                    <input id="code" name="code" type="text" class="form-control"   value="{{this.code}}" >
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="product_name" class="form-label">Nombre:</label>
+                                                    <input id="product_name" name="product_name" type="text" class="form-control"  value="{{this.product_name}}" >
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="price" class="form-label">Precio  <i>(€)</i>:</label>
+                                                    <input id="price" name="price" type="number" class="form-control "  value="{{this.price}}" step=.01 placeholder="00€" >
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="offer" class="form-label">Pre-oferta  <i>(€)</i>:</label>
+                                                    <input id="offer" name="offer" type="number" class="form-control "  value="{{this.offer}}" step=.01 placeholder="00€" >
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="stock" class="form-label">Stock <i>(ud)</i>:</label>
+                                                    <input id="stock" name="stock" type="number" class="form-control "  value="{{this.stock}}">
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                     <label for="description" class="form-label">Descripción:</label>
+                        <textarea id="description" name="description" type="text" class="form-control"  placeholder="{{this.description}}">{{this.description}}</textarea>
+                                                </div>     
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input class="form-control form-control-sm" type="file" id="image" name="image" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" form-button-right" >
+                                    {{!-- <button type="button" onclick="seeElement('{{this._id}}')" class="btn btn-primary" alt="ver Información">👁‍🗨 Ver información</button> --}}
+                                    <button type="button" onclick="updateElement('{{this._id}}')" class="btn btn-warning" alt="Actualizar">➕ Actualizar información</button>
+                                    <button type="button" onclick="deleteElement('{{this._id}}')" class="btn btn-danger" alt=" borrar">💀 Borrar elemento</button>
+                                </div>
+                            </form>
+                        {{/each}}
+                {{else}}
+                    <h1>No hay usuarios</h1>
+                {{/if}} 
+            </div>
         </div>
     </div>
-</div>
+<script src="/js/admin-product.js"></script>

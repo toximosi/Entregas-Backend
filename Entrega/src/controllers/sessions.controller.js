@@ -14,17 +14,18 @@ const register = async (req, res) => {
 
         console.log('req.file');
         console.log(req.file);
+
         let { first_name, last_name, password, age, phone, email, address, role } = await req.body;
         if(!first_name || !last_name || !password || !email ) return res.status(400).send({status:'error', error:'💀 incomplet values', function: '🔑 Session controller register',});
-        if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"});
+        /* if(!req.file) return res.status(500).send({status:"error",error:"Can not upload avatar image"}); */
         let image = " ";
         if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
             image = `/images/avatar/avatar.png`;
         } else {
-            image =`/images/avatar/${req.file.filename}`;
+            image =`/images/${req.file.filename}`;
         }
         let user = await userService.getBy({email:email});
-        if(user) return res.status(400).send({status:"error",error:"El usuario ya existe"});
+        if(user) return res.status(400).send({status:"error",error:"User exist yet"});
         let cart= await cartService.save({artworks:[]})
         const hashedPassword = await createHash(password);
         const newUser = {

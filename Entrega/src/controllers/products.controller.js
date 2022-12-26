@@ -42,9 +42,23 @@ const getBy = async (req, res) => {
 
 const save = async (req, res) => {
     console.log('--> Product controller create');
+
     try {
+        console.log('req.body')
+        console.log(await req.body)
+
+        console.log('req.file');
+        console.log(req.file);
+
         let { code, product_name, description, price, offer, stock } = req.body;
-        /* if(!req.file) return res.status(500).send({status:"error",error:"No se pudo cargar el avatar"}); */
+        if(!code || !product_name || !description) return res.status(400).send({status:'error', error:'💀 incomplet values', function: '🔑 Session controller product',});
+        /* if(!req.file) return res.status(500).send({status:"error",error:"Can not upload product image"}); */
+        let image = " ";
+        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+            image = `/images/product/product.png`;
+        } else {
+            image =`/images/${req.file.filename}`;
+        }
         let product = await productService.getBy({code: code});
         if (product) return res.status(400).send({ status: "error", error: `🧳 Product with code:${code} exist` });
         const newProduct = {
@@ -54,7 +68,7 @@ const save = async (req, res) => {
             price,
             offer,
             stock,
-            image: '/images/product/product.png'
+            image
         }
         /* const insertProduct = new ProductInsertDTO(newProduct); */
         let result = await productService.save(newProduct);

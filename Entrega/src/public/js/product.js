@@ -1,26 +1,24 @@
 const form = document.getElementById('productForm');
 
-if (form) { 
-    form.addEventListener('submit',evt=>{
+    form.addEventListener('submit',evt =>{
+        console.log(`---> product.js post form product`)
         evt.preventDefault();
         let data = new FormData(form);
-
         const obj = {};
         data.forEach((value, key) => obj[key] = value);
         console.log('--> productForm');
-
         console.log(JSON.stringify(obj));
-
-        fetch('api/product/create', {
+        fetch('api/product/save', {
             method: 'POST',
-            body: data
+            body: data,
             /* body: JSON.stringify(obj),
-            headers: {
-                "Content-type": "application/json"
+            headers:{
+                "Content-Type":"application/json"
             } */
-        }).then(result => result.json())
-            .then(json => {console.log(json)})
-                /* .catch(err => console.log(err)); */
-    })
-}
-
+        }).then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        }).catch((error) => {
+            console.log('Error:', error);
+        });
+    });
