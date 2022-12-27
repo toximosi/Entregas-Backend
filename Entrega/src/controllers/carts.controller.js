@@ -90,11 +90,7 @@ const cartInfoBy = async (req, res) => {
     console.log('--> User controller userInfoBy');
     try {
         const id = req.params;
-        console.log('id')
-        console.log(id)
         let result = await cartService.getCartPopulate(id);
-        console.log('result')
-        
         let message = { status: "success", message: "👍 carts info find", function: '🛒 cart controller cartInfoBy ', payload: result };
         console.log(message);
         res.status(200).send(message);

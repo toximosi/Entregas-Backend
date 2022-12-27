@@ -86,15 +86,19 @@ const updateBy = async (req, res) => {
     console.log('--> Product controller updateBy');
     try {
         const param = req.params;
-        //comprobación-----------------------------------------        
-        /* const exist = await productService.getBy(param);
-        if (!exist) { 
-            let message = { status: "error", message: `👍 Product ${param} No exist`, function: '🧳 Product controller updateBy'};
-            console.log(message);
-            res.status(400).send(message);
-        }; */
-        //-----------------------------------------------------
         let { code, product_name, description, price, offer, stock } = req.body;
+        let productInfo = await productService.getBy(param);
+        const imageOld = productInfo.image;
+        console.log("productInfo"); 
+        console.log(productInfo); 
+        console.log("imageOld"); 
+        console.log(imageOld); 
+        let imageNew = " ";
+        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+            imageNew = imageOld;
+        }else {
+            imageNew =`/images/${req.file.filename}`;
+        }
         const data = {
                 code,
                 product_name,
@@ -102,7 +106,7 @@ const updateBy = async (req, res) => {
                 price,
                 offer,
                 stock,
-                image: '/images/product/product.png'
+                image: imageNew
         }
         const result = await productService.updateBy(param, data);
         let message = { status: "success", message: `👍 Product ${param} update`, function: '🧳 Product controller updateBy', change: data};

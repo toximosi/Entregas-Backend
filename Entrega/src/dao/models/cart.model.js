@@ -8,7 +8,7 @@ export default class Cart {
 
     static get schema() {
         return {
-            products: [{
+             products: [{
                 product: {
                     type: mongoose.SchemaTypes.ObjectId,
                     ref: 'Products'
@@ -19,5 +19,17 @@ export default class Cart {
                 }
             }]
         }
+        /* return {
+            products: [{
+                product: {
+                    type: mongoose.SchemaTypes.ObjectId,
+                    ref: 'Products'
+                },
+                quantity: {
+                    type: Number,
+                    default: 1
+                }
+            }]
+        } */
     }
 }

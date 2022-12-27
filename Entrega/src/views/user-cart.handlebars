@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1>Carrito Usuario</h1>
+            {{#if ArrProducts}}
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">code</th>
+                        <th scope="col">nombre:</th>
+                        <th scope="col">precio:</th>
+                        <th scope="col">cantidad:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each ArrProducts}}
+                        {{#each this}}
+                            {{#each _id}}
+                                {{#if _id}}
+                                    <tr>                    
+                                        <th scope="row"><img style="width:100px; height:auto" src="{{image}}" alt="{{product_name}}"></th>
+                                        <td>{{code}}</td>
+                                        <td>{{product_name}}</td>
+                                        <td>{{price}} x {{../quantity}} {{#if offer}}- {{offer}}{{/if}} €</td>
+                                        <td>{{../quantity}} und</td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
+                        {{/each}}
+                    {{/each}}
+                </tbody>
+                </table>
+            {{else}}
+                    <h2>No tienes productos, adquiere alguno: <a href="products">ver productos</a></h2>
+            {{/if}}
+        </div>
+    </div>
+</div>

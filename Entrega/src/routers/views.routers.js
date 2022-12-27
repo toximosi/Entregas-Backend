@@ -21,6 +21,7 @@ router.get('/session-logout',/*  publicValidation, */ viewsController.sessionLog
 router.get('/user-perfil', /* publicValidation, */ viewsController.userPerfil);
 router.get('/user-all',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userAll);
 router.get('/user-info/:_id',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userInfo);
+router.get('/user-cart',/* privateValidation, */ /* executePolices(['ADMIN']), */ viewsController.userCart);
 
 //product
 router.get('/products', /* publicValidation, */ viewsController.products);

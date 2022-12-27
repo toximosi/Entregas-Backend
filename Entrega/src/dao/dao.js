@@ -59,14 +59,10 @@ export default class Dao {
         return this.models[entity].findByIdAndDelete(param);
     }
 
-    
-
     getUSerPopulate = (id, entity) => { 
         console.log('--> DAO getUSerPopulate');
         if (!this.models[entity]) throw new Error({function: 'getUSerPopulate' ,error: 'the entityt don`t exist'});
-        
-        const result = this.models[entity].find(id).populate({ path: 'cart', populate: { path: 'products', populate: {path:'product'} } })
-        /* const result = this.models[entity].find(id).populate[{ path: 'cart'}] */
+        const result = this.models[entity].find(id).populate({ path: 'cart', populate: ({path: 'products._id',  model: 'Products' }) })
         console.log('result')
         console.log(result)
         return result;
@@ -75,9 +71,7 @@ export default class Dao {
     getCartPopulate = async (id, entity) => { 
         console.log('--> DAO getUSerPopulate');
         if (!this.models[entity]) throw new Error({function: 'getCartPopulate' ,error: 'the entityt don`t exist'});
-        const result = await this.models[entity].find(id).populate({ path: 'products', populate: { path: 'product', model: 'Products' } });
-        console.log('result')
-        console.log(result)
+        const result = await this.models[entity].find(id).populate({path: 'products._id',  model: 'Products' });
         return result;
     }
 }

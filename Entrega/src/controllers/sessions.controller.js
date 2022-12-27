@@ -64,7 +64,7 @@ const login = async (req, res) => {
                 id: '0'
             };
             const token = jwt.sign(sessionAdminUser, config.jwt.SECRET, { expiresIn: '1h' });
-            return res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 }).send({ status: 'success', messages: '👍 Loguin ok' });
+            return res.cookie(config.jwt.COOKIE, token, { maxAge: 36000000 }).send({ status: 'success', messages: '👍 Loguin ok' });
         };
         const user = await userService.getBy({email});
         console.log('user');

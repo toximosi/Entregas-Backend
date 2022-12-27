@@ -1,10 +1,5 @@
-const seeElement = (id) => {
-    console.log(`---> admin.js seeElement user ${id}`)
-    window.location.href = `/user-info/${id}`;
-};
-
 const updateElement = (id) => { 
-    console.log(`---> admin.js updateElement user ${id}`)
+    console.log(`---> admin.js updateElement product ${id}`)
     const form = document.getElementById(id);
     let data = new FormData(form);
 
@@ -14,7 +9,7 @@ const updateElement = (id) => {
     console.log(JSON.stringify(obj));
 //https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
     if (id) {
-        fetch(`/api/user/update/byId/${id}`, {
+        fetch(`/api/product/update/byId/${id}`, {
             method: 'PUT',
             /*  headers: {
             "Content-Type": "application/json",
@@ -28,14 +23,14 @@ const updateElement = (id) => {
             })
             .catch(err => console.log(err));
     } else {
-        console.log('error in read id of user');
+        console.log('error in read id of product');
     }
 }
 
 const deleteElement = (id) => {
-    console.log(`---> admin.js deleteElement user ${id}`)
+    console.log(`---> admin.js deleteElement product ${id}`)
     if (id) {
-        fetch(`api/user/delete/byId/${id}`, {
+        fetch(`api/product/delete/byId/${id}`, {
             method: 'DELETE',
         }).then(e => {
             alert(`👩‍🚀 User by id ${id} 💀 delete`);
@@ -44,6 +39,6 @@ const deleteElement = (id) => {
             .catch(err => console.log(err))
 
     } else {
-        console.log('error in read id of user');
+        console.log('error in read id of product');
     }
 };

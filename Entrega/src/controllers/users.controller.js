@@ -101,10 +101,10 @@ const updateBy = async (req, res) => {
         let { first_name, last_name, age, phone, email, address, role } = await req.body;
         let userInfo = await userService.getBy(param);
         const imageOld = userInfo.image;
-        console.log("userInfo"); 
+        /* console.log("userInfo"); 
         console.log(userInfo); 
         console.log("imageOld"); 
-        console.log(imageOld); 
+        console.log(imageOld);  */
         let imageNew = " ";
         if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
             imageNew = imageOld;
