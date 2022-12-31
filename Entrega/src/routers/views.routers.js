@@ -6,14 +6,13 @@ import viewsController from '../controllers/views.controller.js';
 import uploader from '../middlewares/uploader.js';
 import { /* executePolices, */ privateValidation, publicValidation } from '../middlewares/auth.js';
 
-
 /* REF: app.use('/', viwesRouter); */
 
 //home
 router.get('/', /* privateValidation,  */viewsController.home);
 
 //sesion
-router.get('/session-register', /* uploader.single('image'), */  /* publicValidation,  */viewsController.sessionRegister );
+router.get('/session-register',  /* publicValidation,  */viewsController.sessionRegister );
 router.get('/session-login', /* publicValidation,  */viewsController.sessionLogin);
 router.get('/session-logout',/*  publicValidation, */ viewsController.sessionLogout);
 

@@ -71,7 +71,7 @@ await apolloServer.start();
 apolloServer.applyMiddleware({ app });
 //------------------------------------------------------------------
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 //Server
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)

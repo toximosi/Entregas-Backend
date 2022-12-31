@@ -59,12 +59,10 @@ export default class Dao {
         return this.models[entity].findByIdAndDelete(param);
     }
 
-    getUSerPopulate = (id, entity) => { 
+    getUSerPopulate = async(id, entity) => { 
         console.log('--> DAO getUSerPopulate');
         if (!this.models[entity]) throw new Error({function: 'getUSerPopulate' ,error: 'the entityt don`t exist'});
-        const result = this.models[entity].find(id).populate({ path: 'cart', populate: ({path: 'products._id',  model: 'Products' }) })
-        console.log('result')
-        console.log(result)
+        const result = await this.models[entity].find(id).populate({ path: 'cart', populate: ({path: 'products._id',  model: 'Products' }) })
         return result;
     }
 

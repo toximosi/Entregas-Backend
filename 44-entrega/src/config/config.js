@@ -1,7 +1,7 @@
 export default {
     app:{
         DOMAIN: process.env.DOMAIN,
-        PORT: process.env.PORT || 8081
+        PORT: process.env.PORT || 8080
     },
     session:{
         ADMIN_EMAIL:process.env.ADMIN_EMAIL || "toximosi@toximosi.es",

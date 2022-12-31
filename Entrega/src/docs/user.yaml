@@ -1,0 +1,58 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjetId
+          description: Id autogeneration of Mongo
+        first_name:
+          type: String
+        last_name:
+          type: String
+        email:
+          type: String
+        password:
+          type: String
+        age:
+          type: Number
+        image:
+          type: String
+        role:
+          type: String
+          enum: user, admin
+          default: user
+        phone:
+          type: String
+        cart:
+          type: mongoose.SchemaTypes.ObjectId
+      example:
+        _id: 636b9e3a8d4ab97dec21f397
+        first_name: 01
+        last_name: 01
+        email: 01@mail.es
+        password: $2b$10$WdK6c5rIggpEO3WTtsf6dumMH1FyBRuca3.WMesHIchN4.avCuctG
+        age: 1
+        image: /images/avatar/avatar.png
+        role: user
+        phone: 01
+        cart: 636b9e3a8d4ab97dec21f395
+        __v: 0
+            
+paths:
+  /api/user/:
+    get:
+      summary: get all user of bd
+      tags:
+        - Users
+      responses:
+        200:
+          description: get users ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+

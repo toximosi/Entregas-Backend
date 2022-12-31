@@ -42,7 +42,7 @@
     "email": "03@mail.es",
     "password": "$2b$10$.F231XVHhmk.FysnyFCszOwkNjeHwj5f1NcF9sOiyYAHf5Kr7eNLG",
     "age": 3,
-    "image": "http://localhost:8081/images/avatar/avatar.png",
+    "image": "http://localhost:8080/images/avatar/avatar.png",
     "role": "user",
     "phone": "03",
     "cart": {
@@ -76,7 +76,7 @@
     "email": "05@mail.es",
     "password": "$2b$10$zN8vVDCjdxUwPpTArrgRZOiHycP16jBuCiHeytLbbRwrMlCqC5qrC",
     "age": 5,
-    "image": "http://localhost:8081/images/avatar/avatar.png",
+    "image": "http://localhost:8080/images/avatar/avatar.png",
     "role": "user",
     "phone": "05",
     "cart": {

@@ -83,23 +83,57 @@ Puede encontrar material de de acceso y consulta de la aplicación en: ``` entre
 - Carpeta ```postaman```: exportación de las llamadas a la base de datos mediante [postman](https://www.postman.com/).
 - Carpeta ```mongo```: exportación de la base de datos de mongo usada.
 
+## Estructura Files API
+
+.
+├⏤ assets 
+⏐   ├⏤ bd-MONGO-json
+⏐   ├⏤ img
+⏐   ├⏤ json
+⏐   ⌊⎽⎽ postman
+⏐   
+├⏤ src 
+⏐   ├⏤ config
+⏐   ├⏤ constants
+⏐   ├⏤ controllers
+⏐   ⏐  ⌊⎽⎽ models
+⏐   ⏐
+⏐   ├⏤ docs
+⏐   ├⏤ dto
+⏐   ├⏤ middlewares
+⏐   ├⏤ public
+⏐   ⏐  ├⏤ css
+⏐   ⏐  ├⏤ html
+⏐   ⏐  ├⏤ images
+⏐   ⏐  ⌊⎽⎽ js
+⏐   ⏐ 
+⏐   ├⏤ routers
+⏐   ├⏤ services
+⏐   ├⏤ views
+⏐   ├⏤ app.js
+⏐   ⌊⎽⎽ utils.js
+⏐   
+├⏤ package.jsos 
+⌊⎽⎽ README.md
+
+
 ## Secciones:
 
-\- Home ``` / ```
-\- Login ``` /session-login ```
-\- Registro ``` /session-register ```
-\- Productos ```/products```
-\- Herramientas Administrador ```/products```
-\--- Administrar usuarios  ```/user-all```
-\----- Ver perfil usuario  ```/user-info/_id```
-\--- Añadir productos  ```/product-create```
-\--- Administrar productos  ```/product-all```
-\--- Apidocs  ```/ ```
-\--- Graphql  ```/ ```
-\--- Ver todas los carritos activos  ```/cart-all```
-\- Ver carrito usuario logueado ```/user-cart```
-\- Ver perfil usuario logueado ```/user-perfil```
-\- Desloguearse ```/session-logout```
+├⏤ Home ``` / ```
+├⏤ Login ``` /session-login ```
+├⏤ Registro ``` /session-register ```
+├⏤ Productos ```/products```
+├⏤ Herramientas Administrador ```/products```
+⏐   ├⏤ Administrar usuarios  ```/user-all```
+⏐   ⏐   ⌊⎽⎽ Ver perfil usuario  ```/user-info/_id```
+⏐   ├⏤ Añadir productos  ```/product-create```
+⏐   ├⏤ Administrar productos  ```/product-all```
+⏐   ├⏤ Apidocs  ```/ ```
+⏐   ├⏤ Graphql  ```/ ```
+⏐   ├⏤ Ver todas los carritos activos  ```/cart-all```
+├⏤ Ver carrito usuario logueado ```/user-cart```
+├⏤ Ver perfil usuario logueado ```/user-perfil```
+⌊⎽⎽ Desloguearse ```/session-logout```
 
 ### Endpoints:
 1. ```/``` : vistas

@@ -19,17 +19,5 @@ export default class Cart {
                 }
             }]
         }
-        /* return {
-            products: [{
-                product: {
-                    type: mongoose.SchemaTypes.ObjectId,
-                    ref: 'Products'
-                },
-                quantity: {
-                    type: Number,
-                    default: 1
-                }
-            }]
-        } */
     }
 }

@@ -1,6 +1,9 @@
 import express from 'express';
 import session from 'express-session'
 
+import swaggerJSDoc from 'swagger-jsdoc';
+import SwaggerUiExpress from 'swagger-ui-express';
+
 import cookieParser from 'cookie-parser';
 
 import __dirname from './utils.js';
@@ -39,6 +42,21 @@ app.use(cookieParser());
 //JSON FORMAT ------------------------------------------------------------------------- 
 app.use(express.json());
 /* app.use(express.urlencoded({ extended: true })); */
+
+//API DOCS ------------------------------------------------------------------------- 
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: "API Coder",
+            description: "API, Work to CoderHouse Backend course"
+        }
+    },
+    apis:[`${__dirname}/docs/**/*.yaml`]
+};
+
+const specs = swaggerJSDoc(swaggerOptions);
+app.use('/apidocs', SwaggerUiExpress.serve, SwaggerUiExpress.setup(specs));
 
 //Views handlebars
 app.engine('handlebars', handlebars.engine());
