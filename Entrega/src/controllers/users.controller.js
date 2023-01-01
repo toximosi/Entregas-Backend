@@ -5,6 +5,9 @@ import MailingService from '../middlewares/mailing.js';
 import { userService, cartService, productService } from "../services/services.js"
 import {UserPresenterDTO} from "../dto/User.dto.js";
 import { createHash } from "../utils.js";
+import config from "../config/config.js";
+
+
 
 const getAll = async (req, res) => {
     console.log('--> User controller getAll');
@@ -104,10 +107,6 @@ const updateBy = async (req, res) => {
         let { first_name, last_name, age, phone, email, address, role } = await req.body;
         let userInfo = await userService.getBy(param);
         const imageOld = userInfo.image;
-        /* console.log("userInfo"); 
-        console.log(userInfo); 
-        console.log("imageOld"); 
-        console.log(imageOld);  */
         let imageNew = " ";
         if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
             imageNew = imageOld;
@@ -184,17 +183,16 @@ const userBuy = async (req, res) => {
     const mailer = new MailingService();
     let mailsend = await mailer.sendSimpleMail({
         // from: email
-        to: `toximosi@gmail.com`,
+        to: `${config.test.EMAIL}`,
         subject: 'nueva compra',
         html: mailer.MailRegister(`
         <h1>Compra realizada:</h1>
         <p>
         ${JSON.stringify(data.products)}
+        &{foreach}
         </p>
         `)
     });
-    console.log('cartPopulate[0].products')
-    console.log(cartPopulate[0].products)
     const cart = await cartService.getBy({ _id: cartid });
     
     await userService.addBy({ _id: userid }, {buy: data});
