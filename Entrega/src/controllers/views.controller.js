@@ -30,10 +30,9 @@ const sessionLogin = (req, res) => {
 
 const sessionLogout = (req, res) => {
     if (!req.session.user) {
-        return res.redirect('session-login');
-    } else {
-        req.session.destroy();
         res.redirect('session-login');
+    } else {
+        res.render('session-logout');
     }
 };
 

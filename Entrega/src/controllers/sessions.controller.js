@@ -99,9 +99,10 @@ const login = async (req, res) => {
     }
 };
 
-const logout = (req,res) => {
-        req.session.destroy();
-        res.redirect('/login');
+const logout = (req, res) => {
+    console.log('--> Session controller logout');
+    req.session.destroy();
+    return res.redirect('/session-login');
 };
 
 export default {
