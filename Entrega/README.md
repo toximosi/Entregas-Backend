@@ -8,16 +8,6 @@ ___
 
 
 
-## CONSIGNA:
-
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
-- [X] Consigna 1
 
 ## CARACTERÍSTICAS:
 
@@ -32,8 +22,10 @@ ___
 
 
 - Paquetes npm usados:
+
 ```
 "dependencies": {
+    "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
@@ -47,44 +39,48 @@ ___
     "multer": "^1.4.5-lts.1",
     "node": "^18.11.0",
     "nodemailer": "^6.8.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "swagger-jsdoc": "^6.2.7",
+    "swagger-ui-express": "^4.6.0"
   }
 ```
 
 
 
-# Acceso a la aplicación
+# ACCESO APLICACIÓN
 
-Caga de dependencias
+#### Cagar de dependencias
 ```
 npm install
 ```
 
-Terminal:
+#### Terminal:
 ``` 
 > npm start
 ```
 
-Navegador:
+#### Navegador:
 ``` 
 http://localhost:8081/ 
 ```
 
-## USUARIO ADMINISTRADOR:
+#### Usuario administrador:
 
-    User: 
+```
+    User: test@mail.es
     Pass: 1234
+```
 
-
-## Material base:
+## MATERIAL BASE:
 Puede encontrar material de de acceso y consulta de la aplicación en: ``` entrega > assets ```
 - Carpeta ``` bd-json ``` : archivos .json iniciales para la base de datos de: 👩‍🚀 usuarios, 🧳 productos, 🛒 carritos *(estan relacionados con los usuarios, cada usuario tiene su propio carrito)*.
 - Carpeta ```img```: imágenes por defecto usadas para los productos y los usuarios.
 - Carpeta ```postaman```: exportación de las llamadas a la base de datos mediante [postman](https://www.postman.com/).
 - Carpeta ```mongo```: exportación de la base de datos de mongo usada.
 
-## Estructura Files API
+## ESTRUCTURA API
 
+```
 .
 ├⏤ assets 
 ⏐   ├⏤ bd-MONGO-json
@@ -115,10 +111,12 @@ Puede encontrar material de de acceso y consulta de la aplicación en: ``` entre
 ⏐   
 ├⏤ package.jsos 
 ⌊⎽⎽ README.md
+```
 
+## SECCIONES:
 
-## Secciones:
-
+```
+.
 ├⏤ Home ``` / ```
 ├⏤ Login ``` /session-login ```
 ├⏤ Registro ``` /session-register ```
@@ -134,8 +132,13 @@ Puede encontrar material de de acceso y consulta de la aplicación en: ``` entre
 ├⏤ Ver carrito usuario logueado ```/user-cart```
 ├⏤ Ver perfil usuario logueado ```/user-perfil```
 ⌊⎽⎽ Desloguearse ```/session-logout```
+```
 
-### Endpoints:
+## ACCESS APIDOCS:
+```
+http://localhost:8081/apidocs/
+```
+#### Endpoints:
 1. ```/``` : vistas
     1. GET ``` /session-login ```
     2. GET ``` /session-register ```
@@ -176,12 +179,96 @@ Puede encontrar material de de acceso y consulta de la aplicación en: ``` entre
     3. POST ```/api/cart/update``` : updateById ID MONGO
     4. GET ```/api/cart/Info/ById/:_id``` : cartInfoBy ID MONGO
 
+    ---
+## CONSIGNA:
+## Curso Backend - MERN Stack: Proyecto Final
+##E-commerce project
+
+Desarrollarás el backend de una aplicación de e-commerce para poder vender productos de un rubro a elección.
+
+### User story/brief: 
+
+- [X]  Contendrá las rutas necesarias que permitan listar los productos existentes, ingresar productos nuevos, borrar y modificar sus detalles, así como interactuar con el carrito de compras.
+- [X]  Se implementará una API RESTful con los verbos get, post, put y delete para cumplir con todas las acciones necesarias.
+- [X]  Debe brindar al frontend un mecanismo de ingreso autorizado al sistema basado en JWT (Json Web Token). 
+- [X]  Los productos ingresados se almacenarán en una base de datos MongoDB. 
+- [X]  El usuario podrá registrar sus credenciales de acceso (email y password) para luego poder ingresar a su cuenta. Estas credenciales serán guardadas en la base de datos MongoDB encriptando la contraseña.
+- [X]  El cliente tendrá una sesión activa de usuario con tiempo de expiración configurable.
+- [X]  La arquitectura del servidor estará basada en capas (MVC)
+- [X]  El servidor podrá tomar configuraciones desde un archivo externo.
+- [X]  Dispondrá de una vista creada con handebars, que permita ver la configuración del servidor.
+- [X]  Se enviará un mail a una casilla configurable, por cada registro nuevo de usuario y con cada orden de compra generada.
+- [X]  En caso de detectar algún error, el servidor enviará una vista implementada con ejs, que contenga el id y el detalle completo
+- [X]  Dos opciones para el frontend: desarrollo por parte del estudiante, ó se proporcionará uno para hacer las pruebas necesarias.
+ 
+
+### Piezas sugeridas
+
+**Te recomendamos incluir:**
+- [X]  Node.js
+- [X]  MongoDB
+- [X]  Passport JWT
+- [X]  Mongoose
+- [X]  Bcrypt
+- [X]  Websocket
+- [X]  Dotenv
+- [X]  Handlebars, Pug, Ejs
+- [X]  Nodemailer |
 
 
+### Requisitos base
+**Los requisitos base serán parte de los criterios de evaluación para aprobar el proyecto.**
+#### Inicio: Al momento de requerir la ruta base ‘/’
+ - [X]  Permitir un menú de ingreso al sistema con email y password así como también la posibilidad de registro de un nuevo usuario.
+ - [X]  El menú de registro consta del nombre completo del cliente, número telefónico, email y campo de password duplicado para verificar coincidencia.
+ - [X]  Si un usuario se loguea exitosamente o está en sesión activa, la ruta ‘/’ hará una re dirección a la ruta del carrito /productos 
+ - [X]  La ruta /productos devolverá el listado de todos los productos disponibles para la compra.
+ - [X]  La ruta /productos/:categoria devolverá los productos por la categoría requerida.
+ - [X]  Los ítems podrán ser agregados al carrito de compras y listados a través de la ruta /carrito.
+ - [X]  Se podrán modificar y borrar por su id a través de la ruta /carrito:id.
+ - [X]  Flow: Se puede solicitar un producto específico con la ruta /productos/:id, donde id es el id del item generado por MongoDB y devolver la descripción del producto ( foto, precio, selector de cantidad). 
+ - [X]  Si se ingresa a /productos/:id y el producto no existe en MongoDB, debemos responder un mensaje adecuado que indique algo relacionado a que el producto no existe.
+
+#### MongoDB:
+Implementar al menos estas colecciones:
+ ■	usuarios: clientes registrados
+ ■	productos: catálogo completo
+ - [X]  Link para foto (puede almacenarse de modo estático en la página en una subruta /images/:productoid )
+ - [X]  Precio unitario
+ - [X]  Descripción
+ - [X]  Categoría
+
+■	carrito: orden temporal de compra
+ - [X]  Email
+ - [X]  Fecha y hora
+ - [X]  Items con sus cantidades
+ - [X]  Dirección de entrega
+
+------ no es necesario -----
+------  -----
+■	ordenes: las órdenes generadas, que deben incluir los productos, descripciones y los precios al momento de la compra. 
+ - [X]  Ítems:  las órdenes deben poder tener productos surtidos, cada uno con su cantidad. Por ejemplo: remeras x 2 y gorra x 1
+ - [X]  Número de orden: Se extrae de la cantidad de órdenes almacenadas
+ - [X]  Fecha y hora
+ - [X]  estado ( por defecto en ‘generada’)
+ - [X]  Email de quién realizó la orden
+------  -----
 
 
+- [X]  Finalizada la orden, enviar un mail a la dirección de mi cuenta con los detalles de la orden.
+- [X]  Se dispondrá de un archivo de configuración externo con opciones para desarrollo y otras para producción, que serán visualizadas a través de una vista construida con handlebars. Como parámetros de configuración estará el puerto de escucha del servidor, la url de la base de datos, el mail que recibirá notificaciones del backend, tiempo de expiración de sesión y los que sea necesario incluir.
 
 
+### Requisitos Extra
+**Los requisitos extra pro-coders no se incluyen en los criterios de evaluación.**
+Los requisitos extra son funcionalidades opcionales que no se incluyen en los criterios de evaluación, pero si te falta diversión y quieres agregar valor a tu proyecto... ¡bajo la única condición de que lo que incluyas debe funcionar!
 
+- [X]  auth/login: Implementar alguna de las estrategias de autenticación disponibles en passport para permitir el login con Facebook y Gmail
+- []  Custom item: Posibilidad de agregar características seleccionables al producto (ej. talla, color, etc). La customización no debería modificar el precio. Las selecciones serán detalladas en el checkout. Por ejemplo: 1 x camisa (roja) $200 y 2 x camisa (verde) $400.
+- []  Stock check: Validar stock al momento de intentar generar la orden.
+- []  Mis órdenes: El usuario podrá visualizar todas las órdenes que realizó a través de la ruta /orden.
 
-
+### Dont’s
+**No es necesario ni recomendado.**
+- [X]  Crear un administrador de stock, dado que puede escaparse del scope y requerir bastante trabajo extra. Podremos gestionar el stock desde la base MongoDB.
+- [X]  Implementar el FrontEnd salvo que así sea deseado por parte del estudiante.

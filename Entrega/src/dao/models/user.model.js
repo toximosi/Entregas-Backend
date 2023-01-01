@@ -28,17 +28,19 @@ export default class User {
             cart:{
                 type: mongoose.SchemaTypes.ObjectId,
                 ref: 'Carts',
-                /* products: [{
-                    product: {
-                        type: mongoose.SchemaTypes.ObjectId,
-                        ref: 'Products'
-                    },
-                    quantity: {
-                        type: Number,
-                        default: 1
-                    }
-                }] */
-            }
+            },
+            buy: [{
+                cart: {
+                    type: mongoose.SchemaTypes.ObjectId,
+                    ref: 'Carts'
+                },
+                products: {
+                    type: Array
+                },
+                date: {
+                    type: Date
+                }
+            }]
         }
     }
 }

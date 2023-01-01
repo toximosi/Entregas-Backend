@@ -12,6 +12,7 @@ router.get('/byId/:_id', usersController.getBy);
 router.get('/byEmail/:email', usersController.getBy);
 
 router.post('/save', uploader.single('image'), usersController.save);
+router.post('/userBuy', usersController.userBuy);
 
 router.put('/update/byId/:_id', uploader.single('image'), usersController.updateBy);
 /* router.post('/update/byId/:_id', usersController.updateBy); */

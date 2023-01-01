@@ -14,14 +14,14 @@ components:
             type: Number
             default: 1
       example:
-        _id: 6367fd0848f879fe056c34ec
+        _id: ObjetId('6367fd0848f879fe056c34ec')
         products: 
           0:
-            id: 636b957b8d4ab97dec21f392
+            id: ObjetId('636b957b8d4ab97dec21f392')
             quantity: 2
           1:
-          id: 636ba4eac41dfd243c0c7d7c
-          quantity: 3
+            id: ObjetId('636ba4eac41dfd243c0c7d7c')
+            quantity: 3
         __v: 0
             
 paths:

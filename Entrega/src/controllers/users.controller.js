@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import MailingService from '../middlewares/mailing.js';
+
+
 import { userService, cartService, productService } from "../services/services.js"
 import {UserPresenterDTO} from "../dto/User.dto.js";
 import { createHash } from "../utils.js";
@@ -150,7 +153,7 @@ const deleteBy = async (req, res) => {
     };
 };
 
-const userInfoBy = async(req, res) => { 
+const userInfoBy = async (req, res) => {
     console.log('--> User controller userInfoBy');
     try {
         const id = req.params;
@@ -162,66 +165,47 @@ const userInfoBy = async(req, res) => {
         let message = { status: "success", message: "👍 Users info find", function: '👩‍🚀 User controller userInfoBy ', payload: result };
         console.log(message);
         res.status(200).send(message);
-       /*  const user = await userService.getBy(id);
-        const cart = await cartService.getBy(user.cart);
-        console.log('cart')
-        console.log(cart)
-        let productInfo = []
-        let count = 0;
-        let productExten;
-        console.log("cart.products")    
-        console.log(cart.products[0])    
-        console.log(cart.products[0].id)    
-
-        let p = await productService.getBy({_id: cart.products[0].id}) */
-        /* await cart.products.map((e) => { 
-console.log('e')
-            console.log(e)
-            let p =  productService.getBy({ id: e.id });
-            console.log('p')
-            console.log(p)
-            }
-        ) */
-
-        /* cart.products.forEach(e => {
-            
-            console.log('e')
-            console.log(e.id)
-
-            
-            count++;
-        }); */
-
-
-        /* let data = user;
-        data.cart = cart; */
-
-
-        /* console.log('data');
-        console.log(data); */
-
-        
-        /* await data.forEach(e => {
-            console.log('e.cart')
-            console.log(e.cart)
-            cart = cartService.getBy(e.cart);
-
-        }); */
-
-
-
-
-
-        /* console.log(info) */
-        /* let message = { status: "success", message: `👍 User have all info`, function: '👩‍🚀 User userInfo', payload: info };
-        console.log(message);
-        res.status(200).send(message); */
-        } catch (error) {
+    } catch (error) {
         let message = { status: "error", error: "💀 Internal error", function: '👩‍🚀 User userInfo', trace: error };
         console.log(message);
     };
+};
 
-}
+const userBuy = async (req, res) => {
+    console.log('--> cartUpdate');
+    const userid = await req.body.id;
+    const cartid = await req.body.cart;
+    const cartPopulate = await cartService.getCartPopulate({ _id: cartid });
+    const data = { 
+        products: cartPopulate[0].products,
+        date: new Date()
+    }
+
+    const mailer = new MailingService();
+    let mailsend = await mailer.sendSimpleMail({
+        // from: email
+        to: `toximosi@gmail.com`,
+        subject: 'nueva compra',
+        html: mailer.MailRegister(`
+        <h1>Compra realizada:</h1>
+        <p>
+        ${JSON.stringify(data.products)}
+        </p>
+        `)
+    });
+    console.log('cartPopulate[0].products')
+    console.log(cartPopulate[0].products)
+    const cart = await cartService.getBy({ _id: cartid });
+    
+    await userService.addBy({ _id: userid }, {buy: data});
+    await cartService.updateBy({ _id: cartid }, {products: []});
+    
+    console.log('--> cartBuy mailsend');
+    console.log(mailsend);
+
+    res.status(307).redirect('/endBuy');
+
+};
 
 const userInfo = async (req, res) => { 
 
@@ -234,4 +218,5 @@ export default {
     deleteBy,
     userInfo,
     userInfoBy,
+    userBuy
 }

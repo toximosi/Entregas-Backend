@@ -10,34 +10,76 @@ components:
           type: String
         last_name:
           type: String
-        email:
-          type: String
         password:
+          type: String
+        email:
           type: String
         age:
           type: Number
-        image:
-          type: String
         role:
           type: String
           enum: user, admin
           default: user
         phone:
           type: String
+        address:
+          type: String
+        image:
+          type: String
         cart:
           type: mongoose.SchemaTypes.ObjectId
+
       example:
-        _id: 636b9e3a8d4ab97dec21f397
-        first_name: 01
-        last_name: 01
-        email: 01@mail.es
-        password: $2b$10$WdK6c5rIggpEO3WTtsf6dumMH1FyBRuca3.WMesHIchN4.avCuctG
-        age: 1
-        image: /images/avatar/avatar.png
-        role: user
-        phone: 01
-        cart: 636b9e3a8d4ab97dec21f395
+        _id: ObjectId('63a9dce0d968311089ad0a85')
+        first_name: admin
+        last_name: admin
+        password: $2b$10$Y3.qZFFko9wpc3djHvxL4uVKMdTRG7cOUo3p7yTcFmq3qEAekwot.
+        email: test@mail.es
+        age: 0
+        role: admin
+        phone: 0000000
+        address: Calle Final 00
+        image: /images/1672082567095-avatar.png
+        cart: 63a9dce0d968311089ad0a83
+        created_at: 2022-12-26T17:41:52.951Z
+        updated_at: 2022-12-27T16:14:43.530Z
         __v: 0
+  requestBodies:
+    newUser:
+      type: objet
+      properties:
+        first_name:
+          type: String
+        last_name:
+          type: String
+        password:
+          type: String
+          description: password without hashear
+        email:
+          type: String
+          description: unique email
+        age:
+          type: Number
+        role:
+          type: String
+          enum: user, admin
+          default: user
+        phone:
+          type: String
+        address:
+          type: String
+        image:
+          type: String
+      example:
+        first_name: 'first name test'
+        last_name: 'last name test'
+        password: '1234'
+        email: 'test@test.com'
+        age: 10
+        role: 'user'
+        phone: '00000000'
+        address: 'adress test'
+        image: 'avatar.png'
             
 paths:
   /api/user/:
@@ -54,5 +96,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+  /api/user/save:
+    post:
+      summary: Create new user
+      tags: 
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/requestBodies/newUser:'
+      responses:
+        '200':
+          description: get users ok
+        '400':
+          description:   filed in get users, invalid data
+        '500':
+          description: get users ok
+  /api/user/delete/byId/{uid}:
+    delete:
+      summary: delete user
+      tags: 
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: define id the user save in mongo
+          schema:
+            tyoe: string
+
+
 
 

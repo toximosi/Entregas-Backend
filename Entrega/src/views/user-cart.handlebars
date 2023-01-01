@@ -31,9 +31,11 @@
                     {{/each}}
                 </tbody>
                 </table>
+                <button class="btn btn-primary" id="btnBy" onClick="buyCart({ 'id':'{{userid}}', 'cart': '{{cartid}}' })" >Comprar</button>
             {{else}}
                     <h2>No tienes productos, adquiere alguno: <a href="products">ver productos</a></h2>
             {{/if}}
         </div>
     </div>
 </div>
+<script src="/js/user.js"></script>

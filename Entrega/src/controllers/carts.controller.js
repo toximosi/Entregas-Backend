@@ -99,12 +99,13 @@ const cartInfoBy = async (req, res) => {
         console.log(message);
     };
 };
+
+
+
 export default {
     getAll,
     getBy,
     updateById,
-    cartInfoBy 
-    /* save,
-    deleteBy */
+    cartInfoBy
 };
 

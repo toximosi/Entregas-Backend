@@ -65,10 +65,11 @@ const userCart = async (req, res) => {
     if (!req.session.user) {
         return res.redirect('session-login');
     } else {
-        const userid = sesion.user.cart;
-        const Arr = await cartService.getCartPopulate({_id: userid});
+        const userid = sesion.user.id;
+        const cartid = sesion.user.cart;
+        const Arr = await cartService.getCartPopulate({_id: cartid});
         const ArrProducts = Arr[0].products;
-        res.render('user-cart', { ArrProducts});
+        res.render('user-cart', { userid, cartid, ArrProducts});
     };
 };
 
@@ -93,7 +94,7 @@ const productAll = async (req, res) => {
 
 //cart ---------------------------------------------------------
 const carts = async (req, res) => {
-    
+  /*   
     console.log('--> viewControllers > carts');
     const sesion = req.session;
     if (!req.session.user) {
@@ -101,12 +102,12 @@ const carts = async (req, res) => {
     } else {
         const userid = sesion.user.cart;
         let Arr = await cartService.getBy({_id: userid});
-        /* Arr = JSON.stringify(Arr); */    
+        // Arr = JSON.stringify(Arr); *   
         let id = Arr._id;
         let products = Arr.products;
         let product = "";
         console.log(JSON.stringify(Arr))
-        /* console.log(products) */
+        // console.log(products) 
         let productsAll = await productService.getAll(); 
         console.log('produsctAll');
         console.log(productsAll);
@@ -121,9 +122,12 @@ const carts = async (req, res) => {
 
         res.render('user-cart', { Arr, id, productUser });
     }
-};
+    */
+}; 
 
-
+const cartEnd = (req, res) => { 
+    res.render('endBuy');
+}
 
 export default {
     home,
@@ -142,5 +146,6 @@ export default {
     productAll,
     
     carts,
+    cartEnd
     /* cartsList, */
 }

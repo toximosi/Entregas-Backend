@@ -72,4 +72,10 @@ export default class Dao {
         const result = await this.models[entity].find(id).populate({path: 'products._id',  model: 'Products' });
         return result;
     }
+
+    userBuy = async (userid, cartid, entity) => { 
+        console.log('--> DAO buyCart');
+        if (!this.models[entity]) throw new Error({ function: 'userBuy', error: 'the entityt don`t exist' });
+        
+    }
 }
