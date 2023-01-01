@@ -1,3 +1,6 @@
+
+import config from './config/config.js';
+
 import express from 'express';
 import session from 'express-session'
 
@@ -75,7 +78,7 @@ app.use('/api/product', productRouter);
 app.use('/api/cart', cartRouter);
 
 //SERVER ------------------------------------------------------------------------- 
-const PORT = process.env.PORT || 8081;
+const PORT = config.app.PORT;
 const server = app.listen(PORT, ()=>{
     console.log(`👽 Now listenig on 👉 ${server.address().port}`)
 });

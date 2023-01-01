@@ -1,7 +1,10 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 export default {
     app:{
         DOMAIN: process.env.DOMAIN,
-        PORT: process.env.PORT || 8081
+        PORT: process.env.PORT, 
     },
     session:{
         ADMIN_EMAIL: process.env.ADMIN_EMAIL || "toximosi@toximosi.es",
@@ -17,6 +20,6 @@ export default {
         COOKIE: process.env.JWT_COOKIE || "CookieLogin"
     },
     test: {
-        EMAIL: process.env.TEST_EMAIL || "toximosi@gmail.com"
+        EMAIL: process.env.TEST_EMAIL 
     }
 }
