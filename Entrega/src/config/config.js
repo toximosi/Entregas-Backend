@@ -7,19 +7,23 @@ export default {
         PORT: process.env.PORT, 
     },
     session:{
-        ADMIN_EMAIL: process.env.ADMIN_EMAIL || "toximosi@toximosi.es",
-        ADMIN_PWD: process.env.ADMIN_PWD || "1234"
+        ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+        ADMIN_PWD: process.env.ADMIN_PWD
     },
     mongo:{
-        USER: process.env.MONGO_USER || "toximosi",
-        PWD: process.env.MONGO_PWD || "Quier0Entrar",
-        DB: process.env.MONGO_DATABASE || "34Entrega"
+        USER: process.env.MONGO_USER,
+        PWD: process.env.MONGO_PWD,
+        HOST: process.env.MONGO_HOSTNAME,
+        DB: process.env.MONGO_DATABASE,
+        CONEXION: process.env.MONGO_CONEXION
     },
     jwt:{
-        SECRET: process.env.JWT_KEY || "SecretToken",
-        COOKIE: process.env.JWT_COOKIE || "CookieLogin"
+        SECRET: process.env.JWT_KEY,
+        COOKIE: process.env.JWT_COOKIE
     },
     test: {
-        EMAIL: process.env.TEST_EMAIL 
+        EMAIL_USER: process.env.TEST_EMAIL_USER, 
+        EMAIL_PASS: process.env.TEST_EMAIL_PASS,
+        EMAIL_PORT: process.env.TEST_EMAIL_PORT 
     }
 }

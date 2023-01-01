@@ -1,4 +1,6 @@
 const buyCart = (data) => {
+    console.log(`---> user.js post button buyCart`)
+
     /*  evt.preventDefault(); */
     const obj = {
         id: data.id,

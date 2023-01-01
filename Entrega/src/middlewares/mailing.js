@@ -1,13 +1,14 @@
+import config from '../config/config.js';
 import mailer from 'nodemailer';
 
 export default class MailingService { 
     constructor() { 
         this.client = mailer.createTransport({ 
             service: 'gmail',
-            port: 587,
+            port: config.test.EMAIL_PORT,
             auth: {
-                user: 'toximosi@gmail.com',
-                pass: 'tbekayngztdokxdv',
+                user: config.test.EMAIL_USER,
+                pass: config.test.EMAIL_PASS,
             }
         })
     }

@@ -1,6 +1,8 @@
 const form = document.getElementById('registerForm');
 
-form.addEventListener('submit',evt=>{
+form.addEventListener('submit', evt => {
+    console.log(`---> register.js post form registerForm`)
+
     evt.preventDefault();
     
     let data = new FormData(form);

@@ -1,4 +1,6 @@
 const addCart = (id) => { 
+    console.log(`---> cart.js post button addCart`)
+
     /*  evt.preventDefault(); */
     const obj = {
         _id: id,

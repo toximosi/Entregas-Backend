@@ -1,32 +1,27 @@
+import config from "../config/config.js";
+
 /* import { UserInsertDTO } from "../DTO/User.dto.js"; */
 import { userService, cartService } from "../services/services.js";
 import { createHash, isValidPassword } from "../utils.js";
 import jwt from 'jsonwebtoken';
-import config from "../config/config.js";
 
 import MailingService from '../middlewares/mailing.js';
 
 const register = async (req, res) => {
     console.log('--> Session controller register');
     try {
-        console.log('req.body')
-        console.log(await req.body)
-
-        console.log('req.file');
-        console.log(req.file);
-
         let { first_name, last_name, password, age, phone, email, address, role } = await req.body;
-        if(!first_name || !last_name || !password || !email ) return res.status(400).send({status:'error', error:'💀 incomplet values', function: '🔑 Session controller register',});
+        if (!first_name || !last_name || !password || !email) return res.status(400).send({ status: 'error', error: '💀 incomplet values', function: '🔑 Session controller register', });
         /* if(!req.file) return res.status(500).send({status:"error",error:"Can not upload avatar image"}); */
         let image = " ";
-        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') { 
+        if (!req.file || req.file == "" || req.file == undefined || req.file == 'undefined' || req.file == null || req.file == 'null') {
             image = `/images/avatar/avatar.png`;
         } else {
-            image =`/images/${req.file.filename}`;
+            image = `/images/${req.file.filename}`;
         }
-        let user = await userService.getBy({email:email});
-        if(user) return res.status(400).send({status:"error",error:"User exist yet"});
-        let cart= await cartService.save({artworks:[]})
+        let user = await userService.getBy({ email: email });
+        if (user) return res.status(400).send({ status: "error", error: "User exist yet" });
+        let cart = await cartService.save({ artworks: [] })
         const hashedPassword = await createHash(password);
         const newUser = {
             first_name,
@@ -39,7 +34,7 @@ const register = async (req, res) => {
             address,
             image,
             cart: cart._id,
-        }
+        };
         //const insertUser = new UserInsertDTO(newUser);
         let result = await userService.save(newUser);
         let message = { status: "success", message: "👍 User create", function: '🔑 Session controller register', payload: result };
@@ -49,8 +44,8 @@ const register = async (req, res) => {
         let message = { status: "error", error: "💀 Internal error", function: '🔑 Session controller register', trace: error };
         console.log(message);
         res.status(500).send(message);
-    }
-}
+    };
+};
 
 const login = async (req, res) => {
     console.log('--> Session controller login');
