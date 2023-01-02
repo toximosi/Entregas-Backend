@@ -5,70 +5,106 @@ import usersController from "./users.controller.js";
 
 /* REF: app.use('/', viewsRouter);*/
 
+let admin = false;
+let user = false;
+let login = true;
+
+const nav = (session) => {
+    if (session) {
+        if (session.role == 'admin') {
+            admin = true;
+            login = false;
+        } else {
+            user = true;
+            login = false;
+        };
+    };
+};
+
 const home = (req, res) => {
-    /* if (!req.session.user) {
-        res.redirect('/login');
-    } else { 
-        const routes = ROUTES[req.session.user.role];
-        res.render('home', {
-            user: req.user,
-            routes: routes
-        });
-    } */
-    res.render('home');
+    console.log('--> viewControllers > home');
+    res.render('home', {admin, user, login});
 };
 
 
 //Session ---------------------------------------------------------
 const sessionRegister = (req, res) => {
-    res.render('session-register');
+    console.log('--> viewControllers > sessionRegister');
+    res.render('session-register', {admin, user, login});
 };
 
-const sessionLogin = (req, res) => {
-    res.render('session-login');
+const sessionLogin = async (req, res) => {
+    console.log('--> viewControllers > sessionLogin');
+    if (req.session.user !== undefined) {
+        res.redirect('products');
+    } else { 
+       nav(req.session?.user);
+        res.render('session-login', { admin, user, login });
+    }
 };
+
 
 const sessionLogout = (req, res) => {
+    console.log('--> viewControllers > sessionLogout');
+        admin = false;
+        user = false;
+        login = true;
     if (!req.session.user) {
         res.redirect('session-login');
     } else {
-        res.render('session-logout');
+        
+        res.render('session-logout', {admin, user, login});
     }
 };
 
 
 //user ---------------------------------------------------------
 const userPerfil = (req, res) => {
+    console.log('--> viewControllers > userPerfil');
     if (!req.session.user) {
         res.redirect('session-login');
     } else {
-        res.render('user-perfil', { user: req.session.user });
+        nav(req.session?.user); 
+        res.render('user-perfil', { admin, user, login, user: req.session.user });
     }
 };
 
 const userInfo = async (req, res)=>{ 
     console.log('--> viewControllers > userInfo');
-    const param = await req.params;
-    const Arr = await userService.getBy(param);
-    res.render('user-info', {Arr});
+    if (!req.session.user) {
+        res.redirect('session-login');
+    } else {
+        const param = await req.params;
+        const Arr = await userService.getBy(param);
+        nav(req.session?.user);
+        res.render('user-info', { admin, user, login, Arr });
+    }
 };
 
 const userAll = async (req, res) => { 
-    const Arr = await userService.getAll();
-    res.render('user-all', { Arr });
+    console.log('--> viewControllers > userAll ');
+    if (!req.session.user) {
+        res.redirect('session-login');
+    } else {
+        const Arr = await userService.getAll();
+        nav(req.session?.user);
+        res.render('user-all', { admin, user, login, Arr });
+    }
 };
 
 const userCart = async (req, res) => {
-    console.log('--> viewControllers > carts');
-    const sesion = req.session;
+    console.log('--> viewControllers > userCart');
+    
     if (!req.session.user) {
         return res.redirect('session-login');
     } else {
-        const userid = sesion.user.id;
-        const cartid = sesion.user.cart;
+        const session = req.session;
+        const userid = session.user.id;
+        const cartid = session.user.cart;
         const Arr = await cartService.getCartPopulate({_id: cartid});
         const ArrProducts = Arr[0].products;
-        res.render('user-cart', { userid, cartid, ArrProducts});
+        nav(req.session?.user); 
+        res.render('user-cart', {admin, user, login, userid, cartid, ArrProducts});
     };
 };
 
@@ -77,55 +113,46 @@ const userCart = async (req, res) => {
 
 const products = async (req, res) => {
     console.log('--> viewControllers > products');
-    let Arr = await productService.getAll();
-    res.render('products', { Arr });
-};
-
-const productCreate = (req, res) => {
-    res.render('product-create');
-};
-
-const productAll = async (req, res) => {
-    console.log('--> viewControllers > productAll');
-    let Arr = await productService.getAll();
-    res.render('product-all', { Arr });
-};
-
-//cart ---------------------------------------------------------
-const carts = async (req, res) => {
-  /*   
-    console.log('--> viewControllers > carts');
-    const sesion = req.session;
     if (!req.session.user) {
         return res.redirect('session-login');
     } else {
-        const userid = sesion.user.cart;
-        let Arr = await cartService.getBy({_id: userid});
-        // Arr = JSON.stringify(Arr); *   
-        let id = Arr._id;
-        let products = Arr.products;
-        let product = "";
-        console.log(JSON.stringify(Arr))
-        // console.log(products) 
-        let productsAll = await productService.getAll(); 
-        console.log('produsctAll');
-        console.log(productsAll);
-        const productUser = [];
-        products.forEach((p) => {
-            productsAll.forEach((pa) => { 
-                if (p.id == pa._id) { 
-                    productUser.push(pa);
-                }
-            })
-        });
-
-        res.render('user-cart', { Arr, id, productUser });
+        let Arr = await productService.getAll();
+        nav(req.session?.user);
+        res.render('products', { admin, user, login, Arr });
     }
-    */
-}; 
+};
 
-const cartEnd = (req, res) => { 
-    res.render('endBuy');
+const productCreate = (req, res) => {
+    console.log('--> viewControllers > productCreate'); 
+    if (!req.session.user) {
+        return res.redirect('session-login');
+    } else {
+        nav(req.session?.user);
+        res.render('product-create', { admin, user, login });
+    }
+};
+
+const productAll = async (req, res) => {
+    console.log('--> viewControllers > productAll'); 
+    if (!req.session.user) {
+        return res.redirect('session-login');
+    } else {
+        let Arr = await productService.getAll();
+        nav(req.session?.user);
+        res.render('product-all', { admin, user, login, Arr });
+    }
+};
+
+//cart ---------------------------------------------------------
+
+const cartEnd = (req, res) => {
+    console.log('--> viewControllers > cartEnd');
+    if (!req.session.user) {
+        return res.redirect('session-login');
+    } else {
+        nav(req.session?.user);
+        res.render('endBuy', { admin, user, login });
+    }
 }
 
 export default {
@@ -144,7 +171,6 @@ export default {
     productCreate,
     productAll,
     
-    carts,
+
     cartEnd
-    /* cartsList, */
 }

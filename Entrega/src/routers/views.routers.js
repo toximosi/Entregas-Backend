@@ -29,7 +29,7 @@ router.get('/product-all', /* publicValidation, */ viewsController.productAll);
 
 
 //cart
-router.get('/carts-all'/* ,privateValidation, executePolices(['ADMIN']) */, viewsController.carts);
+router.get('/endBuy'/* ,privateValidation, executePolices(['ADMIN']) */, viewsController.cartEnd);
 
 
 export default router;

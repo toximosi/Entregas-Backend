@@ -6,18 +6,20 @@ form.addEventListener('submit', evt => {
     let data = new FormData(form);
     let obj = {};
     data.forEach((value, key) => obj[key] = value);
-    console.log('--> loginForm');
-    console.log(JSON.stringify(obj));
+    
     fetch('api/session/login', {
         method: 'POST',
         body: JSON.stringify(obj),
         headers:{
             "Content-Type":"application/json"
         }
-    }).then((response) => response.json())
-        .then((data) => {
-            console.log('Success:', data);
+    }).then((response) => {
+        response.json();
+    }).then((data) => {
+        console.log('Success:', data);
+        location.reload();
         }).catch((error) => {
             console.log('Error:', error);
         });
+    
 })

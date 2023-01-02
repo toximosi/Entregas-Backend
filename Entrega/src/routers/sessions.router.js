@@ -7,6 +7,7 @@ const router = Router();
 //REF: app.use('/api/session/',sessionsRouter);
 router.post('/register', uploader.single('image'), sessionsController.register);
 router.post('/login', sessionsController.login);
+
 router.get('/logout', sessionsController.logout);
 
 export default router;

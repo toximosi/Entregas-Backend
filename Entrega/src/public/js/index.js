@@ -5,6 +5,9 @@ logout.addEventListener('click', (e) => {
     fetch('/api/session/logout', {
         method: 'GET',
     }).then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            location.reload();
+        })
         .catch(error => console.log(error));
 });

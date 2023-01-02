@@ -6,6 +6,7 @@ import { createHash, isValidPassword } from "../utils.js";
 import jwt from 'jsonwebtoken';
 
 import MailingService from '../middlewares/mailing.js';
+import { ok } from "assert";
 
 const register = async (req, res) => {
     console.log('--> Session controller register');
@@ -49,10 +50,10 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     console.log('--> Session controller login');
-    try{
+    try {
         const { email, password } = await req.body;
-        if (!email || !password) return res.status(400).send({ status: 'error',function: '🔑 Session controller login', error: '💀 incomplet values' });
-        if( email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) { 
+        if (!email || !password) return res.status(400).send({ status: 'error', function: '🔑 Session controller login', error: '💀 incomplet values' });
+        if (email === config.session.ADMIN_EMAIL && password == config.session.ADMIN_PWD) {
             const sessionAdminUser = {
                 name: 'Admin',
                 role: 'admin',
@@ -61,12 +62,10 @@ const login = async (req, res) => {
             const token = jwt.sign(sessionAdminUser, config.jwt.SECRET, { expiresIn: '1h' });
             return res.cookie(config.jwt.COOKIE, token, { maxAge: 36000000 }).send({ status: 'success', messages: '👍 Loguin ok' });
         };
-        const user = await userService.getBy({email});
-        console.log('user');
-        console.log(user);
+        const user = await userService.getBy({ email });
         if (!user) return res.status(400).send({ status: 'error', error: 'User not exist' });
         const passwordValidation = await isValidPassword(user, password);
-        
+    
         if (!passwordValidation) return res.status(400).send({ status: 'error', error: '💀 passwod incorrect' });
         const tokenUser = {
             email: user.email,
@@ -75,10 +74,10 @@ const login = async (req, res) => {
             id: user._id,
             cart: user.cart,
         };
-        console.log('req.session');
+        /* console.log('req.session');
         console.log(req.session);
         console.log('config.jwt.SECRET');
-        console.log(config.jwt.SECRET);
+        console.log(config.jwt.SECRET); */
         req.session.user = {
             email: user.email,
             role: user.role,
@@ -87,15 +86,17 @@ const login = async (req, res) => {
             cart: user.cart,
             image: user.image
         };
-        const token = jwt.sign(tokenUser,config.jwt.SECRET,{expiresIn:'1h'});
+        const token = jwt.sign(tokenUser, config.jwt.SECRET, { expiresIn: '1h' });
         res.cookie(config.jwt.COOKIE, token, { maxAge: 3600000 })
-        let message = { status: "success", message: "👍 User login", function: '🔑 Session controller login'};
+        let message = { status: "success", message: "👍 User login", function: '🔑 Session controller login' };
         console.log(message);
         res.status(200).send(message);
+
     } catch (error) {
         let message = { status: "error", error: "💀 Internal error", function: '🔑 Session controller login', trace: error };
         console.log(message);
         res.status(500).send(message);
+        
     }
 };
 
