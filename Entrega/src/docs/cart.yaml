@@ -27,16 +27,67 @@ components:
 paths:
   /api/cart/:
     get:
-      summary: get all carts of bd
+      summary: Returns all carts.
       tags:
-        - Carts
+          - Carts
       responses:
-        200:
-          description: get all carts ok
+        '200':
+          description: A JSON array of objects containing each cart information.
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Cart'
+        '500':
+          description: Error while getting carts from database
+
+  /api/cart/byId/{id}:
+    get:
+      summary: Returns a cart by id.
+      tags:
+          - Carts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Cart id from store.
+          example: 63a9dce0d968311089ad0a83
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON array of cart information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        '400':
+          description: Cart not found in database
+  /api/cart/Info/ById/{id}:
+    get:
+      summary: Returns a cart by id, with populate product.
+      tags:
+          - Carts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Cart id from store.
+          example: 63a9dce0d968311089ad0a83
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON array of cart information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        '400':
+          description: Cart not found in database
 

@@ -71,16 +71,15 @@ components:
         image:
           type: String
       example:
-        first_name: 'first name test'
-        last_name: 'last name test'
-        password: '1234'
-        email: 'test@test.com'
-        age: 10
-        role: 'user'
-        phone: '00000000'
-        address: 'adress test'
-        image: 'avatar.png'
-            
+        first_name: Juan,
+        last_name: Francisco Carro-Casal,
+        password: 1234,
+        email: 03@mail.com,
+        age: 3,
+        role: user,
+        phone: 00000003,
+        address: Calle Final 03,
+        image: avatar.png
 paths:
   /api/user/:
     get:
@@ -96,6 +95,78 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+  /api/user/byId/{id}:
+    get:
+      summary: Returns a user by id.
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User id from store.
+          example: 63a9dce0d968311089ad0a85
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON array of user information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: user not found in database  
+  /api/user/byEmail/{email}:
+    get:
+      summary: Returns a user by email.
+      tags:
+        - Users
+      parameters:
+        - name: email
+          in: path
+          required: true
+          description: User email from store.
+          example: test@mail.es
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON array of user information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: user not found in database 
+  /api/user/Info/ById/{id}:
+    get:
+      summary: Returns a user by id with populate cart and product (not history buy).
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User email from store.
+          example: 63a9dce0d968311089ad0a85
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A JSON array of user information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: user not found in database             
   /api/user/save:
     post:
       summary: Create new user
@@ -106,7 +177,7 @@ paths:
         content:
           application/json:
             schema: 
-              $ref: '#/components/requestBodies/newUser:'
+              $ref: '#/components/requestBodies/newUser'
       responses:
         '200':
           description: get users ok
@@ -114,18 +185,20 @@ paths:
           description:   filed in get users, invalid data
         '500':
           description: get users ok
-  /api/user/delete/byId/{uid}:
+  /api/user/delete/byId/{id}:
     delete:
-      summary: delete user
-      tags: 
+      summary: Elimina un usuario dado
+      tags:
         - Users
       parameters:
-        - name: uid
-          in: path
-          required: true
-          description: define id the user save in mongo
-          schema:
-            tyoe: string
+      - name: id
+        in: path
+        required: true
+        description: delete user by Mongo id
+        example: 63a9eb7758cab743d2352020
+        schema:
+          type: string
+
 
 
 
