@@ -35,7 +35,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/api/user/byId/636ba753b465fc01e480c075",
+							"raw": "http://localhost:8081/api/user/byId/63a9dce0d968311089ad0a85",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -45,7 +45,7 @@
 								"api",
 								"user",
 								"byId",
-								"636ba753b465fc01e480c075"
+								"63a9dce0d968311089ad0a85"
 							]
 						}
 					},
@@ -57,7 +57,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/api/user/byId/638b75b955262a01b693db8a",
+							"raw": "http://localhost:8081/api/user/byEmail/test@mail.es",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -66,8 +66,8 @@
 							"path": [
 								"api",
 								"user",
-								"byId",
-								"638b75b955262a01b693db8a"
+								"byEmail",
+								"test@mail.es"
 							]
 						}
 					},
@@ -75,23 +75,11 @@
 				},
 				{
 					"name": "INFO ALL BY _ID",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"/images/avatar/avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8081/api/user/Info/ById/63921fd6bfd413fc7d3b0911",
+							"raw": "http://localhost:8081/api/user/Info/ById/63a9dce0d968311089ad0a85",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -102,7 +90,7 @@
 								"user",
 								"Info",
 								"ById",
-								"63921fd6bfd413fc7d3b0911"
+								"63a9dce0d968311089ad0a85"
 							]
 						}
 					},
@@ -115,7 +103,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"2TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"raw": "{\n    \"first_name\": \"5TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test@mail.es\",\n    \"role\": \"admin\",\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,7 +164,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/api/user/update/byId/638dc0d8ed4bee9d9ac71fa9",
+							"raw": "http://localhost:8081/api/user/update/byId/638e511df3a812ef775a3996",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -187,7 +175,7 @@
 								"user",
 								"update",
 								"byId",
-								"638dc0d8ed4bee9d9ac71fa9"
+								"638e511df3a812ef775a3996"
 							]
 						}
 					},
@@ -224,7 +212,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/api/product/byId/638693d0bc438324adfb7341",
+							"raw": "http://localhost:8081/api/product/byId/63a9e5bb92086f84a20a21d7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -234,7 +222,7 @@
 								"api",
 								"product",
 								"byId",
-								"638693d0bc438324adfb7341"
+								"63a9e5bb92086f84a20a21d7"
 							]
 						}
 					},
@@ -247,7 +235,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"code\": \"3024\",\n    \"product_name\": \"TEST\",\n    \"description\": \"TEST TEST\",\n    \"price\": 15500,\n    \"offer\": 0,\n    \"stock\": 5,\n    \"image\": \"/images/product/product.png\"\n}",
+							"raw": "{\n    \"code\": \"000003\",\n    \"product_name\": \"TEST\",\n    \"description\": \"TEST TEST\",\n    \"price\": 15500,\n    \"offer\": 0,\n    \"stock\": 5,\n    \"image\": \"/images/product/product.png\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,7 +344,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/api/cart/byId/636ba753b465fc01e480c075",
+							"raw": "http://localhost:8081/api/cart/byId/63a9dce0d968311089ad0a83",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -366,7 +354,7 @@
 								"api",
 								"cart",
 								"byId",
-								"636ba753b465fc01e480c075"
+								"63a9dce0d968311089ad0a83"
 							]
 						}
 					},
@@ -390,7 +378,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/api/cart/Info/ById/63921fd6bfd413fc7d3b090f",
+							"raw": "http://localhost:8081/api/cart/Info/ById/63a9dce0d968311089ad0a83",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -401,7 +389,7 @@
 								"cart",
 								"Info",
 								"ById",
-								"63921fd6bfd413fc7d3b090f"
+								"63a9dce0d968311089ad0a83"
 							]
 						}
 					},
@@ -501,7 +489,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"2TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test2@mail.es\",\n    \"role\": \"user\",\n    \"phone\": \"00000000\",\n    \"age\": 2,\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
+							"raw": "{\n    \"first_name\": \"2TEST\",\n    \"last_name\": \"TEST\",\n    \"password\": \"1234\",\n    \"email\": \"test4@mail.es\",\n    \"role\": \"user\",\n    \"phone\": \"00000000\",\n    \"age\": 2,\n    \"image\": \"avatar.png\",\n    \"address\": \"Calle TEST\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -1,0 +1,318 @@
+[{
+  "_id": {
+    "$oid": "63a9dce0d968311089ad0a85"
+  },
+  "first_name": "admin",
+  "last_name": "admin",
+  "password": "$2b$10$Y3.qZFFko9wpc3djHvxL4uVKMdTRG7cOUo3p7yTcFmq3qEAekwot.",
+  "email": "test@mail.es",
+  "age": 0,
+  "role": "admin",
+  "phone": "0000000",
+  "address": "Calle Final 00",
+  "image": "/images/1672082567095-avatar.png",
+  "cart": {
+    "$oid": "63a9dce0d968311089ad0a83"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672076512951"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672598482381"
+    }
+  },
+  "__v": 0,
+  "buy": [
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        },
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672596293574"
+        }
+      },
+      "_id": {
+        "$oid": "63b1cb455742beb78ed06dd5"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        },
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        },
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e7da92086f84a20a21ec"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672596351430"
+        }
+      },
+      "_id": {
+        "$oid": "63b1cb7f32c8a3aca3f4bbf3"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672596422805"
+        }
+      },
+      "_id": {
+        "$oid": "63b1cbc6565208b924fcc537"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672596734041"
+        }
+      },
+      "_id": {
+        "$oid": "63b1ccfe6f5d023e30300b2f"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        },
+        {
+          "quantity": 2,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672596787381"
+        }
+      },
+      "_id": {
+        "$oid": "63b1cd344a3f30f25b9a572c"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        },
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672598054331"
+        }
+      },
+      "_id": {
+        "$oid": "63b1d22700bbd6a5c4e54f0e"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672598448814"
+        }
+      },
+      "_id": {
+        "$oid": "63b1d3b164f6e60802957083"
+      }
+    },
+    {
+      "products": [
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9df82c15e64f8a0500752"
+          }
+        },
+        {
+          "quantity": 1,
+          "_id": {
+            "$oid": "63a9e5bb92086f84a20a21d7"
+          }
+        }
+      ],
+      "date": {
+        "$date": {
+          "$numberLong": "1672598481287"
+        }
+      },
+      "_id": {
+        "$oid": "63b1d3d2a45612911fb44ec4"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "63a9eb4758cab743d2352016"
+  },
+  "first_name": "Jhon ",
+  "last_name": "Doe ",
+  "password": "$2b$10$KWet3SpB60.pByo55zJU7.wK0irJ1tb9/pmfC0bQJYcYeFOqSk0GC",
+  "email": "01@mail.com",
+  "age": 1,
+  "role": "user",
+  "phone": "00000001",
+  "address": "Calle Final 01",
+  "image": "/images/1672080199051-avatar.png",
+  "cart": {
+    "$oid": "63a9eb4758cab743d2352014"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080199181"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080199181"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb5e58cab743d235201b"
+  },
+  "first_name": "Rafael",
+  "last_name": "Ferreira",
+  "password": "$2b$10$y1CxJtDmB3ZTfCfaa9fy8.talbNXQIcvPQN4Bop/YI8WRaMo18Nre",
+  "email": "02@mail.com",
+  "age": 2,
+  "role": "user",
+  "phone": "00000002",
+  "address": "Calle Final 02",
+  "image": "/images/1672080222655-avatar.png",
+  "cart": {
+    "$oid": "63a9eb5e58cab743d2352019"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080222787"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080222787"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb7758cab743d2352020"
+  },
+  "first_name": "Juan ",
+  "last_name": "Francisco Carro-Casal",
+  "password": "$2b$10$XYcmjrp0hsSBcaC0dZqEQO7PhNmY0E14IDbNMkwW1GVNBvQqu3as6",
+  "email": "03@mail.com",
+  "age": 3,
+  "role": "user",
+  "phone": "00000003",
+  "address": "Calle Final 03",
+  "image": "/images/1672080246911-avatar.png",
+  "cart": {
+    "$oid": "63a9eb7658cab743d235201e"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080247027"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080247027"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb8a58cab743d2352025"
+  },
+  "first_name": "Mohamed ",
+  "last_name": "Vilanova",
+  "password": "$2b$10$VdCdiepugtp0QiLlMZL3uO73eknxDMHxfFht3S76LqVlB0jIkGuxe",
+  "email": "04@mail.com",
+  "age": 4,
+  "role": "user",
+  "phone": "00000004",
+  "address": "Calle Final 04",
+  "image": "/images/1672080266237-avatar.png",
+  "cart": {
+    "$oid": "63a9eb8a58cab743d2352023"
+  },
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080266364"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080266364"
+    }
+  },
+  "__v": 0
+}]

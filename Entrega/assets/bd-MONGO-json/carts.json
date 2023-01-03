@@ -1,264 +1,128 @@
 [{
   "_id": {
-    "$oid": "636ba6a1dc911e044d633ae2"
+    "$oid": "63a9dce0d968311089ad0a83"
   },
-  "products": [
-    {
-      "id": "636b957b8d4ab97dec21f392",
-      "quantity": 2
-    },
-    {
-      "id": "636ba4eac41dfd243c0c7d7c",
-      "quantity": 3
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672076512839"
     }
-  ],
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672616681938"
+    }
+  },
   "__v": 0,
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670615870071"
-    }
-  }
-},{
-  "_id": {
-    "$oid": "636ba753b465fc01e480c073"
-  },
   "products": [
     {
-      "id": "636b957b8d4ab97dec21f392",
-      "quantity": 2
-    }
-  ],
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "636ba80cb465fc01e480c078"
-  },
-  "products": [
-    {
-      "id": "636b957b8d4ab97dec21f392",
-      "quantity": 2
-    },
-    {
-      "id": "636ba4eac41dfd243c0c7d7c",
-      "quantity": 3
-    }
-  ],
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638507926754c56bc93922fa"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638509397404762211782d99"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638655087ad83ab09bd2c2d6"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638655329da42d3ec10512c2"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638dc0d8ed4bee9d9ac71fa7"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670234328195"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670234328195"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638df7b0b0f59731e6318aaa"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670248368672"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670248368672"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e13fbbeeb48886f731689"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670255611359"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670255611359"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e1527e4a2fe544d2b4666"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670255911775"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670255911775"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e19ab8416cc0b2f523b38"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670257067826"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670257067826"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e19dddb18a57cb2e3cf36"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670257117411"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670257117411"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e1cf017f5868ddecd4844"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670257904863"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670257904863"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "638e511df3a812ef775a3994"
-  },
-  "cart": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670271261252"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670271261252"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "63912d75e866e2280ba9d87e"
-  },
-  "products": [
-    {
-      "id": "636b957b8d4ab97dec21f392",
-      "quantity": 2
-    },
-    {
-      "id": "636ba4eac41dfd243c0c7d7c",
-      "quantity": 3
-    }
-  ],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670458741185"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670458741185"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "6391e48008b2a14c9a3300d2"
-  },
-  "products": [],
-  "created_at": {
-    "$date": {
-      "$numberLong": "1670505600683"
-    }
-  },
-  "updated_at": {
-    "$date": {
-      "$numberLong": "1670505600683"
-    }
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "63921fd6bfd413fc7d3b090f"
-  },
-  "products": [
-    {
-      "quantity": 2,
+      "quantity": 1,
       "_id": {
-        "$oid": "636b957b8d4ab97dec21f392"
+        "$oid": "63a9df82c15e64f8a0500752"
       }
     },
     {
       "quantity": 1,
       "_id": {
-        "$oid": "636ba4eac41dfd243c0c7d7c"
+        "$oid": "63a9e5bb92086f84a20a21d7"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "63a9eb4758cab743d2352014"
+  },
+  "products": [],
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080199079"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080199079"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb5e58cab743d2352019"
+  },
+  "products": [],
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080222683"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080222683"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb7658cab743d235201e"
+  },
+  "products": [],
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080246938"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080246938"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63a9eb8a58cab743d2352023"
+  },
+  "products": [],
+  "created_at": {
+    "$date": {
+      "$numberLong": "1672080266269"
+    }
+  },
+  "updated_at": {
+    "$date": {
+      "$numberLong": "1672080266269"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63ab25c74e3a855cae68e810"
+  },
+  "products": [
+    {
+      "quantity": 2,
+      "_id": {
+        "$oid": "63a9df82c15e64f8a0500752"
+      }
+    },
+    {
+      "quantity": 1,
+      "_id": {
+        "$oid": "63a9e5bb92086f84a20a21d7"
+      }
+    },
+    {
+      "quantity": 1,
+      "_id": {
+        "$oid": "63a9e7da92086f84a20a21ec"
       }
     }
   ],
   "created_at": {
     "$date": {
-      "$numberLong": "1670520790451"
+      "$numberLong": "1672076512839"
     }
   },
   "updated_at": {
     "$date": {
-      "$numberLong": "1670618796099"
+      "$numberLong": "1672158908084"
     }
   },
   "__v": 0
