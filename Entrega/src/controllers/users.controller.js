@@ -1,11 +1,9 @@
-import mongoose from "mongoose";
+import config from "../config/config.js";
+
 import MailingService from '../middlewares/mailing.js';
 
-
-import { userService, cartService, productService } from "../services/services.js"
-import {UserPresenterDTO} from "../dto/User.dto.js";
+import { userService, cartService } from "../services/services.js"
 import { createHash } from "../utils.js";
-import config from "../config/config.js";
 
 
 
@@ -189,7 +187,7 @@ const userBuy = async (req, res) => {
         <h1>Compra realizada:</h1>
         <p>
         ${JSON.stringify(data.products)}
-        &{foreach}
+        
         </p>
         `)
     });

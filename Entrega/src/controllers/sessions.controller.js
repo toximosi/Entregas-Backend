@@ -6,7 +6,6 @@ import { createHash, isValidPassword } from "../utils.js";
 import jwt from 'jsonwebtoken';
 
 import MailingService from '../middlewares/mailing.js';
-import { ok } from "assert";
 
 const register = async (req, res) => {
     console.log('--> Session controller register');
@@ -36,6 +35,16 @@ const register = async (req, res) => {
             image,
             cart: cart._id,
         };
+        /* const mailer = new MailingService();
+        let mailsend = await mailer.sendSimpleMail({
+            to: `${config.test.EMAIL}, ${email}`,
+            subject: 'nuevo usuario',
+            html: mailer.MailRegister(`
+                <h1>Nuevo usuario registrado:</h1>
+            `)
+        });
+        console.log('--> Register mailsend');
+        console.log(mailsend); */
         //const insertUser = new UserInsertDTO(newUser);
         let result = await userService.save(newUser);
         let message = { status: "success", message: "👍 User create", function: '🔑 Session controller register', payload: result };

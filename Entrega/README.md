@@ -127,8 +127,8 @@ Puede encontrar material de de acceso y consulta de la aplicación en: ``` entre
 ⏐   ├⏤ Añadir productos  ```/product-create```
 ⏐   ├⏤ Administrar productos  ```/product-all```
 ⏐   ├⏤ Apidocs  ```/ ```
-⏐   ├⏤ Graphql  ```/ ```
-⏐   ├⏤ Ver todas los carritos activos  ```/cart-all```
+⏐   ⌊⎽⎽ Ver todas los carritos activos  ```/cart-all```
+⏐   
 ├⏤ Ver carrito usuario logueado ```/user-cart```
 ├⏤ Ver perfil usuario logueado ```/user-perfil```
 ⌊⎽⎽ Desloguearse ```/session-logout```
@@ -210,9 +210,9 @@ Desarrollarás el backend de una aplicación de e-commerce para poder vender pro
 - [X]  Passport JWT
 - [X]  Mongoose
 - [X]  Bcrypt
-- [X]  Websocket
+- []  Websocket
 - [X]  Dotenv
-- [X]  Handlebars, Pug, Ejs
+- [X]  Handlebars
 - [X]  Nodemailer |
 
 
@@ -263,12 +263,12 @@ Implementar al menos estas colecciones:
 **Los requisitos extra pro-coders no se incluyen en los criterios de evaluación.**
 Los requisitos extra son funcionalidades opcionales que no se incluyen en los criterios de evaluación, pero si te falta diversión y quieres agregar valor a tu proyecto... ¡bajo la única condición de que lo que incluyas debe funcionar!
 
-- [X]  auth/login: Implementar alguna de las estrategias de autenticación disponibles en passport para permitir el login con Facebook y Gmail
+- []  auth/login: Implementar alguna de las estrategias de autenticación disponibles en passport para permitir el login con Facebook y Gmail
 - []  Custom item: Posibilidad de agregar características seleccionables al producto (ej. talla, color, etc). La customización no debería modificar el precio. Las selecciones serán detalladas en el checkout. Por ejemplo: 1 x camisa (roja) $200 y 2 x camisa (verde) $400.
 - []  Stock check: Validar stock al momento de intentar generar la orden.
 - []  Mis órdenes: El usuario podrá visualizar todas las órdenes que realizó a través de la ruta /orden.
 
 ### Dont’s
 **No es necesario ni recomendado.**
-- [X]  Crear un administrador de stock, dado que puede escaparse del scope y requerir bastante trabajo extra. Podremos gestionar el stock desde la base MongoDB.
+- []  Crear un administrador de stock, dado que puede escaparse del scope y requerir bastante trabajo extra. Podremos gestionar el stock desde la base MongoDB.
 - [X]  Implementar el FrontEnd salvo que así sea deseado por parte del estudiante.
