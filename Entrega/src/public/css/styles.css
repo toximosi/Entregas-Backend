@@ -10,7 +10,9 @@ header{
     padding: 20px;
     margin-bottom: 20px;
 }
-
+.home-page{
+    text-align: center;
+}
 
 /* MENU ---------------------------------- */
 .navbar{
@@ -27,7 +29,16 @@ header{
 .navbar a:hover{
     color: #0d6efd;
 }
+.collapse:not(.show){
+    display: flex!important;
+}
 
+.navbar-nav{
+    flex-direction: row;
+}
+.nav-item{
+    margin: 0 10px;
+}
 /* CUERPO ---------------------------------- */
 .plantillas{
     padding-top: 50px;
